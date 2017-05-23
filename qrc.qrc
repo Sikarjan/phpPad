@@ -1,0 +1,40 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>icons/ajax.png</file>
+        <file>icons/copyDisable.png</file>
+        <file>icons/copyEnable.png</file>
+        <file>icons/cutDisable.png</file>
+        <file>icons/cutEnable.png</file>
+        <file>icons/imageAdd.png</file>
+        <file>icons/newDisable.png</file>
+        <file>icons/newEnable.png</file>
+        <file>icons/openDisable.png</file>
+        <file>icons/openEnable.png</file>
+        <file>icons/pastDisable.png</file>
+        <file>icons/pastEnable.png</file>
+        <file>icons/projectAdd.png</file>
+        <file>icons/projectOpen.png</file>
+        <file>icons/redoDisable.png</file>
+        <file>icons/redoEnable.png</file>
+        <file>icons/reloadDisable.png</file>
+        <file>icons/reloadEnable.png</file>
+        <file>icons/saveAsDisable.png</file>
+        <file>icons/saveAsEnable.png</file>
+        <file>icons/saveDisable.png</file>
+        <file>icons/saveEnable.png</file>
+        <file>icons/tableAdd.png</file>
+        <file>icons/tableColumnHeader.png</file>
+        <file>icons/tableNoHeader.png</file>
+        <file>icons/tableRowHeader.png</file>
+        <file>icons/undoDisable.png</file>
+        <file>icons/undoEnable.png</file>
+    </qresource>
+    <qresource prefix="/xml">
+        <file>xml/php.xml</file>
+        <file>xml/css.xml</file>
+        <file>xml/defaultHtml.txt</file>
+        <file>xml/html.xml</file>
+        <file>xml/javascript.xml</file>
+    </qresource>
+    <qresource prefix="/"/>
+</RCC>
