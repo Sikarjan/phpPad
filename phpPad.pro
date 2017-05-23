@@ -49,7 +49,10 @@ FORMS    += mainwindow.ui \
 DISTFILES += \
     appIcon/phpPad.rc \
     Erungenschaften.txt \
-    xml/html.xml
+    xml/html.xml \
+    README.md \
+    LICENSE \
+    installers/phpPad Installer.exe
 
 RESOURCES += \
     qrc.qrc
