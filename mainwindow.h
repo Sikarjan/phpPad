@@ -17,6 +17,7 @@
 #include "dialogs/newproject.h"
 #include "dialogs/newtabledialog.h"
 #include "dialogs/preferencedialog.h"
+#include "components/finder.h"
 
 namespace Ui {
 class MainWindow;
@@ -88,9 +89,12 @@ private slots:
 
     void on_actionGo2Line_triggered();
 
+    void on_actionFind_triggered();
+
 private:
     Ui::MainWindow *ui;
     CodeEditor *editor;
+    Finder *finder;
     Highlighter *highlighter;
     QWidget *newTab;
     QVBoxLayout *tabLayout;

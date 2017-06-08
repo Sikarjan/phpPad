@@ -52,7 +52,7 @@ bool MainWindow::closeTab(int index){
     QWidget* widget = ui->tabWidget->widget(index);
     if(widget->objectName() != "startTab"){
         CodeEditor *tabEditor = NULL;
-        tabEditor = (CodeEditor*)widget;
+        tabEditor = widget->findChild<CodeEditor *>();
         if(tabEditor->isFileChanged){
             QMessageBox msgBox;
             msgBox.setText("The document "+ ui->tabWidget->tabText(index) +" has been modified.");
@@ -77,6 +77,7 @@ bool MainWindow::closeTab(int index){
               }
         }
 
+// The trash bin needs to be reworked entirely
 //        if(trashBin->count() == 10)
 //            trashBin->remove(0);
         trashBin = tabEditor;
@@ -101,6 +102,8 @@ int MainWindow::addEditor(QString filePath, bool isNew){
     editor->url = filePath;
     editor->lockBlockState = true;
 
+    finder = new Finder;
+
     QString fileName;
     QString fileType;
     QString text = "";
@@ -119,8 +122,20 @@ int MainWindow::addEditor(QString filePath, bool isNew){
     connect(editor, SIGNAL(closeEditor()), this, SLOT(on_actionClose_triggered()));
     connect(editor, SIGNAL(fileChanged(QString)), this, SLOT(fileUpdater(QString)));
     connect(this, SIGNAL(fileUpdated(QString)), editor, SLOT(fileChangeListener(QString)));
+    connect(finder, SIGNAL(findNext(QString)), editor, SLOT(findNext(QString)));
 
-    int index = ui->tabWidget->insertTab(ui->tabWidget->count()-1, editor, "opening...");
+    QWidget *page = new QWidget;
+    QHBoxLayout *editorSplitter = new QHBoxLayout(page);
+    editorSplitter->setMargin(0);
+//    QSplitter * editorSplitter = new QSplitter(page);
+//    editorSplitter->setChildrenCollapsible(false);
+    editorSplitter->addWidget(editor);
+    editorSplitter->setStretchFactor(editor,10);
+    editorSplitter->addWidget(finder);
+    editorSplitter->setStretchFactor(finder,1);
+    finder->hide();
+
+    int index = ui->tabWidget->insertTab(ui->tabWidget->count()-1, page, "opening...");
     ui->tabWidget->setCurrentIndex(index);
 
     if(filePath == "" || isNew){
@@ -154,6 +169,8 @@ int MainWindow::addEditor(QString filePath, bool isNew){
         fileType = "."+fileName.section(".",-1);
 
         QTextStream in(file);
+        in.setCodec("UTF-8");
+        in.setAutoDetectUnicode(true);
         text = in.readAll();
         file->close();
         editor->textFile = file;
@@ -185,6 +202,7 @@ int MainWindow::addEditor(QString filePath, bool isNew){
     editor->textBlockStateChanged(blockState == 0 ? 10:blockState);
 
     ui->menu_Insert->setEnabled(true);
+    ui->actionFind->setEnabled(true);
     tabOrder.insert(0, index);
     return index;
 }
@@ -235,7 +253,7 @@ void MainWindow::on_actionSave_As_triggered(){
     if(mEditor == NULL){
         return;
     }
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"), projects[ui->projectSelector->currentText()], tr("PHP file")+" (*.php, *php3)");
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"), projects[ui->projectSelector->currentText()], tr("PHP file (*.php *.php3);;CSS file (*.css);; JavaScript file (*.js);;HTML file (*.html *.htm)"));
 
     if(!fileName.isEmpty()){
         mEditor->url = fileName;
@@ -414,7 +432,7 @@ CodeEditor *MainWindow::checkForEditor(){
     CodeEditor *tabEditor = NULL;
     QWidget *widget = ui->tabWidget->currentWidget();
     if(widget->objectName() != "startTab"){
-        tabEditor = (CodeEditor*)widget;
+        tabEditor = widget->findChild<CodeEditor *>();
     }
     return tabEditor;
 }
@@ -435,6 +453,7 @@ void MainWindow::on_tabWidget_currentChanged(int index)
     if(mEditor == NULL){
         ui->actionSave_As->setEnabled(false);
         ui->actionGo2Line->setEnabled(false);
+        ui->actionFind->setEnabled(false);
         return;
     }
 
@@ -447,6 +466,7 @@ void MainWindow::on_tabWidget_currentChanged(int index)
     ui->actionRedo->setEnabled(mEditor->isRedoAvailable);
     ui->actionReload->setEnabled(mEditor->isFileChanged);
     ui->actionGo2Line->setEnabled(true);
+    ui->actionFind->setEnabled(true);
 
     mEditor->updateIncFiles();
 }
@@ -974,4 +994,10 @@ void MainWindow::on_actionGo2Line_triggered()
         curs.movePosition(QTextCursor::PreviousBlock,QTextCursor::MoveAnchor, lineNumber*-1);
     }
     mEditor->setTextCursor(curs);
+}
+
+void MainWindow::on_actionFind_triggered(){
+    QWidget *widget = ui->tabWidget->currentWidget();
+    Finder *finder = widget->findChild<Finder *>();
+    finder->show();
 }

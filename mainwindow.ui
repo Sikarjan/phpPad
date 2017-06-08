@@ -218,7 +218,7 @@
         </sizepolicy>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <property name="tabsClosable">
         <bool>true</bool>
@@ -303,6 +303,7 @@
     <addaction name="actionPaste"/>
     <addaction name="separator"/>
     <addaction name="actionGo2Line"/>
+    <addaction name="actionFind"/>
    </widget>
    <widget class="QMenu" name="menu_Project">
     <property name="title">
@@ -681,6 +682,17 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+G</string>
+   </property>
+  </action>
+  <action name="actionFind">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Find</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
    </property>
   </action>
  </widget>

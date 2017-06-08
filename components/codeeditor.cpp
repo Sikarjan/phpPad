@@ -117,7 +117,7 @@ void CodeEditor::keyPressEvent(QKeyEvent *e){
         decreaseSelectionIndent();
         return;
     }else if(e->key() == Qt::Key_Tab){
-        if(Qt::AltModifier)
+        if(e->modifiers() & Qt::ControlModifier)
             emit switchTab();
         else
             increaseSelectionIndent();
@@ -207,7 +207,7 @@ void CodeEditor::matchTabstop(QString lastChar){
     QTextCursor curs = textCursor();
     curs.select(QTextCursor::BlockUnderCursor);
 
-    QRegularExpression rx("(?<=^.)(\\s)", QRegularExpression::DotMatchesEverythingOption);
+    QRegularExpression rx("(?<=^.)(\\s+)", QRegularExpression::DotMatchesEverythingOption);
     QRegularExpressionMatch match = rx.match(curs.selectedText());
 
     if(match.hasMatch())
@@ -218,6 +218,7 @@ void CodeEditor::matchTabstop(QString lastChar){
         this->insertPlainText("\t\n"+tabs+"}");
         this->moveCursor(QTextCursor::Up, QTextCursor::MoveAnchor);
         this->moveCursor(QTextCursor::Right, QTextCursor::MoveAnchor);
+        lastChar.clear();
     }
     return;
 }
@@ -272,8 +273,17 @@ void CodeEditor::increaseSelectionIndent(){
 
 void CodeEditor::decreaseSelectionIndent(){
     QTextCursor curs = textCursor();
+    QString line;
 
     if(!curs.hasSelection()){
+        curs.movePosition(QTextCursor::StartOfBlock, QTextCursor::MoveAnchor);
+        curs.select(QTextCursor::BlockUnderCursor);
+        line = curs.selectedText();
+
+        if(line.at(1) == '\t'){
+            curs.movePosition(QTextCursor::StartOfBlock, QTextCursor::MoveAnchor);
+            curs.deleteChar();
+        }
         return;
     }
 
@@ -300,7 +310,7 @@ void CodeEditor::decreaseSelectionIndent(){
     for(int i = 0; i <= blockDifference; ++i){
         curs.movePosition(QTextCursor::StartOfBlock, QTextCursor::MoveAnchor);
         curs.select(QTextCursor::BlockUnderCursor);
-        QString line = curs.selectedText();
+        line = curs.selectedText();
         if(line.at(1) == '\t'){
             curs.movePosition(QTextCursor::StartOfBlock, QTextCursor::MoveAnchor);
             curs.deleteChar();
@@ -877,6 +887,13 @@ void CodeEditor::fileChangeListener(QString url)
     qDebug() << url;
     if(includedFilesList.contains(url) && !filesForRescan.contains(url)){
         filesForRescan << url;
+    }
+}
+
+void CodeEditor::findNext(QString text)
+{
+    if(!find(text)){
+        qDebug() << "Text not found!";
     }
 }
 

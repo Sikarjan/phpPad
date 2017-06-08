@@ -31,7 +31,8 @@ SOURCES += main.cpp\
     components/projectmodel.cpp \
     dialogs/newproject.cpp \
     dialogs/newtabledialog.cpp \
-    dialogs/preferencedialog.cpp
+    dialogs/preferencedialog.cpp \
+    components/finder.cpp
 
 HEADERS  += mainwindow.h \
     components/codeeditor.h \
@@ -39,12 +40,14 @@ HEADERS  += mainwindow.h \
     components/projectmodel.h \
     dialogs/newproject.h \
     dialogs/newtabledialog.h \
-    dialogs/preferencedialog.h
+    dialogs/preferencedialog.h \
+    components/finder.h
 
 FORMS    += mainwindow.ui \
     dialogs/newproject.ui \
     dialogs/newtabledialog.ui \
-    dialogs/preferencedialog.ui
+    dialogs/preferencedialog.ui \
+    components/finder.ui
 
 DISTFILES += \
     appIcon/phpPad.rc \
@@ -52,7 +55,8 @@ DISTFILES += \
     xml/html.xml \
     README.md \
     LICENSE \
-    installers/phpPad Installer.exe
+    installers/phpPad Installer.exe \
+    installers/phpPadInstaller_0.1.0-2.exe
 
 RESOURCES += \
     qrc.qrc
