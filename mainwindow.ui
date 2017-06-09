@@ -332,6 +332,7 @@
     </property>
     <addaction name="actionPreferences"/>
     <addaction name="actionShow_Toolbar"/>
+    <addaction name="actionShowToolbox"/>
    </widget>
    <addaction name="menuPhpPad"/>
    <addaction name="menuEdit"/>
@@ -693,6 +694,20 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+F</string>
+   </property>
+  </action>
+  <action name="actionShowToolbox">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Show Toolbox</string>
+   </property>
+   <property name="toolTip">
+    <string>Show toolbox</string>
    </property>
   </action>
  </widget>

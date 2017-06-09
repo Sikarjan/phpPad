@@ -890,13 +890,6 @@ void CodeEditor::fileChangeListener(QString url)
     }
 }
 
-void CodeEditor::findNext(QString text)
-{
-    if(!find(text)){
-        qDebug() << "Text not found!";
-    }
-}
-
 void CodeEditor::insertTable(int columns, int rows, int header, QString caption){
     // Get number of tab stops
     QString tabs = "\n";

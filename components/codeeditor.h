@@ -114,7 +114,6 @@ public slots:
     void defaultFontChanged(QFont font);
     void textBlockStateChanged(int state);
     void fileChangeListener(QString url);
-    void findNext(QString text);
 
 private slots:
     void updateLineNumberAreaWidth(int newBlockCount);

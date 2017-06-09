@@ -102,7 +102,8 @@ int MainWindow::addEditor(QString filePath, bool isNew){
     editor->url = filePath;
     editor->lockBlockState = true;
 
-    finder = new Finder;
+    toolBox = new ToolBox;
+    toolBox->mEditor = editor;
 
     QString fileName;
     QString fileType;
@@ -122,20 +123,18 @@ int MainWindow::addEditor(QString filePath, bool isNew){
     connect(editor, SIGNAL(closeEditor()), this, SLOT(on_actionClose_triggered()));
     connect(editor, SIGNAL(fileChanged(QString)), this, SLOT(fileUpdater(QString)));
     connect(this, SIGNAL(fileUpdated(QString)), editor, SLOT(fileChangeListener(QString)));
-    connect(finder, SIGNAL(findNext(QString)), editor, SLOT(findNext(QString)));
 
-    QWidget *page = new QWidget;
-    QHBoxLayout *editorSplitter = new QHBoxLayout(page);
-    editorSplitter->setMargin(0);
-//    QSplitter * editorSplitter = new QSplitter(page);
-//    editorSplitter->setChildrenCollapsible(false);
+    QSplitter * editorSplitter = new QSplitter();
+    editorSplitter->setHandleWidth(1);
+    editorSplitter->setChildrenCollapsible(false);
     editorSplitter->addWidget(editor);
-    editorSplitter->setStretchFactor(editor,10);
-    editorSplitter->addWidget(finder);
-    editorSplitter->setStretchFactor(finder,1);
-    finder->hide();
+    editorSplitter->addWidget(toolBox);
+    QList<int> editorSplitterWidth;
+    editorSplitterWidth << 50000 << 10;
+    editorSplitter->setSizes(editorSplitterWidth);
+    toolBox->hide();
 
-    int index = ui->tabWidget->insertTab(ui->tabWidget->count()-1, page, "opening...");
+    int index = ui->tabWidget->insertTab(ui->tabWidget->count()-1, editorSplitter, "opening...");
     ui->tabWidget->setCurrentIndex(index);
 
     if(filePath == "" || isNew){
@@ -173,6 +172,7 @@ int MainWindow::addEditor(QString filePath, bool isNew){
         in.setAutoDetectUnicode(true);
         text = in.readAll();
         file->close();
+
         editor->textFile = file;
         ui->statusBar->showMessage(tr("File loaded"), 2000);
     }
@@ -203,6 +203,8 @@ int MainWindow::addEditor(QString filePath, bool isNew){
 
     ui->menu_Insert->setEnabled(true);
     ui->actionFind->setEnabled(true);
+    ui->actionShowToolbox->setEnabled(true);
+    ui->actionShowToolbox->setChecked(false);
     tabOrder.insert(0, index);
     return index;
 }
@@ -233,6 +235,7 @@ void MainWindow::on_actionSave_triggered(){
         qDebug() << "we have an error =( " << mEditor->url << " " << sFile.errorString();
     }else{
         QTextStream out(&sFile);
+        out.setCodec("UTF-8");
         out << mEditor->toPlainText();
 
         sFile.flush();
@@ -454,6 +457,7 @@ void MainWindow::on_tabWidget_currentChanged(int index)
         ui->actionSave_As->setEnabled(false);
         ui->actionGo2Line->setEnabled(false);
         ui->actionFind->setEnabled(false);
+        ui->actionShowToolbox->setEnabled(false);
         return;
     }
 
@@ -467,6 +471,10 @@ void MainWindow::on_tabWidget_currentChanged(int index)
     ui->actionReload->setEnabled(mEditor->isFileChanged);
     ui->actionGo2Line->setEnabled(true);
     ui->actionFind->setEnabled(true);
+
+    QWidget *widget = ui->tabWidget->currentWidget();
+    ToolBox *toolBox = widget->findChild<ToolBox *>();
+    ui->actionShowToolbox->setChecked(toolBox->isVisible());
 
     mEditor->updateIncFiles();
 }
@@ -998,6 +1006,18 @@ void MainWindow::on_actionGo2Line_triggered()
 
 void MainWindow::on_actionFind_triggered(){
     QWidget *widget = ui->tabWidget->currentWidget();
-    Finder *finder = widget->findChild<Finder *>();
-    finder->show();
+    ToolBox *toolBox = widget->findChild<ToolBox *>();
+    toolBox->show();
+    ui->actionShowToolbox->setChecked(true);
+    // open find page missing
+}
+
+void MainWindow::on_actionShowToolbox_triggered(bool checked)
+{
+    QWidget *widget = ui->tabWidget->currentWidget();
+    ToolBox *toolBox = widget->findChild<ToolBox *>();
+    if(checked)
+        toolBox->show();
+    else
+        toolBox->hide();
 }

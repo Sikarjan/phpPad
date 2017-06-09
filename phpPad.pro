@@ -32,7 +32,7 @@ SOURCES += main.cpp\
     dialogs/newproject.cpp \
     dialogs/newtabledialog.cpp \
     dialogs/preferencedialog.cpp \
-    components/finder.cpp
+    components/toolBox.cpp
 
 HEADERS  += mainwindow.h \
     components/codeeditor.h \
@@ -41,13 +41,13 @@ HEADERS  += mainwindow.h \
     dialogs/newproject.h \
     dialogs/newtabledialog.h \
     dialogs/preferencedialog.h \
-    components/finder.h
+    components/toolBox.h
 
 FORMS    += mainwindow.ui \
     dialogs/newproject.ui \
     dialogs/newtabledialog.ui \
     dialogs/preferencedialog.ui \
-    components/finder.ui
+    components/toolBox.ui
 
 DISTFILES += \
     appIcon/phpPad.rc \

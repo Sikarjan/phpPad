@@ -17,7 +17,7 @@
 #include "dialogs/newproject.h"
 #include "dialogs/newtabledialog.h"
 #include "dialogs/preferencedialog.h"
-#include "components/finder.h"
+#include "components/toolBox.h"
 
 namespace Ui {
 class MainWindow;
@@ -79,22 +79,21 @@ private slots:
     void on_actionRenameCurrentProject_triggered();
     void on_actionRemoveCurrentProject_triggered();
     void on_actionPreferences_triggered();
-    void on_tabWidget_tabBarClicked(int index);
     void on_actionShow_Toolbar_triggered(bool checked);
+    void on_actionRestore_Tab_triggered();
+    void on_actionGo2Line_triggered();
+    void on_actionFind_triggered();
+    void on_actionShowToolbox_triggered(bool checked);
     void pDel_triggered();
     void pCopy_triggered();
     void pCut_triggered();
     void pPast_triggered();
-    void on_actionRestore_Tab_triggered();
-
-    void on_actionGo2Line_triggered();
-
-    void on_actionFind_triggered();
+    void on_tabWidget_tabBarClicked(int index);
 
 private:
     Ui::MainWindow *ui;
     CodeEditor *editor;
-    Finder *finder;
+    ToolBox *toolBox;
     Highlighter *highlighter;
     QWidget *newTab;
     QVBoxLayout *tabLayout;
