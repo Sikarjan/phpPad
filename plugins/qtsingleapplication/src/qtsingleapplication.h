@@ -42,6 +42,8 @@
 #define QTSINGLEAPPLICATION_H
 
 #include <QApplication>
+#include <QFileOpenEvent>
+#include <QtDebug>
 
 class QtLocalPeer;
 
@@ -83,6 +85,8 @@ public:
     void setActivationWindow(QWidget* aw, bool activateOnMessage = true);
     QWidget* activationWindow() const;
 
+    bool event(QEvent *event);
+
     // Obsolete:
     void initialize(bool dummy = true)
         { isRunning(); Q_UNUSED(dummy) }
@@ -94,6 +98,7 @@ public Q_SLOTS:
 
 Q_SIGNALS:
     void messageReceived(const QString &message);
+    void openFile(QString fileName);
 
 
 private:

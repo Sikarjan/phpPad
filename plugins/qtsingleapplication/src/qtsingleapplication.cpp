@@ -305,6 +305,17 @@ QWidget* QtSingleApplication::activationWindow() const
     return actWin;
 }
 
+bool QtSingleApplication::event(QEvent *event)
+{
+    if (event->type() == QEvent::FileOpen) {
+        QFileOpenEvent *openEvent = static_cast<QFileOpenEvent *>(event);
+        qDebug() << "Open file" << openEvent->file();
+        emit openFile(openEvent->file());
+    }
+
+    return QApplication::event(event);
+}
+
 
 /*!
   De-minimizes, raises, and activates this application's activation window.

@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 
     QCoreApplication::setOrganizationName("innoBiz");
     QCoreApplication::setApplicationName("phpPad");
-    QCoreApplication::setApplicationVersion("0.1.1");
+    QCoreApplication::setApplicationVersion("0.1.2");
     QCommandLineParser parser;
     parser.setApplicationDescription(QCoreApplication::applicationName());
     parser.addHelpOption();
@@ -39,16 +39,17 @@ int main(int argc, char *argv[])
 
     MainWindow mainWin;
     app.setActivationWindow(&mainWin);
-    if (!parser.positionalArguments().isEmpty()){
+/*    if (!parser.positionalArguments().isEmpty()){
         QStringList files = parser.positionalArguments();
         foreach(QString path, files){
             path.replace(QString("\\"), QString("/"));
             mainWin.addEditor(path);
         }
-    }
+    }*/
     mainWin.show();
 
     QObject::connect(&app, SIGNAL(messageReceived(const QString&)), &mainWin,SLOT(handleAppOpenMessage(const QString&)));
+    QObject::connect(&app, SIGNAL(openFile(QString)), &mainWin, SLOT(handleAppOpenMessage(const QString&)));
 
     return app.exec();
 }
