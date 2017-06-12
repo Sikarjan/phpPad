@@ -15,3 +15,11 @@ win32 {
     contains(TEMPLATE, lib):contains(CONFIG, shared):DEFINES += QT_QTSINGLEAPPLICATION_EXPORT
     else:qtsingleapplication-uselib:DEFINES += QT_QTSINGLEAPPLICATION_IMPORT
 }
+
+HEADERS += \
+    $$PWD/qtlockedfile.h
+
+SOURCES += \
+    $$PWD/qtlockedfile_unix.cpp \
+    $$PWD/qtlockedfile_win.cpp \
+    $$PWD/qtlockedfile.cpp
