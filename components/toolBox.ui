@@ -127,7 +127,7 @@
         <x>0</x>
         <y>0</y>
         <width>197</width>
-        <height>491</height>
+        <height>477</height>
        </rect>
       </property>
       <attribute name="label">
@@ -222,17 +222,11 @@
         </layout>
        </item>
        <item>
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
+        <widget class="QListWidget" name="hitList">
+         <property name="enabled">
+          <bool>true</bool>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>197</height>
-          </size>
-         </property>
-        </spacer>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -242,7 +236,7 @@
         <x>0</x>
         <y>0</y>
         <width>197</width>
-        <height>491</height>
+        <height>477</height>
        </rect>
       </property>
       <attribute name="label">
