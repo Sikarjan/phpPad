@@ -25,23 +25,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
+    mainwindow.cpp \
     components/codeeditor.cpp \
     components/highlighter.cpp \
     components/projectmodel.cpp \
+    components/toolBox.cpp \
     dialogs/newproject.cpp \
     dialogs/newtabledialog.cpp \
-    dialogs/preferencedialog.cpp \
-    components/toolBox.cpp
+    dialogs/preferencedialog.cpp
 
 HEADERS  += mainwindow.h \
     components/codeeditor.h \
     components/highlighter.h \
     components/projectmodel.h \
+    components/toolBox.h \
     dialogs/newproject.h \
     dialogs/newtabledialog.h \
     dialogs/preferencedialog.h \
-    components/toolBox.h
 
 FORMS    += mainwindow.ui \
     dialogs/newproject.ui \
@@ -55,7 +55,6 @@ DISTFILES += \
     xml/html.xml \
     README.md \
     LICENSE \
-    installers/phpPad Installer.exe \
     installers/phpPadInstaller_0.1.2.app.7z \
     installers/phpPadInstaller_0.1.2.exe
 

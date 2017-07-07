@@ -1,8 +1,12 @@
 #include "toolBox.h"
-#include "ui_ToolBox.h"
+#include "ui_toolBox.h"
 
 ToolBox::ToolBox(QWidget *parent) : QWidget(parent), ui(new Ui::ToolBox){
     ui->setupUi(this);
+
+    networkManager = new QNetworkAccessManager(this);
+
+    connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
 }
 
 ToolBox::~ToolBox()
@@ -12,7 +16,19 @@ ToolBox::~ToolBox()
 
 void ToolBox::setFindFocus()
 {
+    ui->toolBox->setCurrentIndex(0);
     ui->searchInput->setFocus();
+}
+
+void ToolBox::replyFinished(QNetworkReply *pReply)
+{
+    QByteArray data = pReply->readAll();
+    QString str(data);
+    QRegularExpression rxStart = QRegularExpression("^.*?(?=<h1)", QRegularExpression::DotMatchesEverythingOption);
+    QRegularExpression rxEnd = QRegularExpression("(?<=usernotes).*?$", QRegularExpression::DotMatchesEverythingOption);
+    str.replace(rxStart, QString(""));
+    str.replace(rxEnd, QString(""));
+    ui->helpDisplay->setText(str);
 }
 
 void ToolBox::on_closeButton_clicked()
@@ -88,4 +104,11 @@ void ToolBox::on_hitList_doubleClicked(const QModelIndex &index)
     curs.setPosition(hitPositions.at(index.row()));
     mEditor->setTextCursor(curs);
     mEditor->setFocus();
+}
+
+void ToolBox::on_helpFilter_returnPressed()
+{
+    QString tagName = ui->helpFilter->text();
+    tagName.replace(QString("_"), QString("-"));
+    networkManager->get(QNetworkRequest(QUrl("http://php.net/manual/en/function."+tagName+".php")));
 }
