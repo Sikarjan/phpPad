@@ -275,7 +275,7 @@ void MainWindow::on_action_Open_triggered(){
     if(!fileName.isEmpty()){
         int index = addEditor(fileName);
         if(index == -1){
-            QMessageBox::critical(this, "File Error", "phpPad was not able to open the file.", QMessageBox::Ok);
+            QMessageBox::critical(this, tr("File Error"), tr("phpPad was not able to open the file."), QMessageBox::Ok);
         }
     }
 }
@@ -1008,8 +1008,9 @@ void MainWindow::on_actionFind_triggered(){
     QWidget *widget = ui->tabWidget->currentWidget();
     ToolBox *toolBox = widget->findChild<ToolBox *>();
     toolBox->show();
+    toolBox->setFindFocus();
     ui->actionShowToolbox->setChecked(true);
-    // open find page missing
+
 }
 
 void MainWindow::on_actionShowToolbox_triggered(bool checked)

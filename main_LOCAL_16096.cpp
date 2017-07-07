@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 
     QCoreApplication::setOrganizationName("innoBiz");
     QCoreApplication::setApplicationName("phpPad");
-    QCoreApplication::setApplicationVersion("0.1.1");
+    QCoreApplication::setApplicationVersion("0.1.2");
     QCommandLineParser parser;
     parser.setApplicationDescription(QCoreApplication::applicationName());
     parser.addHelpOption();
