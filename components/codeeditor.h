@@ -84,6 +84,7 @@ public:
     QFont defaultFont;
     QStringList includedFilesList;
     bool lockBlockState;
+    QString textUnderCursor() const;
 
     void setPhpCompleterList(QStringList compList);
     void setHtmlCompleterList(QStringList compList);
@@ -146,7 +147,6 @@ private:
     QString endOfWord;
     QString completionPrefix;
 
-    QString textUnderCursor() const;
     bool matchLeftParenthesis(QTextBlock currentBlock, int index, int numRightParentheses);
     bool matchRightParenthesis(QTextBlock currentBlock, int index, int numLeftParentheses);
     void createParenthesisSelection(int pos);

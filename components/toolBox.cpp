@@ -20,6 +20,17 @@ void ToolBox::setFindFocus()
     ui->searchInput->setFocus();
 }
 
+void ToolBox::setHelpFocus(QString keyWord)
+{
+    ui->toolBox->setCurrentIndex(2);
+    ui->helpFilter->setFocus();
+
+    if(!keyWord.isNull()){
+        keyWord.replace(QString("_"), QString("-"));
+        networkManager->get(QNetworkRequest(QUrl("http://php.net/manual/en/function."+keyWord+".php")));
+    }
+}
+
 void ToolBox::replyFinished(QNetworkReply *pReply)
 {
     QByteArray data = pReply->readAll();

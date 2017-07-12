@@ -20,6 +20,7 @@ public:
     explicit ToolBox(QWidget *parent = 0);
     ~ToolBox();
     void setFindFocus();
+    void setHelpFocus(QString keyWord);
 
     CodeEditor *mEditor;
 

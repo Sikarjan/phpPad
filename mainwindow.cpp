@@ -205,6 +205,7 @@ int MainWindow::addEditor(QString filePath, bool isNew){
     ui->actionFind->setEnabled(true);
     ui->actionShowToolbox->setEnabled(true);
     ui->actionShowToolbox->setChecked(false);
+    ui->actionContext_help->setEnabled(true);
     tabOrder.insert(0, index);
     return index;
 }
@@ -458,6 +459,7 @@ void MainWindow::on_tabWidget_currentChanged(int index)
         ui->actionGo2Line->setEnabled(false);
         ui->actionFind->setEnabled(false);
         ui->actionShowToolbox->setEnabled(false);
+        ui->actionContext_help->setEnabled(false);
         return;
     }
 
@@ -471,6 +473,7 @@ void MainWindow::on_tabWidget_currentChanged(int index)
     ui->actionReload->setEnabled(mEditor->isFileChanged);
     ui->actionGo2Line->setEnabled(true);
     ui->actionFind->setEnabled(true);
+    ui->actionContext_help->setEnabled(true);
 
     QWidget *widget = ui->tabWidget->currentWidget();
     ToolBox *toolBox = widget->findChild<ToolBox *>();
@@ -1021,4 +1024,20 @@ void MainWindow::on_actionShowToolbox_triggered(bool checked)
         toolBox->show();
     else
         toolBox->hide();
+}
+
+void MainWindow::on_actionContext_help_triggered()
+{
+    QWidget *widget = ui->tabWidget->currentWidget();
+    ToolBox *toolBox = widget->findChild<ToolBox *>();
+    CodeEditor *mEditor = widget->findChild<CodeEditor *>();
+    QString text = mEditor->textUnderCursor();
+    int blockState = mEditor->currentTextBlockState;
+
+    if(blockState > 9 || text.length() < 2 || text.at(0) == '$'){
+        text.clear();
+    }
+
+    toolBox->show();
+    toolBox->setHelpFocus(text);
 }

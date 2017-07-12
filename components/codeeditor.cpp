@@ -134,15 +134,14 @@ void CodeEditor::keyPressEvent(QKeyEvent *e){
     }else if(e->text() == "["){
         matchChracter("[", "]");
         return;
-    }else if(e->text() == "}"){
-        // Remove one Tabstop if there is one better would be to directly match the tabstops
-        this->insertPlainText("}");
+    }else if(e->text() == "{"){
+        matchChracter("{", "}");
         return;
     }else if(e->key() == Qt::Key_Return){
         if (currentTextBlockState == 10 && (e->modifiers() & Qt::ShiftModifier))
             this->insertPlainText("<br />");
 
-        // make correct indent for new line and add } if requried
+        // make correct indent for new line
         matchTabstop(lastKey);
         return;
     }else if((e->modifiers() & Qt::ControlModifier) && e->key() == Qt::Key_W){
@@ -215,10 +214,10 @@ void CodeEditor::matchTabstop(QString lastChar){
 
     this->insertPlainText("\n"+tabs);
     if(lastChar == "{"){
-        this->insertPlainText("\t\n"+tabs+"}");
+        this->insertPlainText("\t\n"+tabs);
         this->moveCursor(QTextCursor::Up, QTextCursor::MoveAnchor);
         this->moveCursor(QTextCursor::Right, QTextCursor::MoveAnchor);
-        lastChar.clear();
+        this->lastKey = " ";
     }
     return;
 }

@@ -334,11 +334,18 @@
     <addaction name="actionShow_Toolbar"/>
     <addaction name="actionShowToolbox"/>
    </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionContext_help"/>
+   </widget>
    <addaction name="menuPhpPad"/>
    <addaction name="menuEdit"/>
    <addaction name="menu_Project"/>
    <addaction name="menu_Insert"/>
    <addaction name="menuOptions"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <property name="contextMenuPolicy">
@@ -708,6 +715,14 @@
    </property>
    <property name="toolTip">
     <string>Show toolbox</string>
+   </property>
+  </action>
+  <action name="actionContext_help">
+   <property name="text">
+    <string>Context help</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
    </property>
   </action>
  </widget>

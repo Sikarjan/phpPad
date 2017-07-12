@@ -90,6 +90,8 @@ private slots:
     void pPast_triggered();
     void on_tabWidget_tabBarClicked(int index);
 
+    void on_actionContext_help_triggered();
+
 private:
     Ui::MainWindow *ui;
     CodeEditor *editor;
