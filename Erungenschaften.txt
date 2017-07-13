@@ -1,4 +1,6 @@
 Datum       Erungenschaft
+12.07.17    Bug beim Hinzufügen von } behoben.
+11.07.17    Hilfe hinzugefügt
 09.06.17    Bug beim Speichern in falsches Format behoben. Toolbox hinzugefügt
 08.06.17    Suchfunktion ergänzt
 31.05.17    Bug das beim Speichern ein Komma an die Endung angefügt wurde behoben
