@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     app.setStyleSheet("QSplitter::handle { background-color: #999999 }");
 
     QTranslator translator;
-    translator.load("translations/phpPad_" + QLocale::system().name());
+    translator.load("translations/phpPad_" + QLocale::system().name() + ".ts");
     app.installTranslator(&translator);
 
     QCoreApplication::setOrganizationName("innoBiz");

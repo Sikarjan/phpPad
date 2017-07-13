@@ -14,10 +14,18 @@ ToolBox::~ToolBox()
     delete ui;
 }
 
-void ToolBox::setFindFocus()
+void ToolBox::setFindFocus(QString keyWord)
 {
     ui->toolBox->setCurrentIndex(0);
+    ui->searchInput->setText(keyWord);
     ui->searchInput->setFocus();
+}
+
+void ToolBox::setReplaceFocus(QString keyWord)
+{
+    ui->toolBox->setCurrentIndex(1);
+    ui->replaceInput->setText(keyWord);
+    ui->replaceInput->setFocus();
 }
 
 void ToolBox::setHelpFocus(QString keyWord)
@@ -49,27 +57,12 @@ void ToolBox::on_closeButton_clicked()
 
 void ToolBox::on_findButton_clicked()
 {
-    oldCursor = mEditor->textCursor();
+    findNext(ui->searchInput->text());
+}
 
-    if(mEditor->find(ui->searchInput->text())){
-        mEditor->setFocus();
-        return;
-    }
-
-    // Try to start searching from the beginning
-    QTextCursor newCursor = oldCursor;
-    newCursor.setPosition(0);
-
-    if(!oldCursor.atStart()){
-        mEditor->setTextCursor(newCursor);
-        if(mEditor->find(ui->searchInput->text())){
-            mEditor->setFocus();
-            return;
-        }
-    }
-
-    mEditor->setTextCursor(oldCursor);
-    QMessageBox::information(this, tr("Search Error"), tr("The search string could not be found in the document."), QMessageBox::Ok);
+void ToolBox::on_replaceNextButton_clicked()
+{
+    findNext(ui->replaceInput->text());
 }
 
 void ToolBox::on_findAllButton_clicked()
@@ -122,4 +115,66 @@ void ToolBox::on_helpFilter_returnPressed()
     QString tagName = ui->helpFilter->text();
     tagName.replace(QString("_"), QString("-"));
     networkManager->get(QNetworkRequest(QUrl("http://php.net/manual/en/function."+tagName+".php")));
+}
+
+bool ToolBox::findNext(QString keyWord)
+{
+    oldCursor = mEditor->textCursor();
+
+    if(mEditor->find(keyWord)){
+        mEditor->setFocus();
+        return true;
+    }
+
+    // Try to start searching from the beginning
+    QTextCursor newCursor = oldCursor;
+    newCursor.setPosition(0);
+
+    if(!oldCursor.atStart()){
+        mEditor->setTextCursor(newCursor);
+        if(mEditor->find(ui->searchInput->text())){
+            mEditor->setFocus();
+            return true;
+        }
+    }
+
+    mEditor->setTextCursor(oldCursor);
+    QMessageBox::information(this, tr("Search Error"), tr("The search string could not be found in the document."), QMessageBox::Ok);
+    return false;
+}
+
+void ToolBox::on_replaceButton_clicked()
+{
+    if(!findNext(ui->replaceInput->text()))
+        return;
+
+    QTextCursor cursor = mEditor->textCursor();
+
+    if(cursor.hasSelection())
+        cursor.insertText(ui->replacementInput->text());
+
+    on_replaceInput_editingFinished();
+}
+
+void ToolBox::on_replaceAllButton_clicked()
+{
+    QString replacedText = mEditor->toPlainText();
+
+    replacedText.replace(ui->replaceInput->text(), ui->replacementInput->text());
+    mEditor->setPlainText(replacedText);
+    on_replaceInput_editingFinished();
+}
+
+void ToolBox::on_replaceInput_editingFinished()
+{
+    if(ui->replaceInput->text().isEmpty()){
+        ui->replaceInfoLabel->setText("");
+        return;
+    }
+
+    QString replacedText = mEditor->toPlainText();
+    int n = replacedText.count(ui->replaceInput->text());
+
+    QString info = "\""+ui->replaceInput->text()+"\""+tr(" found %n time(s)","", n);
+    ui->replaceInfoLabel->setText(info);
 }

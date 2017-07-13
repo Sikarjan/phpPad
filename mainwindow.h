@@ -92,6 +92,8 @@ private slots:
 
     void on_actionContext_help_triggered();
 
+    void on_actionReplace_triggered();
+
 private:
     Ui::MainWindow *ui;
     CodeEditor *editor;
