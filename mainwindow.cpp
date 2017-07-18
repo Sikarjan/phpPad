@@ -617,7 +617,6 @@ void MainWindow::updateIncFilesView(){
     CodeEditor *mEditor = checkForEditor();
 
     ui->fileListView->setModel(mEditor->includedFilesModel);
-    qDebug() << mEditor->includedFilesModel;
 }
 
 void MainWindow::on_fileListView_doubleClicked(const QModelIndex &index)
@@ -1065,4 +1064,11 @@ void MainWindow::on_actionReplace_triggered()
     QString text = mEditor->textUnderCursor();
     toolBox->show();
     toolBox->setReplaceFocus(text);
+}
+
+void MainWindow::on_actionAbout_triggered()
+{
+    QString msg = tr("Version: ")+APP_VERSION+"\n";
+            msg += tr("Build: ")+GIT_VERSION;
+    QMessageBox::information(this, tr("About phpPad"), msg, QMessageBox::Ok);
 }

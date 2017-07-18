@@ -71,6 +71,9 @@ private slots:
     void on_action_Table_triggered();
     void on_actionCreateNewProject_triggered();
     void on_actionOpenExisingProject_triggered();
+    void on_actionContext_help_triggered();
+    void on_actionReplace_triggered();
+    void on_actionAbout_triggered();
     void on_treeView_doubleClicked(const QModelIndex &index);
     void on_tabWidget_currentChanged(int index);
     void on_actionReload_triggered();
@@ -89,10 +92,6 @@ private slots:
     void pCut_triggered();
     void pPast_triggered();
     void on_tabWidget_tabBarClicked(int index);
-
-    void on_actionContext_help_triggered();
-
-    void on_actionReplace_triggered();
 
 private:
     Ui::MainWindow *ui;

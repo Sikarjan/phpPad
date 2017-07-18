@@ -13,6 +13,7 @@ include(plugins/qtsingleapplication/src/qtsingleapplication.pri)
 TARGET = phpPad
 TEMPLATE = app
 VERSION = 0.1.3
+GIT_VERSION = $$system(git --git-dir $$PWD/.git --work-tree $$PWD describe --always --tags)
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked as deprecated (the exact warnings
@@ -27,6 +28,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 # Define the preprocessor macro to get the application version in our application.
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
+DEFINES += GIT_VERSION=\\\"$$GIT_VERSION\\\"
 
 SOURCES += main.cpp\
     mainwindow.cpp \
