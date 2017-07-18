@@ -445,8 +445,12 @@ CodeEditor *MainWindow::checkForEditor(){
 void MainWindow::on_treeView_doubleClicked(const QModelIndex &index)
 {
     QString path = dirModel->fileInfo(index).absoluteFilePath();
-    if(QFileInfo(path).isFile()){
+    int i = isFileOpen(path);
+
+    if(QFileInfo(path).isFile() && i < 0){
         addEditor(path);
+    }else if(i >= 0){
+        ui->tabWidget->setCurrentIndex(i);
     }
 }
 
@@ -613,6 +617,7 @@ void MainWindow::updateIncFilesView(){
     CodeEditor *mEditor = checkForEditor();
 
     ui->fileListView->setModel(mEditor->includedFilesModel);
+    qDebug() << mEditor->includedFilesModel;
 }
 
 void MainWindow::on_fileListView_doubleClicked(const QModelIndex &index)
@@ -629,11 +634,14 @@ void MainWindow::on_fileListView_doubleClicked(const QModelIndex &index)
 
 int MainWindow::isFileOpen(QString filePath){
     for(int i=0; i<ui->tabWidget->count();i++){
-        CodeEditor *mEditor = NULL;
         QWidget *widget = ui->tabWidget->widget(i);
-        mEditor = (CodeEditor*)widget;
-        if(widget->objectName() != "startTab" && mEditor->url == filePath){
-            return i;
+
+        if(widget->objectName() != "startTab"){
+            CodeEditor *mEditor = NULL;
+            mEditor = widget->findChild<CodeEditor *>();
+            if(mEditor->url == filePath){
+                return i;
+            }
         }
     }
     return -1;
