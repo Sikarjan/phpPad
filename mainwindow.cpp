@@ -104,6 +104,7 @@ int MainWindow::addEditor(QString filePath, bool isNew){
 
     toolBox = new ToolBox;
     toolBox->mEditor = editor;
+    toolBox->setPhpCompleter(phpCompleterList);
 
     QString fileName;
     QString fileType;
@@ -236,6 +237,9 @@ void MainWindow::on_actionSave_triggered(){
     if(!sFile.open(QFile::WriteOnly | QFile::Text)){
         qDebug() << "we have an error =( " << mEditor->url << " " << sFile.errorString();
     }else{
+        #ifndef QT_NO_CURSOR
+            QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
+        #endif
         QTextStream out(&sFile);
         out.setCodec("UTF-8");
         out << mEditor->toPlainText();
@@ -246,6 +250,10 @@ void MainWindow::on_actionSave_triggered(){
         mEditor->isFileChanged = false;
         mEditor->includedFilesList.clear();
         mEditor->scanDocument();
+
+        #ifndef QT_NO_CURSOR
+            QApplication::restoreOverrideCursor();
+        #endif
 
         ui->actionSave->setEnabled(false);
         ui->tabWidget->setTabText(ui->tabWidget->currentIndex(), mEditor->url.section("/",-1,-1));

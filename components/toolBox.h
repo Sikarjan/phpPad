@@ -6,6 +6,8 @@
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
 #include <QNetworkReply>
+#include <QCompleter>
+#include <QStringListModel>
 #include "codeeditor.h"
 
 namespace Ui {
@@ -22,6 +24,7 @@ public:
     void setFindFocus(QString keyWord);
     void setReplaceFocus(QString keyWord);
     void setHelpFocus(QString keyWord);
+    void setPhpCompleter(QStringList keyWords);
 
     CodeEditor *mEditor;
 
@@ -44,6 +47,7 @@ private:
     QTextCursor oldCursor;
     QVector<int> hitPositions;
     QNetworkAccessManager* networkManager;
+    QCompleter *phpCompleter;
 
     bool findNext(QString keyWord);
 };

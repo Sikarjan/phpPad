@@ -39,6 +39,14 @@ void ToolBox::setHelpFocus(QString keyWord)
     }
 }
 
+void ToolBox::setPhpCompleter(QStringList keyWords)
+{
+    phpCompleter = new QCompleter(keyWords, this);
+    phpCompleter->setMaxVisibleItems(10);
+    phpCompleter->setCompletionMode(QCompleter::PopupCompletion);
+    ui->helpFilter->setCompleter(phpCompleter);
+}
+
 void ToolBox::replyFinished(QNetworkReply *pReply)
 {
     QByteArray data = pReply->readAll();
