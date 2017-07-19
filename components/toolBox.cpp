@@ -36,6 +36,7 @@ void ToolBox::setHelpFocus(QString keyWord)
     if(!keyWord.isNull()){
         keyWord.replace(QString("_"), QString("-"));
         networkManager->get(QNetworkRequest(QUrl("http://php.net/manual/en/function."+keyWord+".php")));
+        ui->helpFilter->setText(keyWord);
     }
 }
 
@@ -55,7 +56,8 @@ void ToolBox::replyFinished(QNetworkReply *pReply)
     QRegularExpression rxEnd = QRegularExpression("(?<=usernotes).*?$", QRegularExpression::DotMatchesEverythingOption);
     str.replace(rxStart, QString(""));
     str.replace(rxEnd, QString(""));
-    ui->helpDisplay->setText(str);
+    ui->helpDisplay->setHtml(str);
+    ui->helpDisplay->setFocus();
 }
 
 void ToolBox::on_closeButton_clicked()
