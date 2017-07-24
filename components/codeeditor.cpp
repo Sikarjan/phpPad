@@ -60,6 +60,7 @@ CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent), c(0)
     includedFilesModel = new QStandardItemModel;
     lockBlockState = false;
     endOfWord = "~!@#$%^&*()+{}|:<>?,./;'[]\\-= ";
+    eow = "~!@#$%^&*)+}|:<>?,./;'[]\\-= \"";
 
     setTabChangesFocus(false);
     setTabStopWidth(20);
@@ -169,11 +170,10 @@ void CodeEditor::keyPressEvent(QKeyEvent *e){
     if (!c || (ctrlOrShift && e->text().isEmpty()))
         return;
 
-//    static QString eow("~!@#$%^&*()_+{}|:<>?,./;'[]\\-="); // end of word ~!@#$%^&*()_+{}|:\"<>?,./;'[]\\-= <- Do I really need this
     bool hasModifier = (e->modifiers() != Qt::NoModifier) && !ctrlOrShift;
     completionPrefix = textUnderCursor();
-//qDebug() << completionPrefix;
-    if (!isShortcut && (hasModifier || e->text().isEmpty()|| completionPrefix.length() < 3 /*|| eow.contains(e->text().right(1))*/)) {
+// qDebug() << completionPrefix;
+    if (!isShortcut && (hasModifier || e->text().isEmpty()|| completionPrefix.length() < 3)) {
         c->popup()->hide();
         return;
     }
@@ -387,6 +387,13 @@ QString CodeEditor::textUnderCursor() const{
     QTextCursor tc = textCursor();
     tc.select(QTextCursor::WordUnderCursor);
     QString mText = tc.selectedText();
+
+    if(eow.contains(mText.left(1))){
+        tc.setPosition(tc.selectionStart()-1);
+        tc.select(QTextCursor::WordUnderCursor);
+        mText = tc.selectedText();
+    }
+
     tc.setPosition(tc.selectionEnd());
     int start = tc.position()-mText.length()-1;
     tc.setPosition(start == -1?0:start,QTextCursor::KeepAnchor);

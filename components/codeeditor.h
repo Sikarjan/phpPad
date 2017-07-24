@@ -145,6 +145,7 @@ private:
     QStringList htmlCustomCompList;
     QStringList filesForRescan;
     QString endOfWord;
+    QString eow;
     QString completionPrefix;
 
     bool matchLeftParenthesis(QTextBlock currentBlock, int index, int numRightParentheses);
