@@ -89,7 +89,7 @@ void ToolBox::on_findAllButton_clicked()
     hitPositions.clear();
     ui->hitList->clear();
 
-    while(mEditor->find(ui->searchInput->text())){
+    while(mEditor->find(ui->searchInput->text(), flag)){
         selection.cursor = mEditor->textCursor();
         extraSelections.append(selection);
 
@@ -130,19 +130,24 @@ void ToolBox::on_helpFilter_returnPressed()
 bool ToolBox::findNext(QString keyWord)
 {
     oldCursor = mEditor->textCursor();
+    bool reverse = ui->reverseCheckBox->isChecked();
 
-    if(mEditor->find(keyWord)){
+    if(mEditor->find(keyWord, flag)){
         mEditor->setFocus();
         return true;
     }
 
-    // Try to start searching from the beginning
+    // Try to start searching from the beginning/end
     QTextCursor newCursor = oldCursor;
-    newCursor.setPosition(0);
+    if(reverse){
+        newCursor.setPosition(mEditor->document()->characterCount()-1);
+    }else{
+        newCursor.setPosition(0);
+    }
 
-    if(!oldCursor.atStart()){
+    if((!reverse && !oldCursor.atStart()) || (reverse && !oldCursor.atEnd())){
         mEditor->setTextCursor(newCursor);
-        if(mEditor->find(ui->searchInput->text())){
+        if(mEditor->find(keyWord, flag)){
             mEditor->setFocus();
             return true;
         }
@@ -151,6 +156,19 @@ bool ToolBox::findNext(QString keyWord)
     mEditor->setTextCursor(oldCursor);
     QMessageBox::information(this, tr("Search Error"), tr("The search string could not be found in the document."), QMessageBox::Ok);
     return false;
+}
+
+void ToolBox::updateFindFlags()
+{
+    flag = NULL;
+    if (ui->reverseCheckBox->isChecked())
+        flag |= QTextDocument::FindBackward;
+
+    if (ui->caseCheckBox->isChecked())
+        flag |= QTextDocument::FindCaseSensitively;
+
+    if (ui->wholeWordCheckBox->isChecked())
+        flag |= QTextDocument::FindWholeWords;
 }
 
 void ToolBox::on_replaceButton_clicked()
@@ -187,4 +205,36 @@ void ToolBox::on_replaceInput_editingFinished()
 
     QString info = "\""+ui->replaceInput->text()+"\""+tr(" found %n time(s)","", n);
     ui->replaceInfoLabel->setText(info);
+}
+
+void ToolBox::on_caseCheckBox_clicked()
+{
+    updateFindFlags();
+}
+
+void ToolBox::on_reverseCheckBox_clicked()
+{
+    updateFindFlags();
+}
+
+void ToolBox::on_wholeWordCheckBox_clicked()
+{
+    updateFindFlags();
+}
+
+void ToolBox::on_toolBox_currentChanged(int index)
+{
+    if(index != 1)
+        return;
+
+    ui->replaceInput->setText(ui->searchInput->text());
+    ui->replaceCaseCheck->setChecked(ui->caseCheckBox->isChecked());
+}
+
+void ToolBox::on_searchInput_cursorPositionChanged(int arg1, int arg2)
+{
+    if(arg1 < arg2)
+        return;
+
+    ui->hitList->clear();
 }

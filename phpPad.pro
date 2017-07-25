@@ -38,7 +38,8 @@ SOURCES += main.cpp\
     components/toolBox.cpp \
     dialogs/newproject.cpp \
     dialogs/newtabledialog.cpp \
-    dialogs/preferencedialog.cpp
+    dialogs/preferencedialog.cpp \
+    components/completerdelegate.cpp
 
 HEADERS  += mainwindow.h \
     components/codeeditor.h \
@@ -48,6 +49,7 @@ HEADERS  += mainwindow.h \
     dialogs/newproject.h \
     dialogs/newtabledialog.h \
     dialogs/preferencedialog.h \
+    components/completerdelegate.h
 
 FORMS    += mainwindow.ui \
     dialogs/newproject.ui \

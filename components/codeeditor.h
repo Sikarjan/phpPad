@@ -61,6 +61,8 @@
 #include <QSettings>
 #include <QDebug>
 
+#include "completerdelegate.h"
+
 class QPaintEvent;
 class QResizeEvent;
 class QSize;
@@ -147,6 +149,7 @@ private:
     QString endOfWord;
     QString eow;
     QString completionPrefix;
+    CompleterDelegate *cDeligate;
 
     bool matchLeftParenthesis(QTextBlock currentBlock, int index, int numRightParentheses);
     bool matchRightParenthesis(QTextBlock currentBlock, int index, int numLeftParentheses);

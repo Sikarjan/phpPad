@@ -41,6 +41,13 @@ private slots:
     void on_replaceButton_clicked();
     void on_replaceAllButton_clicked();
     void on_replaceInput_editingFinished();
+    void on_caseCheckBox_clicked();
+    void on_reverseCheckBox_clicked();
+    void on_wholeWordCheckBox_clicked();
+
+    void on_toolBox_currentChanged(int index);
+
+    void on_searchInput_cursorPositionChanged(int arg1, int arg2);
 
 private:
     Ui::ToolBox *ui;
@@ -48,8 +55,10 @@ private:
     QVector<int> hitPositions;
     QNetworkAccessManager* networkManager;
     QCompleter *phpCompleter;
+    QTextDocument::FindFlags flag;
 
     bool findNext(QString keyWord);
+    void updateFindFlags();
 };
 
 #endif // ToolBox_H
