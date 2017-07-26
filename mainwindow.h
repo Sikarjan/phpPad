@@ -101,7 +101,7 @@ private:
     QWidget *newTab;
     QVBoxLayout *tabLayout;
     QFileSystemModel *dirModel;
-    QStringList phpCompleterList;
+    QStandardItemModel *phpCompleterModel;
     QStringList htmlCompleterList;
     QStringList cssCompleterList;
     QStringList jsCompleterList;

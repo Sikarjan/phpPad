@@ -40,7 +40,7 @@ void ToolBox::setHelpFocus(QString keyWord)
     }
 }
 
-void ToolBox::setPhpCompleter(QStringList keyWords)
+void ToolBox::setPhpCompleter(QStandardItemModel *keyWords)
 {
     phpCompleter = new QCompleter(keyWords, this);
     phpCompleter->setMaxVisibleItems(10);

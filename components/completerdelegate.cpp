@@ -7,13 +7,15 @@ CompleterDelegate::CompleterDelegate()
 
 void CompleterDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
-    QStyleOptionViewItemV4 optionV4 = option;
+    QStyleOptionViewItem optionV4 = option;
     initStyleOption(&optionV4, index);
+    QStyleOptionViewItem source = option;
+    initStyleOption(&source, index.sibling(index.row(),1));
 
-    QStyle *style = optionV4.widget? optionV4.widget->style() : QApplication::style();
+    QStyle *style = /*optionV4.widget? optionV4.widget->style() : */QApplication::style();
 
     QTextDocument doc;
-    doc.setHtml("<tr><td style='width:150px;'>"+optionV4.text+"</td><td style='font-size:small'><b>test</b></td></tr>");
+    doc.setHtml(optionV4.text+" <b>"+source.text+"</b>");
 
     // Painting item without text
     optionV4.text = QString();
@@ -35,11 +37,13 @@ void CompleterDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opt
 
 QSize CompleterDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
-    QStyleOptionViewItemV4 optionV4 = option;
+    QStyleOptionViewItem optionV4 = option;
     initStyleOption(&optionV4, index);
+    QStyleOptionViewItem source = option;
+    initStyleOption(&source, index.sibling(index.row(),1));
 
     QTextDocument doc;
-    doc.setHtml(optionV4.text);
+    doc.setHtml(optionV4.text+" <b>"+source.text+"</b>");
     doc.setTextWidth(optionV4.rect.width());
     return QSize(doc.idealWidth(), doc.size().height());
 }

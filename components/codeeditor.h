@@ -88,7 +88,7 @@ public:
     bool lockBlockState;
     QString textUnderCursor() const;
 
-    void setPhpCompleterList(QStringList compList);
+    void setPhpCompleterList(QStandardItemModel *compList);
     void setHtmlCompleterList(QStringList compList);
     void setCssCompleterList(QStringList compList);
     void setJsCompleterList(QStringList compList);
@@ -139,10 +139,10 @@ private:
     QCompleter *htmlCompleter;
     QCompleter *cssCompleter;
     QCompleter *jsCompleter;
-    QStringList phpCompleterList;
+    QStandardItemModel *phpCompleterModel;
     QStringList jsCompleterList;
     QStringList htmlCompleterList;
-    QStringList phpCustomCompList;
+    QStandardItemModel *phpCustomCompModel;
     QStringList jsCustomCompList;
     QStringList htmlCustomCompList;
     QStringList filesForRescan;
@@ -156,7 +156,7 @@ private:
     void createParenthesisSelection(int pos);
     void matchChracter(QString startChar, QString endChar);
     void matchTabstop(QString lastChar);
-    void scanForPhp(QString testString);
+    void scanForPhp(QString testString, QString file);
     void scanForJs(QString code, int scanOption = 0);
     void scanForCss(QString code);
 };

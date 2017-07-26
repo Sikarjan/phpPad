@@ -24,7 +24,7 @@ public:
     void setFindFocus(QString keyWord);
     void setReplaceFocus(QString keyWord);
     void setHelpFocus(QString keyWord);
-    void setPhpCompleter(QStringList keyWords);
+    void setPhpCompleter(QStandardItemModel *keyWords);
 
     CodeEditor *mEditor;
 

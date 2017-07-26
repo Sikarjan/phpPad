@@ -1,10 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
-{
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow){
     ui->setupUi(this);
 
     isCtrlPressed = false;
@@ -104,7 +101,7 @@ int MainWindow::addEditor(QString filePath, bool isNew){
 
     toolBox = new ToolBox;
     toolBox->mEditor = editor;
-    toolBox->setPhpCompleter(phpCompleterList);
+    toolBox->setPhpCompleter(phpCompleterModel);
 
     QString fileName;
     QString fileType;
@@ -182,7 +179,7 @@ int MainWindow::addEditor(QString filePath, bool isNew){
     highlighter->setDocType(blockState == 0 ? 10:blockState);
 
     if(fileType == ".php")
-        editor->setPhpCompleterList(phpCompleterList);
+        editor->setPhpCompleterList(phpCompleterModel);
     if(fileType == ".html" || fileType == ".php")
         editor->setHtmlCompleterList(htmlCompleterList);
     if(fileType == ".css" || fileType == ".html" || fileType == ".php")
@@ -656,6 +653,7 @@ int MainWindow::isFileOpen(QString filePath){
 
 void MainWindow::initKeyWords()
 {
+    phpCompleterModel = new QStandardItemModel(this);
     // Load XML file for code highlighting and completion
     QFile file(":/xml/xml/php.xml");
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text)){
@@ -669,11 +667,19 @@ void MainWindow::initKeyWords()
         while (!reader.atEnd()) {
             reader.readNext();
             if(reader.isStartElement() && reader.name() == QLatin1String("KeyWord")){
-                phpCompleterList << reader.attributes().value("name").toString();
-                if(reader.attributes().value("func").toString() == "key")
+                QList<QStandardItem *> tmpList;
+                tmpList << new QStandardItem(reader.attributes().value("name").toString());
+                if(reader.attributes().value("func").toString() == "key"){
                     phpKeyWords << reader.attributes().value("name").toString();
-                else if(reader.attributes().value("func").toString() == "function")
+                    tmpList << new QStandardItem(tr("key"));
+                }else if(reader.attributes().value("func").toString() == "function"){
                     phpFunctionNames << reader.attributes().value("name").toString();
+                    tmpList << new QStandardItem(tr("function"));
+                }else{
+                    tmpList << new QStandardItem(tr("global"));
+                }
+
+                phpCompleterModel->appendRow(tmpList);
             }
         }
         if (reader.hasError()) {

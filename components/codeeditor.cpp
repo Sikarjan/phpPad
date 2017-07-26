@@ -150,13 +150,17 @@ void CodeEditor::keyPressEvent(QKeyEvent *e){
         emit closeEditor();
     }else if(endOfWord.contains(e->text())){
         if(currentTextBlockState < 10 && completionPrefix.contains("$")){
-            QStringList::const_iterator iter = std::find(phpCustomCompList.begin(), phpCustomCompList.end(), completionPrefix);
-            if(iter == phpCustomCompList.end()){
-                phpCustomCompList << completionPrefix;
-                std::sort(phpCustomCompList.begin(), phpCustomCompList.end());
+            QList<QStandardItem *> result = phpCustomCompModel->findItems(completionPrefix);
+            if(result.length() == 0){
+                QList<QStandardItem *> tmpList;
+                tmpList << new QStandardItem(completionPrefix);
+                tmpList << new QStandardItem(tr("local"));
+                phpCustomCompModel->appendRow(tmpList);
+                phpCustomCompModel->sort(0);
 
-                phpCompleter = new QCompleter(phpCustomCompList, this);
+                phpCompleter = new QCompleter(phpCustomCompModel, this);
                 phpCompleter->setObjectName("php");
+                phpCompleter->popup()->setItemDelegate(cDeligate);
                 setCompleter(phpCompleter);
             }
         }
@@ -184,7 +188,7 @@ void CodeEditor::keyPressEvent(QKeyEvent *e){
         c->popup()->setCurrentIndex(c->completionModel()->index(0, 0));
     }
     QRect cr = cursorRect();
-    cr.setWidth(c->popup()->sizeHintForColumn(0) + c->popup()->verticalScrollBar()->sizeHint().width());
+    cr.setWidth(c->popup()->sizeHintForColumn(0)+ c->popup()->sizeHintForColumn(1) + c->popup()->verticalScrollBar()->sizeHint().width());
     c->complete(cr); // popup it up!
 }
 
@@ -333,8 +337,8 @@ void CodeEditor::decreaseSelectionIndent(){
     setTextCursor(curs);
 }
 
-void CodeEditor::setPhpCompleterList(QStringList compList){
-    phpCompleterList = compList;
+void CodeEditor::setPhpCompleterList(QStandardItemModel *compList){
+    phpCompleterModel = compList;
     phpCompleter = new QCompleter(compList, this);
     phpCompleter->setObjectName("php");
     phpCompleter->popup()->setItemDelegate(cDeligate);
@@ -627,8 +631,7 @@ void CodeEditor::scanDocument(int docType){
     QString projectBasePath = url.section("/",0,-2) + "/";
 
     if(docType <= 1){
-        bool newPhp = false;
-        phpCustomCompList = phpCompleterList;
+        phpCustomCompModel = phpCompleterModel;
         includedFilesList.clear();
 
         QRegularExpression phpExp = QRegularExpression("<?.*?>", QRegularExpression::DotMatchesEverythingOption);
@@ -638,8 +641,7 @@ void CodeEditor::scanDocument(int docType){
         while(phpCode.hasNext()){
             QRegularExpressionMatch phpCodeText = phpCode.next();
 
-            scanForPhp(phpCodeText.captured());
-
+            // Scan for variables in other files
             QRegularExpressionMatchIterator matches = includeExpression.globalMatch(phpCodeText.captured());
             while (matches.hasNext()) {
                 QRegularExpressionMatch match = matches.next();
@@ -648,8 +650,8 @@ void CodeEditor::scanDocument(int docType){
                 if(!includedFilesList.contains(path) && info.exists()){
                     includedFilesList << path;
                     newIncludedFiles = true;
-                    newPhp = true;
                     QFile file(path);
+
                     if(file.open(QIODevice::ReadOnly | QIODevice::Text)){
                         QTextStream in(&file);
                         QString text = in.readAll();
@@ -658,20 +660,22 @@ void CodeEditor::scanDocument(int docType){
                         QRegularExpressionMatchIterator phpIncludeCode = phpExp.globalMatch(text);
                         while(phpIncludeCode.hasNext()){
                             QRegularExpressionMatch phpIncludedCodeText = phpIncludeCode.next();
-                            scanForPhp(phpIncludedCodeText.captured());
+                            scanForPhp(phpIncludedCodeText.captured(), url.section("/",-1,-1));
                         }
                     }
                 }
             }
+
+            // Scan for variables in current file
+            scanForPhp(phpCodeText.captured(), tr("local"));
         }
 
-        if(newPhp){
-            std::sort(phpCustomCompList.begin(), phpCustomCompList.end());
+        phpCustomCompModel->sort(0);
 
-            phpCompleter = new QCompleter(phpCustomCompList, this);
-            phpCompleter->setObjectName("php");
-            setCompleter(phpCompleter);
-        }
+        phpCompleter = new QCompleter(phpCustomCompModel, this);
+        phpCompleter->setObjectName("php");
+        phpCompleter->popup()->setItemDelegate(cDeligate);
+        setCompleter(phpCompleter);
     }
 
     if(docType == 0 || docType == 2){
@@ -780,7 +784,7 @@ void CodeEditor::scanDocument(int docType){
 void CodeEditor::updateIncFiles()
 {
     foreach(QString url, filesForRescan){
-        qDebug() << "Need to update "+url;
+//        qDebug() << "Need to update "+url;
         if(url != this->url){
             QFile file(url);
             if(file.open(QIODevice::ReadOnly | QIODevice::Text)){
@@ -790,7 +794,7 @@ void CodeEditor::updateIncFiles()
 
                 QString fileType = url.section(".",-1);
                 if(fileType == "php")
-                    scanForPhp(text);
+                    scanForPhp(text, url.section("/",-1,-1));
                 else if(fileType == "css")
                     scanForCss(text);
                 else if(fileType == "js")
@@ -801,7 +805,7 @@ void CodeEditor::updateIncFiles()
     filesForRescan.clear();
 }
 
-void CodeEditor::scanForPhp(QString testString){
+void CodeEditor::scanForPhp(QString testString, QString file){
     QRegularExpression variableExpression = QRegularExpression("\\$[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]{2,}");
     QRegularExpression functionExpression = QRegularExpression("(?<=function )[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*(?=\\s*\\()");
 
@@ -809,15 +813,22 @@ void CodeEditor::scanForPhp(QString testString){
     while (matches.hasNext()) {
         QRegularExpressionMatch match = matches.next();
 
-        QStringList::const_iterator iter = std::find(phpCustomCompList.begin(), phpCustomCompList.end(), match.captured());
-        if(iter == phpCustomCompList.end())
-            phpCustomCompList << match.captured();
+        QList<QStandardItem *> result = phpCustomCompModel->findItems(match.captured());
+        if(result.length() == 0){
+            QList<QStandardItem *> tmpList;
+            tmpList << new QStandardItem(match.captured());
+            tmpList << new QStandardItem(file);
+            phpCustomCompModel->appendRow(tmpList);
+        }
     }
 
     matches = functionExpression.globalMatch(testString);
     while (matches.hasNext()) {
         QRegularExpressionMatch match = matches.next();
-        phpCustomCompList << match.captured();
+        QList<QStandardItem *> tmpList;
+        tmpList << new QStandardItem(match.captured());
+        tmpList << new QStandardItem(file);
+        phpCustomCompModel->appendRow(tmpList);
     }
 }
 
@@ -891,8 +902,8 @@ void CodeEditor::textBlockStateChanged(int state){
 
 void CodeEditor::fileChangeListener(QString url)
 {
-    qDebug() << includedFilesList;
-    qDebug() << url;
+//    qDebug() << includedFilesList;
+//    qDebug() << url;
     if(includedFilesList.contains(url) && !filesForRescan.contains(url)){
         filesForRescan << url;
     }
