@@ -90,7 +90,7 @@ CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent), c(0)
     connect(this, SIGNAL(textChanged()), this, SLOT(textHasChanged()));
 
     updateLineNumberAreaWidth(0);
-    highlightCurrentLine();
+    highlightCurrentLine(); // <- currently not working
 }
 
 void CodeEditor::keyReleaseEvent(QKeyEvent *e){
@@ -188,7 +188,7 @@ void CodeEditor::keyPressEvent(QKeyEvent *e){
         c->popup()->setCurrentIndex(c->completionModel()->index(0, 0));
     }
     QRect cr = cursorRect();
-    cr.setWidth(c->popup()->sizeHintForColumn(0)+ c->popup()->sizeHintForColumn(1) + c->popup()->verticalScrollBar()->sizeHint().width());
+    cr.setWidth(5+c->popup()->sizeHintForColumn(0)+ c->popup()->sizeHintForColumn(1) + c->popup()->verticalScrollBar()->sizeHint().width());
     c->complete(cr); // popup it up!
 }
 

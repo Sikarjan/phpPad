@@ -9,11 +9,12 @@
 #include <QTextDocument>
 #include <QAbstractTextDocumentLayout>
 #include <QStyleOption>
+#include <QToolTip>
 
 #include <QDebug>
 
-class CompleterDelegate : public QStyledItemDelegate
-{
+class CompleterDelegate : public QStyledItemDelegate {
+
 public:
     CompleterDelegate();
 

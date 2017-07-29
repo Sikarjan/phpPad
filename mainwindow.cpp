@@ -673,8 +673,21 @@ void MainWindow::initKeyWords()
                     phpKeyWords << reader.attributes().value("name").toString();
                     tmpList << new QStandardItem(tr("key"));
                 }else if(reader.attributes().value("func").toString() == "function"){
-                    phpFunctionNames << reader.attributes().value("name").toString();
-                    tmpList << new QStandardItem(tr("function"));
+                    QString functionName = reader.attributes().value("name").toString();
+                    phpFunctionNames << functionName;
+                    reader.readNextStartElement();
+                    QString overload = reader.attributes().value("retVal").toString() + " <b>"+functionName+"</b>(";
+                    reader.readNextStartElement();
+                    while (reader.name() == QLatin1String("Param")) {
+                        QString param = reader.attributes().value("name").toString();
+                        overload += param == "" ? "":reader.attributes().value("name").toString()+", ";;
+                        reader.readNextStartElement();
+                    }
+
+                    overload.replace(overload.length()-2,1,")");
+                    overload.replace(" ", "&nbsp;");
+                    tmpList << new QStandardItem(tr("global"));
+                    tmpList << new QStandardItem(overload);;
                 }else{
                     tmpList << new QStandardItem(tr("global"));
                 }
