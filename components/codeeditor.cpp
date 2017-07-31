@@ -622,7 +622,7 @@ void CodeEditor::currentCurserPosition(){
     emit newCurserPosition(pos);
 }
 
-void CodeEditor::scanDocument(int docType){
+void CodeEditor::scanDocument(){
 // This function is called when a new tab was added, the file is saved or the tab is activated (on included files changed)
 // (Re)Scans the entire document and included files. Rebuilds the included file list and custom completers
 
@@ -630,7 +630,7 @@ void CodeEditor::scanDocument(int docType){
     bool newIncludedFiles = false;
     QString projectBasePath = url.section("/",0,-2) + "/";
 
-    if(docType <= 1){
+    if(docType == 0){
         phpCustomCompModel = phpCompleterModel;
         includedFilesList.clear();
 

@@ -78,6 +78,7 @@ public:
     CodeEditor(QWidget *parent = 0);
     QFile *textFile;
     QString url;
+    int docType;
     bool isFileChanged = true;
     bool isRedoAvailable = false;
     QStandardItemModel *includedFilesModel;
@@ -95,7 +96,7 @@ public:
     void setCompleter(QCompleter *completer);
     void lineNumberAreaPaintEvent(QPaintEvent *event);
     int lineNumberAreaWidth();
-    void scanDocument(int docType = 0);
+    void scanDocument();
     void updateIncFiles();
 
 protected:

@@ -190,6 +190,7 @@ int MainWindow::addEditor(QString filePath, bool isNew){
     editor->insertPlainText(text);
     connect(editor, SIGNAL(fileChanged(QString)), this, SLOT(fileChanged(QString)));
     editor->isFileChanged = false;
+    editor->docType = fileTypes.indexOf(fileType);
 
     ui->tabWidget->setTabText(index, fileName);
     editor->setFocus();
