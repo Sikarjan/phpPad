@@ -88,6 +88,7 @@ CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent), c(0)
     connect(this, SIGNAL(cursorPositionChanged()), this, SLOT(currentCurserPosition()));
     connect(this, SIGNAL(redoAvailable(bool)), this, SLOT(setRedoAvailable(bool)));
     connect(this, SIGNAL(textChanged()), this, SLOT(textHasChanged()));
+    connect(this, SIGNAL(cursorPosition(QPoint)), cDeligate, SLOT(cursorPosition(QPoint)));
 
     updateLineNumberAreaWidth(0);
     highlightCurrentLine(); // <- currently not working
@@ -188,6 +189,9 @@ void CodeEditor::keyPressEvent(QKeyEvent *e){
         c->popup()->setCurrentIndex(c->completionModel()->index(0, 0));
     }
     QRect cr = cursorRect();
+    if(c->objectName() == "php"){
+        emit cursorPosition(QPoint(this->mapToGlobal(cr.topRight())));
+    }
     cr.setWidth(5+c->popup()->sizeHintForColumn(0)+ c->popup()->sizeHintForColumn(1) + c->popup()->verticalScrollBar()->sizeHint().width());
     c->complete(cr); // popup it up!
 }
@@ -807,7 +811,7 @@ void CodeEditor::updateIncFiles()
 
 void CodeEditor::scanForPhp(QString testString, QString file){
     QRegularExpression variableExpression = QRegularExpression("\\$[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]{2,}");
-    QRegularExpression functionExpression = QRegularExpression("(?<=function )[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*(?=\\s*\\()");
+    QRegularExpression functionExpression = QRegularExpression("(?<name>(?<=function )[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*(?=\\s*\\())(\\()(?<parameter>.+?(?=\\)))");
 
     QRegularExpressionMatchIterator matches = variableExpression.globalMatch(testString);
     while (matches.hasNext()) {
@@ -826,8 +830,9 @@ void CodeEditor::scanForPhp(QString testString, QString file){
     while (matches.hasNext()) {
         QRegularExpressionMatch match = matches.next();
         QList<QStandardItem *> tmpList;
-        tmpList << new QStandardItem(match.captured());
+        tmpList << new QStandardItem(match.captured("name"));
         tmpList << new QStandardItem(file);
+        tmpList << new QStandardItem("<b>"+match.captured("name")+"</b>("+match.captured("parameter")+")");
         phpCustomCompModel->appendRow(tmpList);
     }
 }

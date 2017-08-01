@@ -60,7 +60,7 @@ private slots:
     bool on_action_Close_triggered();
     void on_action_New_triggered();
     void on_action_Open_triggered();
-    void on_actionClose_triggered();
+    void on_actionCloseFile_triggered();
     void on_actionPaste_triggered();
     void on_actionCut_triggered();
     void on_actionCopy_triggered();

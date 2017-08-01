@@ -2,7 +2,8 @@
 
 CompleterDelegate::CompleterDelegate()
 {
-
+    cursor = QPoint(0, 0);
+    cursorOffset = QPoint(20, -2);
 }
 
 void CompleterDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
@@ -15,7 +16,7 @@ void CompleterDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opt
     QStyle *style = optionV4.widget? optionV4.widget->style() : QApplication::style();
 
     QTextDocument doc;
-    doc.setHtml(optionV4.text+" <b>"+source.text+"</b>");
+    doc.setHtml("<table><tr><td width='130'>"+optionV4.text+"</td><td>"+source.text+"</td></tr></table>");
 
     // Painting item without text
     optionV4.text = QString();
@@ -23,7 +24,6 @@ void CompleterDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opt
 
     QAbstractTextDocumentLayout::PaintContext ctx;
     QRect textRect = style->subElementRect(QStyle::SE_ItemViewItemText, &optionV4);
-    qDebug() << textRect;
     painter->save();
     painter->translate(textRect.topLeft());
     painter->setClipRect(textRect.translated(-textRect.topLeft()));
@@ -33,7 +33,8 @@ void CompleterDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opt
         ctx.palette.setColor(QPalette::Text, optionV4.palette.color(QPalette::Active, QPalette::HighlightedText));
         QStyleOptionViewItem overload = option;
         initStyleOption(&overload, index.sibling(index.row(),2));
-        QToolTip::showText(QPoint(textRect.right() + 15, textRect.top()), overload.text);
+        QPoint pos = textRect.topRight()+cursor+cursorOffset;
+        QToolTip::showText(pos, overload.text);
     }
 
     doc.documentLayout()->draw(painter, ctx);
@@ -48,7 +49,11 @@ QSize CompleterDelegate::sizeHint(const QStyleOptionViewItem &option, const QMod
     initStyleOption(&source, index.sibling(index.row(),1));
 
     QTextDocument doc;
-    doc.setHtml(optionV4.text+" <b>"+source.text+"</b>");
+    doc.setHtml("<table><tr><td width='80'>"+optionV4.text+"</td><td>"+source.text+"</td></tr></table>");
     doc.setTextWidth(optionV4.rect.width());
     return QSize(doc.idealWidth(), doc.size().height());
+}
+
+void CompleterDelegate::cursorPosition(QPoint pos){
+    cursor = pos;
 }

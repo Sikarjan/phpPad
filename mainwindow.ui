@@ -287,7 +287,7 @@
     <addaction name="separator"/>
     <addaction name="actionSave"/>
     <addaction name="actionSave_As"/>
-    <addaction name="actionClose"/>
+    <addaction name="actionCloseFile"/>
     <addaction name="separator"/>
     <addaction name="action_Close"/>
    </widget>
@@ -455,7 +455,7 @@
     <string>Ctrl+Shift+S</string>
    </property>
   </action>
-  <action name="actionClose">
+  <action name="actionCloseFile">
    <property name="enabled">
     <bool>false</bool>
    </property>

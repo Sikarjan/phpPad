@@ -108,6 +108,7 @@ protected:
 signals:
     void fileChanged(QString);
     void newCurserPosition(QString);
+    void cursorPosition(QPoint);
     void updateIncludedFiles();
     void switchTab();
     void ctrlReleased();

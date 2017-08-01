@@ -118,7 +118,7 @@ int MainWindow::addEditor(QString filePath, bool isNew){
     connect(prefDialog, SIGNAL(defaultFontChanged(QFont)), editor, SLOT(defaultFontChanged(QFont)));
     connect(editor, SIGNAL(switchTab()), this, SLOT(switchTab()));
     connect(editor, SIGNAL(ctrlReleased()), this, SLOT(saveTabOrder()));
-    connect(editor, SIGNAL(closeEditor()), this, SLOT(on_actionClose_triggered()));
+    connect(editor, SIGNAL(closeEditor()), this, SLOT(on_actionCloseFile_triggered()));
     connect(editor, SIGNAL(fileChanged(QString)), this, SLOT(fileUpdater(QString)));
     connect(this, SIGNAL(fileUpdated(QString)), editor, SLOT(fileChangeListener(QString)));
 
@@ -201,6 +201,7 @@ int MainWindow::addEditor(QString filePath, bool isNew){
     editor->textBlockStateChanged(blockState == 0 ? 10:blockState);
 
     ui->menu_Insert->setEnabled(true);
+    ui->actionCloseFile->setEnabled(true);
     ui->actionFind->setEnabled(true);
     ui->actionReplace->setEnabled(true);
     ui->actionShowToolbox->setEnabled(true);
@@ -292,7 +293,7 @@ void MainWindow::on_action_New_triggered(){
     addEditor();
 }
 
-void MainWindow::on_actionClose_triggered(){
+void MainWindow::on_actionCloseFile_triggered(){
     int index = ui->tabWidget->currentIndex();
     closeTab(index);
 }
