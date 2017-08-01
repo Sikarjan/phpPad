@@ -64,7 +64,7 @@ DISTFILES += \
     README.md \
     LICENSE \
     installers/phpPadInstaller_0.1.2.app.7z \
-    installers/phpPadInstaller_0.1.2.exe
+    installers/phpPadInstaller.exe
 
 RESOURCES += \
     qrc.qrc
