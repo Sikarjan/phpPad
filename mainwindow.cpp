@@ -181,7 +181,7 @@ int MainWindow::addEditor(QString filePath, bool isNew){
     if(fileType == ".php")
         editor->setPhpCompleterList(phpCompleterModel);
     if(fileType == ".html" || fileType == ".php")
-        editor->setHtmlCompleterList(htmlCompleterList);
+        editor->setHtmlCompleterList(htmlCompleterModel);
     if(fileType == ".css" || fileType == ".html" || fileType == ".php")
         editor->setCssCompleterList(cssCompleterList);
     if(fileType == ".js" || fileType == ".html" || fileType == ".php")
@@ -656,6 +656,14 @@ int MainWindow::isFileOpen(QString filePath){
 void MainWindow::initKeyWords()
 {
     phpCompleterModel = new QStandardItemModel(this);
+    htmlCompleterModel = new QStandardItemModel(this);
+    /* Completer model structure
+     * Col 0: Key word for completion
+     * Col 1: Source for key like local, global or a referenced file
+     * Col 2: Tool tip for fuctions (see overload from xml files)
+     * Col 3: insert text after key word like ="" for src (html)
+    */
+
     // Load XML file for code highlighting and completion
     QFile file(":/xml/xml/php.xml");
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text)){
@@ -670,14 +678,30 @@ void MainWindow::initKeyWords()
             reader.readNext();
             if(reader.isStartElement() && reader.name() == QLatin1String("KeyWord")){
                 QList<QStandardItem *> tmpList;
+                QString col3Text = "";
+                QString functionName = "";
+
+                // Get Col 0 data
                 tmpList << new QStandardItem(reader.attributes().value("name").toString());
+
+                // Get Col 1 data
                 if(reader.attributes().value("func").toString() == "key"){
                     phpKeyWords << reader.attributes().value("name").toString();
                     tmpList << new QStandardItem(tr("key"));
                 }else if(reader.attributes().value("func").toString() == "function"){
-                    QString functionName = reader.attributes().value("name").toString();
+                    functionName = reader.attributes().value("name").toString();
                     phpFunctionNames << functionName;
-                    reader.readNextStartElement();
+                    tmpList << new QStandardItem(tr("global"));
+                }else if(reader.attributes().value("func").toString() == "var"){
+                    tmpList << new QStandardItem(tr("global"));
+                    col3Text = "[]";
+                }else{
+                    tmpList << new QStandardItem(tr("global"));
+                }
+
+                // Get Col 2 data
+                reader.readNextStartElement();
+                if(reader.name() == QLatin1String("Overload")){
                     QString overload = reader.attributes().value("retVal").toString() + " <b>"+functionName+"</b>(";
                     reader.readNextStartElement();
                     while (reader.name() == QLatin1String("Param")) {
@@ -688,11 +712,14 @@ void MainWindow::initKeyWords()
 
                     overload.replace(overload.length()-2,1,")");
                     overload.replace(" ", "&nbsp;");
-                    tmpList << new QStandardItem(tr("global"));
-                    tmpList << new QStandardItem(overload);;
+                    tmpList << new QStandardItem(overload);
+                    col3Text = "()";
                 }else{
-                    tmpList << new QStandardItem(tr("global"));
+                    tmpList << new QStandardItem();
                 }
+
+                // Get Col 3 data
+                tmpList << new QStandardItem(col3Text);
 
                 phpCompleterModel->appendRow(tmpList);
             }
@@ -715,12 +742,24 @@ void MainWindow::initKeyWords()
         htmlFile.close();
 
         QString tag;
+
         while (!reader.atEnd()) {
             reader.readNext();
             if(reader.isStartElement() && reader.name() == QLatin1String("KeyWord")){
                 tag = reader.attributes().value("name").toString();
                 if(tag.length() > 2){
-                    htmlCompleterList << tag;
+                    QList<QStandardItem *> tmpList;
+                    QString source = reader.attributes().value("func").toString() == "tag" ? tr("Tag"):tr("Attribute");
+
+                    tmpList << new QStandardItem(tag);
+                    tmpList << new QStandardItem(source);
+                    tmpList << new QStandardItem(); // tool tip
+
+                    if(reader.attributes().value("paramFollow").toString() != "false"){
+                        tmpList << new QStandardItem("=\"\"");
+                    }
+
+                    htmlCompleterModel->appendRow(tmpList);
                 }
             }
         }

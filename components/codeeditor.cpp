@@ -347,10 +347,11 @@ void CodeEditor::setPhpCompleterList(QStandardItemModel *compList){
     phpCompleter->setObjectName("php");
     phpCompleter->popup()->setItemDelegate(cDeligate);
 }
-void CodeEditor::setHtmlCompleterList(QStringList compList){
-    htmlCompleterList = compList;
+void CodeEditor::setHtmlCompleterList(QStandardItemModel *compList){
+    htmlCompleterModel = compList;
     htmlCompleter = new QCompleter(compList, this);
     htmlCompleter->setObjectName("html");
+    htmlCompleter->popup()->setItemDelegate(cDeligate);
 }
 
 void CodeEditor::setCssCompleterList(QStringList compList){
@@ -378,21 +379,38 @@ void CodeEditor::setCompleter(QCompleter *completer){
     c->setWidget(this);
     c->setCompletionMode(QCompleter::PopupCompletion);
     c->setCaseSensitivity(Qt::CaseInsensitive);
-    QObject::connect(c, SIGNAL(activated(QString)), this, SLOT(insertCompletion(QString)));
+    QObject::connect(c, SIGNAL(activated(QModelIndex)), this, SLOT(insertCompletion(QModelIndex)));
 }
 QCompleter *CodeEditor::completer() const {
     return c;
 }
-void CodeEditor::insertCompletion(const QString& completion){
+
+void CodeEditor::insertCompletion(const QModelIndex &index){
     if (c->widget() != this)
         return;
     QTextCursor tc = textCursor();
+    QString completion = c->completionModel()->data(index).toString();
     int extra = completion.length() - c->completionPrefix().length();
+
     tc.movePosition(QTextCursor::Left);
     tc.movePosition(QTextCursor::EndOfWord);
-    tc.insertText(completion.right(extra));
+
+    if(c->objectName() == "php" || c->objectName() == "html"){
+        QModelIndex sibling = index.sibling(index.row(), 3);
+        QString after = c->completionModel()->data(sibling).toString();
+        if(after.isEmpty()){
+            tc.insertText(completion.right(extra));
+        }else{
+            completion += after;
+            tc.insertText(completion.right(extra+after.length()));
+            tc.movePosition(QTextCursor::Left);
+        }
+    }else{
+        tc.insertText(completion.right(extra));
+    }
     setTextCursor(tc);
 }
+
 QString CodeEditor::textUnderCursor() const{
     QTextCursor tc = textCursor();
     tc.select(QTextCursor::WordUnderCursor);
@@ -685,7 +703,7 @@ void CodeEditor::scanDocument(){
     if(docType == 0 || docType == 2){
         // look for includes in html
         bool newHtml = false;
-        htmlCustomCompList = htmlCompleterList;
+        htmlCustomCompModel = htmlCompleterModel;
 
         QRegularExpression htmlHead = QRegularExpression("<head>.*</head>", QRegularExpression::DotMatchesEverythingOption);
         QRegularExpressionMatchIterator htmlHeader = htmlHead.globalMatch(this->toPlainText());
@@ -717,10 +735,11 @@ void CodeEditor::scanDocument(){
         }
 
         if(newHtml){
-            std::sort(htmlCustomCompList.begin(), htmlCustomCompList.end());
+            htmlCustomCompModel->sort(0);
 
-            htmlCompleter = new QCompleter(htmlCustomCompList, this);
+            htmlCompleter = new QCompleter(htmlCustomCompModel, this);
             htmlCompleter->setObjectName("html");
+            htmlCompleter->popup()->setItemDelegate(cDeligate);
             setCompleter(htmlCompleter);
         }
     }
@@ -874,14 +893,19 @@ void CodeEditor::scanForJs(QString code, int scanOption)
 
 void CodeEditor::scanForCss(QString code)
 {
-    QRegularExpression classExpression = QRegularExpression("(?<=\\s)(\\.|#)[a-zA-Z]+[\\w-]*");
+    QRegularExpression classExpression = QRegularExpression("(?<=\\s)(?<type>\\.|#)(?<name>[a-zA-Z]+[\\w-]*)");
     QRegularExpressionMatchIterator matches = classExpression.globalMatch(code);
     while (matches.hasNext()) {
         QRegularExpressionMatch match = matches.next();
+
         if(match.capturedLength() > 3){
-            QStringList::const_iterator iter = std::find(htmlCustomCompList.begin(), htmlCustomCompList.end(), match.captured());
-            if(iter == htmlCustomCompList.end()){
-                htmlCustomCompList << match.captured();
+
+            QList<QStandardItem *> result = htmlCustomCompModel->findItems(match.captured());
+            if(result.length() == 0){
+                QList<QStandardItem *> tmpList;
+                tmpList << new QStandardItem(match.captured("name"));
+                tmpList << new QStandardItem(match.captured("type"));
+                phpCustomCompModel->appendRow(tmpList);
             }
         }
     }

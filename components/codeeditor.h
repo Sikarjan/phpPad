@@ -90,7 +90,7 @@ public:
     QString textUnderCursor() const;
 
     void setPhpCompleterList(QStandardItemModel *compList);
-    void setHtmlCompleterList(QStringList compList);
+    void setHtmlCompleterList(QStandardItemModel *compList);
     void setCssCompleterList(QStringList compList);
     void setJsCompleterList(QStringList compList);
     void setCompleter(QCompleter *completer);
@@ -127,7 +127,7 @@ private slots:
     void matchParentheses();
     void increaseSelectionIndent();
     void decreaseSelectionIndent();
-    void insertCompletion(const QString &completion);
+    void insertCompletion(const QModelIndex &index);
     void setRedoAvailable(bool state);
     void currentCurserPosition();
     void insertTable(int columns, int rows, int header, QString caption);
@@ -143,10 +143,10 @@ private:
     QCompleter *jsCompleter;
     QStandardItemModel *phpCompleterModel;
     QStringList jsCompleterList;
-    QStringList htmlCompleterList;
+    QStandardItemModel *htmlCompleterModel;
     QStandardItemModel *phpCustomCompModel;
     QStringList jsCustomCompList;
-    QStringList htmlCustomCompList;
+    QStandardItemModel *htmlCustomCompModel;
     QStringList filesForRescan;
     QString endOfWord;
     QString eow;

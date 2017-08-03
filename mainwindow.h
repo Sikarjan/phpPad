@@ -102,7 +102,7 @@ private:
     QVBoxLayout *tabLayout;
     QFileSystemModel *dirModel;
     QStandardItemModel *phpCompleterModel;
-    QStringList htmlCompleterList;
+    QStandardItemModel *htmlCompleterModel;
     QStringList cssCompleterList;
     QStringList jsCompleterList;
     QStringList *cssKeyWords;
