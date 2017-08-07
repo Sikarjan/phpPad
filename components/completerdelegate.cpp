@@ -28,9 +28,8 @@ void CompleterDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opt
     painter->translate(textRect.topLeft());
     painter->setClipRect(textRect.translated(-textRect.topLeft()));
 
-    // Highlighting text if item is selected
+    // Show tool tip if highlighted
     if (optionV4.state & QStyle::State_Selected){
-        ctx.palette.setColor(QPalette::Text, optionV4.palette.color(QPalette::Active, QPalette::HighlightedText));
         QStyleOptionViewItem overload = option;
         initStyleOption(&overload, index.sibling(index.row(),2));
         QPoint pos = textRect.topRight()+cursor+cursorOffset;

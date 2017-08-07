@@ -60,7 +60,7 @@ CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent), c(0)
     includedFilesModel = new QStandardItemModel;
     lockBlockState = false;
     endOfWord = "~!@#$%^&*()+{}|:<>?,./;'[]\\-= ";
-    eow = "~!@#$%^&*)+}|:<>?,./;'[]\\-=\"";
+    eow = "~!@#$%^&*())+{}|:<>?,./;'[]\\-=\"";
     cDeligate = new CompleterDelegate;
 
     setTabChangesFocus(false);
@@ -113,6 +113,9 @@ void CodeEditor::keyPressEvent(QKeyEvent *e){
        case Qt::Key_Backtab:
             e->ignore();
             return; // let the completer do default behavior
+       case Qt::Key_Space:
+           this->lastKey = " ";
+           break;
        default:
            break;
        }
@@ -149,7 +152,10 @@ void CodeEditor::keyPressEvent(QKeyEvent *e){
         return;
     }else if((e->modifiers() & Qt::ControlModifier) && e->key() == Qt::Key_W){
         emit closeEditor();
-    }else if(endOfWord.contains(e->text())){
+    }
+
+    // Adding php variables on the fly
+    if(endOfWord.contains(e->text()) && completionPrefix.length() > 2){
         if(currentTextBlockState < 10 && completionPrefix.contains("$")){
             QList<QStandardItem *> result = phpCustomCompModel->findItems(completionPrefix);
             if(result.length() == 0){
@@ -178,7 +184,7 @@ void CodeEditor::keyPressEvent(QKeyEvent *e){
 
     bool hasModifier = (e->modifiers() != Qt::NoModifier) && !ctrlOrShift;
     completionPrefix = textUnderCursor();
-// qDebug() << completionPrefix;
+
     if (!isShortcut && (hasModifier || e->text().isEmpty()|| completionPrefix.length() < 3)) {
         c->popup()->hide();
         return;
@@ -409,9 +415,13 @@ void CodeEditor::insertCompletion(const QModelIndex &index){
         tc.insertText(completion.right(extra));
     }
     setTextCursor(tc);
+    completionPrefix.clear();
 }
 
 QString CodeEditor::textUnderCursor() const{
+    if(lastKey == " ")
+        return "";
+
     QTextCursor tc = textCursor();
     tc.select(QTextCursor::WordUnderCursor);
     QString mText = tc.selectedText();
