@@ -276,7 +276,7 @@ Block states:
            }else if(word.captured() == "?>"){
                setCurrentBlockState(phpReturnState ==-1?mDocType:phpReturnState);
                setFormat(word.capturedStart(), word.capturedLength(), phpTagFormat);
-           }else if(word.captured().contains(QRegExp("\\d+"))){
+           }else if(word.captured().contains(QRegExp("^\\d+$"))){
                startExp = word.capturedStart();
                if(parser.hasNext() && parser.peekNext().captured() == ".")
                    word = parser.next();
@@ -379,7 +379,7 @@ Block states:
             // JS highlighting
             if(jsKeyWordsRules.contains(word.captured())){
                 setFormat(word.capturedStart(), word.capturedLength(), jsKeyWordsRules[word.captured()]);
-            }else if(word.captured().contains(QRegExp("\\d+"))){
+            }else if(word.captured().contains(QRegExp("^\\d+$"))){
                 int startExp = word.capturedStart();
                 if(parser.hasNext() && parser.peekNext().captured() == ".")
                     word = parser.next();
