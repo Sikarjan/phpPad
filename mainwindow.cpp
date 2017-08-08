@@ -95,6 +95,9 @@ bool MainWindow::closeTab(int index){
 }
 
 int MainWindow::addEditor(QString filePath, bool isNew){
+    #ifndef QT_NO_CURSOR
+        QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
+    #endif
     editor = new CodeEditor;
     editor->url = filePath;
     editor->lockBlockState = true;
@@ -208,6 +211,11 @@ int MainWindow::addEditor(QString filePath, bool isNew){
     ui->actionShowToolbox->setChecked(false);
     ui->actionContext_help->setEnabled(true);
     tabOrder.insert(0, index);
+
+    #ifndef QT_NO_CURSOR
+        QApplication::restoreOverrideCursor();
+    #endif
+
     return index;
 }
 

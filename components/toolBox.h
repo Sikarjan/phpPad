@@ -28,6 +28,9 @@ public:
 
     CodeEditor *mEditor;
 
+signals:
+    void newHistoryIndex();
+
 public slots:
     void replyFinished(QNetworkReply*pReply);
 
@@ -44,10 +47,12 @@ private slots:
     void on_caseCheckBox_clicked();
     void on_reverseCheckBox_clicked();
     void on_wholeWordCheckBox_clicked();
-
     void on_toolBox_currentChanged(int index);
-
     void on_searchInput_cursorPositionChanged(int arg1, int arg2);
+    void on_helpDisplay_anchorClicked(const QUrl &arg1);
+    void historyIndeyChanged();
+    void on_navigateBack_clicked();
+    void on_navigateForward_clicked();
 
 private:
     Ui::ToolBox *ui;
@@ -56,6 +61,9 @@ private:
     QNetworkAccessManager* networkManager;
     QCompleter *phpCompleter;
     QTextDocument::FindFlags flag;
+    QUrl extUrl;
+    QList<QUrl> *history;
+    int historyIndex;
 
     bool findNext(QString keyWord);
     void updateFindFlags();

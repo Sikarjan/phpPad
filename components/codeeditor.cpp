@@ -60,7 +60,7 @@ CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent), c(0)
     includedFilesModel = new QStandardItemModel;
     lockBlockState = false;
     endOfWord = "~!@#$%^&*()+{}|:<>?,./;'[]\\-= ";
-    eow = "~!@#$%^&*())+{}|:<>?,./;'[]\\-=\"";
+    eow = "~!@#$%^&*()+{}|:<>?,./;'[]\\-=\"";
     cDeligate = new CompleterDelegate;
 
     setTabChangesFocus(false);

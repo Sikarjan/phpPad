@@ -5,8 +5,11 @@ ToolBox::ToolBox(QWidget *parent) : QWidget(parent), ui(new Ui::ToolBox){
     ui->setupUi(this);
 
     networkManager = new QNetworkAccessManager(this);
+    history = new QList<QUrl>;
+    historyIndex = -1;
 
     connect(networkManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
+    connect(this, SIGNAL(newHistoryIndex()), this, SLOT(historyIndeyChanged()));
 }
 
 ToolBox::~ToolBox()
@@ -34,9 +37,8 @@ void ToolBox::setHelpFocus(QString keyWord)
     ui->helpFilter->setFocus();
 
     if(!keyWord.isNull()){
-        keyWord.replace(QString("_"), QString("-"));
-        networkManager->get(QNetworkRequest(QUrl("http://php.net/manual/en/function."+keyWord+".php")));
         ui->helpFilter->setText(keyWord);
+        on_helpFilter_returnPressed();
     }
 }
 
@@ -48,35 +50,19 @@ void ToolBox::setPhpCompleter(QStandardItemModel *keyWords)
     ui->helpFilter->setCompleter(phpCompleter);
 }
 
-void ToolBox::replyFinished(QNetworkReply *pReply)
-{
-    QByteArray data = pReply->readAll();
-    QString str(data);
-    QRegularExpression rxStart = QRegularExpression("^.*?(?=<h1)", QRegularExpression::DotMatchesEverythingOption);
-    QRegularExpression rxEnd = QRegularExpression("(?<=usernotes).*?$", QRegularExpression::DotMatchesEverythingOption);
-    str.replace(rxStart, QString(""));
-    str.replace(rxEnd, QString(""));
-    ui->helpDisplay->setHtml(str);
-    ui->helpDisplay->setFocus();
-}
-
-void ToolBox::on_closeButton_clicked()
-{
+void ToolBox::on_closeButton_clicked(){
     this->hide();
 }
 
-void ToolBox::on_findButton_clicked()
-{
+void ToolBox::on_findButton_clicked(){
     findNext(ui->searchInput->text());
 }
 
-void ToolBox::on_replaceNextButton_clicked()
-{
+void ToolBox::on_replaceNextButton_clicked(){
     findNext(ui->replaceInput->text());
 }
 
-void ToolBox::on_findAllButton_clicked()
-{
+void ToolBox::on_findAllButton_clicked(){
     oldCursor = mEditor->textCursor();
     QTextCursor newCursor = oldCursor;
     newCursor.setPosition(0);
@@ -118,13 +104,6 @@ void ToolBox::on_hitList_doubleClicked(const QModelIndex &index)
     curs.setPosition(hitPositions.at(index.row()));
     mEditor->setTextCursor(curs);
     mEditor->setFocus();
-}
-
-void ToolBox::on_helpFilter_returnPressed()
-{
-    QString tagName = ui->helpFilter->text();
-    tagName.replace(QString("_"), QString("-"));
-    networkManager->get(QNetworkRequest(QUrl("http://php.net/manual/en/function."+tagName+".php")));
 }
 
 bool ToolBox::findNext(QString keyWord)
@@ -193,8 +172,7 @@ void ToolBox::on_replaceAllButton_clicked()
     on_replaceInput_editingFinished();
 }
 
-void ToolBox::on_replaceInput_editingFinished()
-{
+void ToolBox::on_replaceInput_editingFinished(){
     if(ui->replaceInput->text().isEmpty()){
         ui->replaceInfoLabel->setText("");
         return;
@@ -207,18 +185,15 @@ void ToolBox::on_replaceInput_editingFinished()
     ui->replaceInfoLabel->setText(info);
 }
 
-void ToolBox::on_caseCheckBox_clicked()
-{
+void ToolBox::on_caseCheckBox_clicked(){
     updateFindFlags();
 }
 
-void ToolBox::on_reverseCheckBox_clicked()
-{
+void ToolBox::on_reverseCheckBox_clicked(){
     updateFindFlags();
 }
 
-void ToolBox::on_wholeWordCheckBox_clicked()
-{
+void ToolBox::on_wholeWordCheckBox_clicked(){
     updateFindFlags();
 }
 
@@ -237,4 +212,72 @@ void ToolBox::on_searchInput_cursorPositionChanged(int arg1, int arg2)
         return;
 
     ui->hitList->clear();
+}
+
+// Help
+void ToolBox::on_helpFilter_returnPressed()
+{
+    QString tagName = ui->helpFilter->text();
+    tagName.replace(QString("_"), QString("-"));
+    extUrl = QUrl("http://php.net/manual/en/function."+tagName+".php");
+    history->append(extUrl);
+    historyIndex = history->length()-1;
+    newHistoryIndex();
+    networkManager->get(QNetworkRequest(extUrl));
+}
+
+void ToolBox::on_helpDisplay_anchorClicked(const QUrl &arg1){
+    extUrl = arg1;
+    history->append(arg1);
+    historyIndex = history->length()-1;
+    newHistoryIndex();
+    networkManager->get(QNetworkRequest(extUrl));
+    ui->helpFilter->setText("");
+}
+
+void ToolBox::on_navigateBack_clicked(){
+    historyIndex--;
+    newHistoryIndex();
+    networkManager->get(QNetworkRequest(history->at(historyIndex)));
+}
+
+void ToolBox::on_navigateForward_clicked(){
+    historyIndex++;
+    newHistoryIndex();
+    networkManager->get(QNetworkRequest(history->at(historyIndex)));
+}
+
+void ToolBox::replyFinished(QNetworkReply *pReply)
+{
+    QByteArray data = pReply->readAll();
+    QString str(data);
+    QRegularExpression rxStart = QRegularExpression("^.*?(?=<h1)", QRegularExpression::DotMatchesEverythingOption);
+    QRegularExpression rxEnd = QRegularExpression("(?<=usernotes).*?$", QRegularExpression::DotMatchesEverythingOption);
+    QRegularExpression link = QRegularExpression("href=\"");
+    str.replace(rxStart, QString(""));
+    str.replace(rxEnd, QString(""));
+    str.replace(link, QString("href=\"http://php.net/manual/en/"));
+    ui->helpDisplay->setHtml(str);
+    ui->helpDisplay->setFocus();
+}
+
+void ToolBox::historyIndeyChanged(){
+    int range = history->length()-1;
+    if(range == 0){
+        ui->navigateBack->setEnabled(false);
+        ui->navigateForward->setEnabled(false);
+        return;
+    }
+
+    if(historyIndex == 0){
+        ui->navigateBack->setEnabled(false);
+    }else{
+        ui->navigateBack->setEnabled(true);
+    }
+
+    if(historyIndex == range){
+        ui->navigateForward->setEnabled(false);
+    }else{
+        ui->navigateForward->setEnabled(true);
+    }
 }
