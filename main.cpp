@@ -40,6 +40,9 @@ int main(int argc, char *argv[])
     MainWindow mainWin;
     app.setActivationWindow(&mainWin);
 
+    if (!parser.positionalArguments().isEmpty())
+        mainWin.addEditor(parser.positionalArguments().first());
+
     mainWin.show();
 
     QObject::connect(&app, SIGNAL(messageReceived(const QString&)), &mainWin,SLOT(handleAppOpenMessage(const QString&)));

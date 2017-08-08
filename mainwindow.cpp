@@ -174,7 +174,7 @@ int MainWindow::addEditor(QString filePath, bool isNew){
         text = in.readAll();
         file->close();
 
-        editor->textFile = file;
+        editor->textFile = text;
         ui->statusBar->showMessage(tr("File loaded"), 2000);
     }
 
@@ -386,12 +386,10 @@ void MainWindow::on_actionReload_triggered(){
         return;
     }
 
-    QFile *file = mEditor->textFile;
-    file->open(QFile::ReadOnly | QFile::Text);
-    QTextStream in(file);
-    mEditor->setPlainText(in.readAll());
+    mEditor->setPlainText(mEditor->textFile);
 
     ui->actionReload->setEnabled(false);
+    ui->actionUndo->setEnabled(false);
     mEditor->isFileChanged = false;
     ui->tabWidget->setTabText(ui->tabWidget->currentIndex(), mEditor->url.section("/",-1,-1));
 }
@@ -551,6 +549,7 @@ void MainWindow::fileUpdater(QString url)
 
 void MainWindow::handleAppOpenMessage(QString message)
 {
+    qDebug() << message;
     message.replace(QString("\\"), QString("/"));
     addEditor(message);
 }

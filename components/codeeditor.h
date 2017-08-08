@@ -76,7 +76,7 @@ class CodeEditor : public QPlainTextEdit
 
 public:
     CodeEditor(QWidget *parent = 0);
-    QFile *textFile;
+    QString textFile;
     QString url;
     int docType;
     bool isFileChanged = true;
