@@ -186,7 +186,7 @@ int MainWindow::addEditor(QString filePath, bool isNew){
     if(fileType == ".html" || fileType == ".php")
         editor->setHtmlCompleterList(htmlCompleterModel);
     if(fileType == ".css" || fileType == ".html" || fileType == ".php")
-        editor->setCssCompleterList(cssCompleterList);
+        editor->setCssCompleterList(cssCompleterModule);
     if(fileType == ".js" || fileType == ".html" || fileType == ".php")
         editor->setJsCompleterList(jsCompleterList);
 
@@ -664,6 +664,7 @@ void MainWindow::initKeyWords()
 {
     phpCompleterModel = new QStandardItemModel(this);
     htmlCompleterModel = new QStandardItemModel(this);
+    cssCompleterModule = new QStandardItemModel(this);
     /* Completer model structure
      * Col 0: Key word for completion
      * Col 1: Source for key like local, global or a referenced file
@@ -791,7 +792,25 @@ void MainWindow::initKeyWords()
                 tag = reader.attributes().value("name").toString();
                 cssKeyWords->append(tag);
                 if(tag.length() > 2){
-                    cssCompleterList << tag;
+                    QList<QStandardItem *> tmpList;
+                    QString source = reader.attributes().value("func").toString();
+
+                    if(source == "property")
+                        source = tr("Property");
+                    else if (source == "value")
+                        source = tr("Value");
+                    else if(source == "color")
+                        source = tr("Color");
+
+                    tmpList << new QStandardItem(tag);
+                    tmpList << new QStandardItem(source);
+                    tmpList << new QStandardItem(); // tool tip
+
+                    if(reader.attributes().value("paramFollow").toString() != "false"){
+                        tmpList << new QStandardItem(": ");
+                    }
+
+                    cssCompleterModule->appendRow(tmpList);
                 }
             }
         }

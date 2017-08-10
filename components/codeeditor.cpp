@@ -113,9 +113,6 @@ void CodeEditor::keyPressEvent(QKeyEvent *e){
        case Qt::Key_Backtab:
             e->ignore();
             return; // let the completer do default behavior
-       case Qt::Key_Space:
-           this->lastKey = " ";
-           break;
        default:
            break;
        }
@@ -185,7 +182,7 @@ void CodeEditor::keyPressEvent(QKeyEvent *e){
     bool hasModifier = (e->modifiers() != Qt::NoModifier) && !ctrlOrShift;
     completionPrefix = textUnderCursor();
 
-    if (!isShortcut && (hasModifier || e->text().isEmpty()|| completionPrefix.length() < 3)) {
+    if (!isShortcut && (hasModifier || e->text().isEmpty()|| completionPrefix.length() < 3 || endOfWord.contains(e->text().right(1)))) {
         c->popup()->hide();
         return;
     }
@@ -195,7 +192,7 @@ void CodeEditor::keyPressEvent(QKeyEvent *e){
         c->popup()->setCurrentIndex(c->completionModel()->index(0, 0));
     }
     QRect cr = cursorRect();
-    if(c->objectName() == "php"){
+    if(c->objectName() != "js"){
         emit cursorPosition(QPoint(this->mapToGlobal(cr.topRight())));
     }
     cr.setWidth(5+c->popup()->sizeHintForColumn(0)+ c->popup()->sizeHintForColumn(1) + c->popup()->verticalScrollBar()->sizeHint().width());
@@ -360,9 +357,10 @@ void CodeEditor::setHtmlCompleterList(QStandardItemModel *compList){
     htmlCompleter->popup()->setItemDelegate(cDeligate);
 }
 
-void CodeEditor::setCssCompleterList(QStringList compList){
+void CodeEditor::setCssCompleterList(QStandardItemModel *compList){
     cssCompleter = new QCompleter(compList, this);
     cssCompleter->setObjectName("css");
+    cssCompleter->popup()->setItemDelegate(cDeligate);
 }
 
 void CodeEditor::setJsCompleterList(QStringList compList){
@@ -401,7 +399,7 @@ void CodeEditor::insertCompletion(const QModelIndex &index){
     tc.movePosition(QTextCursor::Left);
     tc.movePosition(QTextCursor::EndOfWord);
 
-    if(c->objectName() == "php" || c->objectName() == "html"){
+    if(c->objectName() != "js"){
         QModelIndex sibling = index.sibling(index.row(), 3);
         QString after = c->completionModel()->data(sibling).toString();
         if(after.isEmpty()){
@@ -419,14 +417,16 @@ void CodeEditor::insertCompletion(const QModelIndex &index){
 }
 
 QString CodeEditor::textUnderCursor() const{
-    if(lastKey == " ")
+    QTextCursor tc = textCursor();
+
+    if(tc.hasSelection())
         return "";
 
-    QTextCursor tc = textCursor();
+    QString charRight = this->toPlainText().at(tc.position());
     tc.select(QTextCursor::WordUnderCursor);
     QString mText = tc.selectedText();
 
-    if(eow.contains(mText.left(1))){
+    if(eow.contains(charRight)){
         tc.setPosition(tc.selectionStart()-1);
         tc.select(QTextCursor::WordUnderCursor);
         mText = tc.selectedText();

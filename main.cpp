@@ -40,8 +40,9 @@ int main(int argc, char *argv[])
     MainWindow mainWin;
     app.setActivationWindow(&mainWin);
 
-    if (!parser.positionalArguments().isEmpty())
-        mainWin.addEditor(parser.positionalArguments().first());
+    if (!parser.positionalArguments().isEmpty()){
+        mainWin.handleAppOpenMessage(parser.positionalArguments().first());
+    }
 
     mainWin.show();
 

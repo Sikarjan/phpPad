@@ -103,7 +103,7 @@ private:
     QFileSystemModel *dirModel;
     QStandardItemModel *phpCompleterModel;
     QStandardItemModel *htmlCompleterModel;
-    QStringList cssCompleterList;
+    QStandardItemModel *cssCompleterModule;
     QStringList jsCompleterList;
     QStringList *cssKeyWords;
     QStringList *jsKeyWords;

@@ -1,517 +1,652 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <AutoComplete>
-    <KeyWord name="::after" />
-    <KeyWord name="::before" />
-    <KeyWord name="::first-letter" />
-    <KeyWord name="::first-line" />
-    <KeyWord name="::selection" />
-    <KeyWord name=":active" />
-    <KeyWord name=":checked" />
-    <KeyWord name=":disabled" />
-    <KeyWord name=":empty" />
-    <KeyWord name=":enabled" />
-    <KeyWord name=":first" />
-    <KeyWord name=":first-child" />
-    <KeyWord name=":first-of-type" />
-    <KeyWord name=":focus" />
-    <KeyWord name=":hover" />
-    <KeyWord name=":in-range" />
-    <KeyWord name=":invalid" />
-    <KeyWord name=":lang" />
-    <KeyWord name=":lang()" />
-    <KeyWord name=":last-child" />
-    <KeyWord name=":last-of-type" />
-    <KeyWord name=":left" />
-    <KeyWord name=":link" />
-    <KeyWord name=":not()" />
-    <KeyWord name=":nth-child()" />
-    <KeyWord name=":nth-last-child()" />
-    <KeyWord name=":nth-last-of-type()" />
-    <KeyWord name=":nth-of-type()" />
-    <KeyWord name=":only-child" />
-    <KeyWord name=":only-of-type" />
-    <KeyWord name=":optional" />
-    <KeyWord name=":out-of-range" />
-    <KeyWord name=":read-only" />
-    <KeyWord name=":read-write" />
-    <KeyWord name=":required" />
-    <KeyWord name=":right" />
-    <KeyWord name=":root" />
-    <KeyWord name=":target" />
-    <KeyWord name=":valid" />
-    <KeyWord name=":visited" />
-    <KeyWord name="@charset" />
-    <KeyWord name="@font-face" />
-    <KeyWord name="@font-feature-values" />
-    <KeyWord name="@import" />
-    <KeyWord name="@keyframes" />
-    <KeyWord name="@media" />
-    <KeyWord name="@page" />
-    <KeyWord name="above" />
-    <KeyWord name="absolute" />
-    <KeyWord name="ActiveBorder" />
-    <KeyWord name="ActiveCaption" />
-    <KeyWord name="align-content" />
-    <KeyWord name="align-items" />
-    <KeyWord name="align-self" />
-    <KeyWord name="always" />
-    <KeyWord name="animation" />
-    <KeyWord name="animation-delay" />
-    <KeyWord name="animation-direction" />
-    <KeyWord name="animation-duration" />
-    <KeyWord name="animation-fill-mode" />
-    <KeyWord name="animation-iteration-count" />
-    <KeyWord name="animation-name" />
-    <KeyWord name="animation-play-state" />
-    <KeyWord name="animation-timing-function" />
-    <KeyWord name="AppWorkspace" />
-    <KeyWord name="aqua" />
-    <KeyWord name="armenian" />
-    <KeyWord name="attr" />
-    <KeyWord name="auto" />
-    <KeyWord name="avoid" />
-    <KeyWord name="azimuth" />
-    <KeyWord name="backface-visibility" />
-    <KeyWord name="background" />
-    <KeyWord name="background-attachment" />
-    <KeyWord name="background-blend-mode" />
-    <KeyWord name="background-clip" />
-    <KeyWord name="background-color" />
-    <KeyWord name="background-image" />
-    <KeyWord name="background-origin" />
-    <KeyWord name="background-position" />
-    <KeyWord name="background-repeat" />
-    <KeyWord name="background-size" />
-    <KeyWord name="baseline" />
-    <KeyWord name="behind" />
-    <KeyWord name="below" />
-    <KeyWord name="bidi-override" />
-    <KeyWord name="black" />
-    <KeyWord name="blink" />
-    <KeyWord name="block" />
-    <KeyWord name="blue" />
-    <KeyWord name="bold" />
-    <KeyWord name="bolder" />
-    <KeyWord name="border" />
-    <KeyWord name="border-bottom" />
-    <KeyWord name="border-bottom-color" />
-    <KeyWord name="border-bottom-left-radius" />
-    <KeyWord name="border-bottom-right-radius" />
-    <KeyWord name="border-bottom-style" />
-    <KeyWord name="border-bottom-width" />
-    <KeyWord name="border-collapse" />
-    <KeyWord name="border-color" />
-    <KeyWord name="border-image" />
-    <KeyWord name="border-image-outset" />
-    <KeyWord name="border-image-repeat" />
-    <KeyWord name="border-image-slice" />
-    <KeyWord name="border-image-source" />
-    <KeyWord name="border-image-width" />
-    <KeyWord name="border-left" />
-    <KeyWord name="border-left-color" />
-    <KeyWord name="border-left-style" />
-    <KeyWord name="border-left-width" />
-    <KeyWord name="border-radius" />
-    <KeyWord name="border-right" />
-    <KeyWord name="border-right-color" />
-    <KeyWord name="border-right-style" />
-    <KeyWord name="border-right-width" />
-    <KeyWord name="border-spacing" />
-    <KeyWord name="border-style" />
-    <KeyWord name="border-top" />
-    <KeyWord name="border-top-color" />
-    <KeyWord name="border-top-left-radius" />
-    <KeyWord name="border-top-right-radius" />
-    <KeyWord name="border-top-style" />
-    <KeyWord name="border-top-width" />
-    <KeyWord name="border-width" />
-    <KeyWord name="both" />
-    <KeyWord name="bottom" />
-    <KeyWord name="box-decoration-break" />
-    <KeyWord name="box-shadow" />
-    <KeyWord name="box-sizing" />
-    <KeyWord name="break-after" />
-    <KeyWord name="break-before" />
-    <KeyWord name="break-inside" />
-    <KeyWord name="ButtonFace" />
-    <KeyWord name="ButtonHighlight" />
-    <KeyWord name="ButtonShadow" />
-    <KeyWord name="ButtonText" />
-    <KeyWord name="capitalize" />
-    <KeyWord name="caption" />
-    <KeyWord name="caption-side" />
-    <KeyWord name="CaptionText" />
-    <KeyWord name="center" />
-    <KeyWord name="center-left" />
-    <KeyWord name="center-right" />
-    <KeyWord name="circle" />
-    <KeyWord name="cjk-ideographic" />
-    <KeyWord name="clear" />
-    <KeyWord name="clip" />
-    <KeyWord name="close-quote" />
-    <KeyWord name="code" />
-    <KeyWord name="collapse" />
-    <KeyWord name="color" />
-    <KeyWord name="column-count" />
-    <KeyWord name="column-fill" />
-    <KeyWord name="column-gap" />
-    <KeyWord name="column-rule" />
-    <KeyWord name="column-rule-color" />
-    <KeyWord name="column-rule-style" />
-    <KeyWord name="column-rule-width" />
-    <KeyWord name="columns" />
-    <KeyWord name="column-span" />
-    <KeyWord name="column-width" />
-    <KeyWord name="compact" />
-    <KeyWord name="condensed" />
-    <KeyWord name="content" />
-    <KeyWord name="continuous" />
-    <KeyWord name="counter-increment" />
-    <KeyWord name="counter-reset" />
-    <KeyWord name="crop" />
-    <KeyWord name="cros" />
-    <KeyWord name="crosshair" />
-    <KeyWord name="cue" />
-    <KeyWord name="cue-after" />
-    <KeyWord name="cue-before" />
-    <KeyWord name="cursor" />
-    <KeyWord name="decimal" />
-    <KeyWord name="decimal-leading-zero" />
-    <KeyWord name="default" />
-    <KeyWord name="deg" />
-    <KeyWord name="digits" />
-    <KeyWord name="direction" />
-    <KeyWord name="disc" />
-    <KeyWord name="display" />
-    <KeyWord name="elevation" />
-    <KeyWord name="em" />
-    <KeyWord name="embed" />
-    <KeyWord name="empty-cells" />
-    <KeyWord name="e-resize" />
-    <KeyWord name="ex" />
-    <KeyWord name="expanded" />
-    <KeyWord name="extra-condensed" />
-    <KeyWord name="extra-expanded" />
-    <KeyWord name="far-left" />
-    <KeyWord name="far-right" />
-    <KeyWord name="fast" />
-    <KeyWord name="faster" />
-    <KeyWord name="filter" />
-    <KeyWord name="fixed" />
-    <KeyWord name="flex" />
-    <KeyWord name="flex-basis" />
-    <KeyWord name="flex-direction" />
-    <KeyWord name="flex-flow" />
-    <KeyWord name="flex-grow" />
-    <KeyWord name="flex-shrink" />
-    <KeyWord name="flex-wrap" />
-    <KeyWord name="float" />
-    <KeyWord name="font" />
-    <KeyWord name="font-family" />
-    <KeyWord name="font-feature-settings" />
-    <KeyWord name="font-kerning" />
-    <KeyWord name="font-language-override" />
-    <KeyWord name="font-size" />
-    <KeyWord name="font-size-adjust" />
-    <KeyWord name="font-stretch" />
-    <KeyWord name="font-style" />
-    <KeyWord name="font-synthesis" />
-    <KeyWord name="font-variant" />
-    <KeyWord name="font-variant-alternates" />
-    <KeyWord name="font-variant-caps" />
-    <KeyWord name="font-variant-east-asian" />
-    <KeyWord name="font-variant-ligatures" />
-    <KeyWord name="font-variant-numeric" />
-    <KeyWord name="font-variant-position" />
-    <KeyWord name="font-weight" />
-    <KeyWord name="fuchsia" />
-    <KeyWord name="georgian" />
-    <KeyWord name="grad" />
-    <KeyWord name="gray" />
-    <KeyWord name="GrayText" />
-    <KeyWord name="green" />
-    <KeyWord name="hanging-punctuation" />
-    <KeyWord name="hebrew" />
-    <KeyWord name="height" />
-    <KeyWord name="help" />
-    <KeyWord name="hidden" />
-    <KeyWord name="hide" />
-    <KeyWord name="high" />
-    <KeyWord name="higher" />
-    <KeyWord name="Highlight" />
-    <KeyWord name="HighlightText" />
-    <KeyWord name="hiragana" />
-    <KeyWord name="hiragana-iroha" />
-    <KeyWord name="hyphens" />
-    <KeyWord name="hz" />
-    <KeyWord name="icon" />
-    <KeyWord name="image-orientation" />
-    <KeyWord name="image-rendering" />
-    <KeyWord name="image-resolution" />
-    <KeyWord name="ime-mode" />
-    <KeyWord name="InactiveBorder" />
-    <KeyWord name="InactiveCaption" />
-    <KeyWord name="InactiveCaptionText" />
-    <KeyWord name="InfoBackground" />
-    <KeyWord name="InfoText" />
-    <KeyWord name="inherit" />
-    <KeyWord name="inline" />
-    <KeyWord name="inline-table" />
-    <KeyWord name="inside" />
-    <KeyWord name="italic" />
-    <KeyWord name="justify" />
-    <KeyWord name="justify-content" />
-    <KeyWord name="katakana" />
-    <KeyWord name="katakana-iroha" />
-    <KeyWord name="khz" />
-    <KeyWord name="landscape" />
-    <KeyWord name="left" />
-    <KeyWord name="left-side" />
-    <KeyWord name="leftwards" />
-    <KeyWord name="letter-spacing" />
-    <KeyWord name="level" />
-    <KeyWord name="lighter" />
-    <KeyWord name="lime" />
-    <KeyWord name="line-break" />
-    <KeyWord name="line-height" />
-    <KeyWord name="line-through" />
-    <KeyWord name="list-item" />
-    <KeyWord name="list-style" />
-    <KeyWord name="list-style-image" />
-    <KeyWord name="list-style-position" />
-    <KeyWord name="list-style-type" />
-    <KeyWord name="loud" />
-    <KeyWord name="low" />
-    <KeyWord name="lower" />
-    <KeyWord name="lower-alpha" />
-    <KeyWord name="lowercase" />
-    <KeyWord name="lower-greek" />
-    <KeyWord name="lower-latin" />
-    <KeyWord name="lower-roman" />
-    <KeyWord name="ltr" />
-    <KeyWord name="margin" />
-    <KeyWord name="margin-bottom" />
-    <KeyWord name="margin-left" />
-    <KeyWord name="margin-right" />
-    <KeyWord name="margin-top" />
-    <KeyWord name="mark" />
-    <KeyWord name="mark-after" />
-    <KeyWord name="mark-before" />
-    <KeyWord name="marker" />
-    <KeyWord name="marker-offset" />
-    <KeyWord name="marks" />
-    <KeyWord name="maroon" />
-    <KeyWord name="marquee-direction" />
-    <KeyWord name="marquee-play-count" />
-    <KeyWord name="marquee-speed" />
-    <KeyWord name="marquee-style" />
-    <KeyWord name="mask" />
-    <KeyWord name="mask-type" />
-    <KeyWord name="max-height" />
-    <KeyWord name="max-width" />
-    <KeyWord name="medium" />
-    <KeyWord name="menu" />
-    <KeyWord name="MenuText" />
-    <KeyWord name="message-box" />
-    <KeyWord name="middle" />
-    <KeyWord name="min-height" />
-    <KeyWord name="min-width" />
-    <KeyWord name="mix" />
-    <KeyWord name="move" />
-    <KeyWord name="ms" />
-    <KeyWord name="narrower" />
-    <KeyWord name="nav-down" />
-    <KeyWord name="nav-index" />
-    <KeyWord name="nav-left" />
-    <KeyWord name="nav-right" />
-    <KeyWord name="nav-up" />
-    <KeyWord name="navy" />
-    <KeyWord name="ne-resize" />
-    <KeyWord name="no-close-quote" />
-    <KeyWord name="none" />
-    <KeyWord name="no-open-quote" />
-    <KeyWord name="no-repeat" />
-    <KeyWord name="normal" />
-    <KeyWord name="nowrap" />
-    <KeyWord name="n-resize" />
-    <KeyWord name="nw-resize" />
-    <KeyWord name="object-fit" />
-    <KeyWord name="object-position" />
-    <KeyWord name="oblique" />
-    <KeyWord name="olive" />
-    <KeyWord name="once" />
-    <KeyWord name="opacity" />
-    <KeyWord name="open-quote" />
-    <KeyWord name="order" />
-    <KeyWord name="orphans" />
-    <KeyWord name="outline" />
-    <KeyWord name="outline-color" />
-    <KeyWord name="outline-offset" />
-    <KeyWord name="outline-style" />
-    <KeyWord name="outline-width" />
-    <KeyWord name="outside" />
-    <KeyWord name="overflow" />
-    <KeyWord name="overflow-wrap" />
-    <KeyWord name="overflow-x" />
-    <KeyWord name="overflow-y" />
-    <KeyWord name="overline" />
-    <KeyWord name="padding" />
-    <KeyWord name="padding-bottom" />
-    <KeyWord name="padding-left" />
-    <KeyWord name="padding-right" />
-    <KeyWord name="padding-top" />
-    <KeyWord name="page" />
-    <KeyWord name="page-break-after" />
-    <KeyWord name="page-break-before" />
-    <KeyWord name="page-break-inside" />
-    <KeyWord name="pause" />
-    <KeyWord name="pause-after" />
-    <KeyWord name="pause-before" />
-    <KeyWord name="perspective" />
-    <KeyWord name="perspective-origin" />
-    <KeyWord name="phonemes" />
-    <KeyWord name="pitch" />
-    <KeyWord name="pitch-range" />
-    <KeyWord name="play-during" />
-    <KeyWord name="pointer" />
-    <KeyWord name="portrait" />
-    <KeyWord name="position" />
-    <KeyWord name="pre" />
-    <KeyWord name="Property" />
-    <KeyWord name="pt" />
-    <KeyWord name="purple" />
-    <KeyWord name="px" />
-    <KeyWord name="quotes" />
-    <KeyWord name="rad" />
-    <KeyWord name="red" />
-    <KeyWord name="relative" />
-    <KeyWord name="repeat" />
-    <KeyWord name="repeat-x" />
-    <KeyWord name="repeat-y" />
-    <KeyWord name="resize" />
-    <KeyWord name="rest" />
-    <KeyWord name="rest-after" />
-    <KeyWord name="rest-before" />
-    <KeyWord name="richness" />
-    <KeyWord name="right" />
-    <KeyWord name="right-side" />
-    <KeyWord name="rightwards" />
-    <KeyWord name="rtl" />
-    <KeyWord name="run-in" />
-    <KeyWord name="scroll" />
-    <KeyWord name="Scrollbar" />
-    <KeyWord name="semi-condensed" />
-    <KeyWord name="semi-expanded" />
-    <KeyWord name="separate" />
-    <KeyWord name="se-resize" />
-    <KeyWord name="show" />
-    <KeyWord name="silent" />
-    <KeyWord name="silver" />
-    <KeyWord name="size" />
-    <KeyWord name="slow" />
-    <KeyWord name="slower" />
-    <KeyWord name="small-caps" />
-    <KeyWord name="small-caption" />
-    <KeyWord name="soft" />
-    <KeyWord name="speak" />
-    <KeyWord name="speak-header" />
-    <KeyWord name="speak-numeral" />
-    <KeyWord name="speak-ponctuation" />
-    <KeyWord name="speech-rate" />
-    <KeyWord name="spell-out" />
-    <KeyWord name="square" />
-    <KeyWord name="s-resize" />
-    <KeyWord name="static" />
-    <KeyWord name="status-bar" />
-    <KeyWord name="stress" />
-    <KeyWord name="sub" />
-    <KeyWord name="super" />
-    <KeyWord name="sw-resize" />
-    <KeyWord name="table" />
-    <KeyWord name="table-caption" />
-    <KeyWord name="table-cell" />
-    <KeyWord name="table-column" />
-    <KeyWord name="table-column-group" />
-    <KeyWord name="table-footer-group" />
-    <KeyWord name="table-header-group" />
-    <KeyWord name="table-layout" />
-    <KeyWord name="table-row" />
-    <KeyWord name="table-row-group" />
-    <KeyWord name="tab-size" />
-    <KeyWord name="teal" />
-    <KeyWord name="text" />
-    <KeyWord name="text-align" />
-    <KeyWord name="text-align-last" />
-    <KeyWord name="text-bottom" />
-    <KeyWord name="text-combine-upright" />
-    <KeyWord name="text-decoration" />
-    <KeyWord name="text-decoration-color" />
-    <KeyWord name="text-decoration-line" />
-    <KeyWord name="text-decoration-style" />
-    <KeyWord name="text-indent" />
-    <KeyWord name="text-justify" />
-    <KeyWord name="text-orientation" />
-    <KeyWord name="text-overflow" />
-    <KeyWord name="text-shadow" />
-    <KeyWord name="text-top" />
-    <KeyWord name="text-transform" />
-    <KeyWord name="text-underline-position" />
-    <KeyWord name="ThreeDDarkShadow" />
-    <KeyWord name="ThreeDFace" />
-    <KeyWord name="ThreeDHighlight" />
-    <KeyWord name="ThreeDLightShadow" />
-    <KeyWord name="ThreeDShadow" />
-    <KeyWord name="top" />
-    <KeyWord name="transform" />
-    <KeyWord name="transform-origin" />
-    <KeyWord name="transform-style" />
-    <KeyWord name="transition" />
-    <KeyWord name="transition-delay" />
-    <KeyWord name="transition-duration" />
-    <KeyWord name="transition-property" />
-    <KeyWord name="transition-timing-function" />
-    <KeyWord name="transparent" />
-    <KeyWord name="ultra-condensed" />
-    <KeyWord name="ultra-expanded" />
-    <KeyWord name="underline" />
-    <KeyWord name="unicode-bidi" />
-    <KeyWord name="upper-alpha" />
-    <KeyWord name="uppercase" />
-    <KeyWord name="upper-latin" />
-    <KeyWord name="upper-roman" />
-    <KeyWord name="user-select" />
-    <KeyWord name="vertical-align" />
-    <KeyWord name="visibility" />
-    <KeyWord name="visible" />
-    <KeyWord name="voice-balance" />
-    <KeyWord name="voice-duration" />
-    <KeyWord name="voice-family" />
-    <KeyWord name="voice-pitch" />
-    <KeyWord name="voice-pitch-range" />
-    <KeyWord name="voice-rate" />
-    <KeyWord name="voice-stress" />
-    <KeyWord name="voice-volume" />
-    <KeyWord name="volume" />
-    <KeyWord name="wait" />
-    <KeyWord name="white" />
-    <KeyWord name="white-space" />
-    <KeyWord name="wider" />
-    <KeyWord name="widows" />
-    <KeyWord name="width" />
-    <KeyWord name="Window" />
-    <KeyWord name="WindowFrame" />
-    <KeyWord name="WindowText" />
-    <KeyWord name="word-break" />
-    <KeyWord name="word-spacing" />
-    <KeyWord name="word-wrap" />
-    <KeyWord name="w-resize" />
-    <KeyWord name="writing-mode" />
-    <KeyWord name="x-fast" />
-    <KeyWord name="x-high" />
-    <KeyWord name="x-loud" />
-    <KeyWord name="x-low" />
-    <KeyWord name="x-slow" />
-    <KeyWord name="x-soft" />
-    <KeyWord name="yellow" />
-    <KeyWord name="z-index" />
+    <KeyWord name="::before" func="selector" paramFollow="false" />
+    <KeyWord name="::first-letter" func="selector" paramFollow="false" />
+    <KeyWord name="::first-line" func="selector" paramFollow="false" />
+    <KeyWord name="::selection" func="selector" paramFollow="false" />
+    <KeyWord name=":active" func="selector" paramFollow="false" />
+    <KeyWord name=":checked" func="selector" paramFollow="false" />
+    <KeyWord name=":disabled" func="selector" paramFollow="false" />
+    <KeyWord name=":empty" func="selector" paramFollow="false" />
+    <KeyWord name=":enabled" func="selector" paramFollow="false" />
+    <KeyWord name=":first" func="selector" paramFollow="false" />
+    <KeyWord name=":first-child" func="selector" paramFollow="false" />
+    <KeyWord name=":first-of-type" func="selector" paramFollow="false" />
+    <KeyWord name=":focus" func="selector" paramFollow="false" />
+    <KeyWord name=":hover" func="selector" paramFollow="false" />
+    <KeyWord name=":in-range" func="selector" paramFollow="false" />
+    <KeyWord name=":invalid" func="selector" paramFollow="false" />
+    <KeyWord name=":lang" func="selector" paramFollow="false" />
+    <KeyWord name=":lang()" func="selector" paramFollow="false" />
+    <KeyWord name=":last-child" func="selector" paramFollow="false" />
+    <KeyWord name=":last-of-type" func="selector" paramFollow="false" />
+    <KeyWord name=":left" func="selector" paramFollow="false" />
+    <KeyWord name=":link" func="selector" paramFollow="false" />
+    <KeyWord name=":not()" func="selector" paramFollow="false" />
+    <KeyWord name=":nth-child()" func="selector" paramFollow="false" />
+    <KeyWord name=":nth-last-child()" func="selector" paramFollow="false" />
+    <KeyWord name=":nth-last-of-type()" func="selector" paramFollow="false" />
+    <KeyWord name=":nth-of-type()" func="selector" paramFollow="false" />
+    <KeyWord name=":only-child" func="selector" paramFollow="false" />
+    <KeyWord name=":only-of-type" func="selector" paramFollow="false" />
+    <KeyWord name=":optional" func="selector" paramFollow="false" />
+    <KeyWord name=":out-of-range" func="selector" paramFollow="false" />
+    <KeyWord name=":read-only" func="selector" paramFollow="false" />
+    <KeyWord name=":read-write" func="selector" paramFollow="false" />
+    <KeyWord name=":required" func="selector" paramFollow="false" />
+    <KeyWord name=":right" func="selector" paramFollow="false" />
+    <KeyWord name=":root" func="selector" paramFollow="false" />
+    <KeyWord name=":target" func="selector" paramFollow="false" />
+    <KeyWord name=":valid" func="selector" paramFollow="false" />
+    <KeyWord name=":visited" func="selector" paramFollow="false" />
+    <KeyWord name="@charset" func="property" paramFollow="false" />
+    <KeyWord name="@font-face" func="property" paramFollow="false" />
+    <KeyWord name="@font-feature-values" func="property" paramFollow="false" />
+    <KeyWord name="@import" func="property" paramFollow="false" />
+    <KeyWord name="@keyframes" func="property" paramFollow="false" />
+    <KeyWord name="@media" func="property" paramFollow="false" />
+    <KeyWord name="@page" func="property" paramFollow="false" />
+    <KeyWord name="@font-face" func="property" paramFollow="true" />
+    <KeyWord name="@keyframes" func="property" paramFollow="true" />
+    <KeyWord name="@media" func="property" paramFollow="true" />
+    <KeyWord name="above" func="value" paramFollow="true" />
+    <KeyWord name="absolute" func="value" paramFollow="true" />
+    <KeyWord name="ActiveBorder" func="value" paramFollow="true" />
+    <KeyWord name="ActiveCaption" func="value" paramFollow="true" />
+    <KeyWord name="AliceBlue" func="color" paramFollow="true" />
+    <KeyWord name="align-content" func="property" paramFollow="true" />
+    <KeyWord name="align-items" func="property" paramFollow="true" />
+    <KeyWord name="align-self" func="property" paramFollow="true" />
+    <KeyWord name="all" func="property" paramFollow="true" />
+    <KeyWord name="always" func="value" paramFollow="true" />
+    <KeyWord name="animation" func="property" paramFollow="true" />
+    <KeyWord name="animation-delay" func="property" paramFollow="true" />
+    <KeyWord name="animation-direction" func="property" paramFollow="true" />
+    <KeyWord name="animation-duration" func="property" paramFollow="true" />
+    <KeyWord name="animation-fill-mode" func="property" paramFollow="true" />
+    <KeyWord name="animation-iteration-count" func="property" paramFollow="true" />
+    <KeyWord name="animation-name" func="property" paramFollow="true" />
+    <KeyWord name="animation-play-state" func="property" paramFollow="true" />
+    <KeyWord name="animation-timing-function" func="property" paramFollow="true" />
+    <KeyWord name="AntiqueWhite" func="color" paramFollow="true" />
+    <KeyWord name="AppWorkspace" func="value" paramFollow="true" />
+    <KeyWord name="Aqua" func="color" paramFollow="true" />
+    <KeyWord name="Aquamarine" func="color" paramFollow="true" />
+    <KeyWord name="armenian" func="value" paramFollow="true" />
+    <KeyWord name="attr" func="value" paramFollow="true" />
+    <KeyWord name="auto" func="value" paramFollow="true" />
+    <KeyWord name="avoid" func="value" paramFollow="true" />
+    <KeyWord name="azimuth" func="value" paramFollow="true" />
+    <KeyWord name="Azure" func="color" paramFollow="true" />
+    <KeyWord name="backface-visibility" func="property" paramFollow="true" />
+    <KeyWord name="background" func="property" paramFollow="true" />
+    <KeyWord name="background-attachment" func="property" paramFollow="true" />
+    <KeyWord name="background-blend-mode" func="property" paramFollow="true" />
+    <KeyWord name="background-clip" func="property" paramFollow="true" />
+    <KeyWord name="background-color" func="property" paramFollow="true" />
+    <KeyWord name="background-image" func="property" paramFollow="true" />
+    <KeyWord name="background-origin" func="property" paramFollow="true" />
+    <KeyWord name="background-position" func="property" paramFollow="true" />
+    <KeyWord name="background-repeat" func="property" paramFollow="true" />
+    <KeyWord name="background-size" func="property" paramFollow="true" />
+    <KeyWord name="baseline" func="value" paramFollow="true" />
+    <KeyWord name="behind" func="value" paramFollow="true" />
+    <KeyWord name="Beige" func="color" paramFollow="true" />
+    <KeyWord name="below" func="value" paramFollow="true" />
+    <KeyWord name="bidi-override" func="value" paramFollow="true" />
+    <KeyWord name="Bisque" func="color" paramFollow="true" />
+    <KeyWord name="Black" func="color" paramFollow="true" />
+    <KeyWord name="BlanchedAlmond" func="color" paramFollow="true" />
+    <KeyWord name="blink" func="value" paramFollow="true" />
+    <KeyWord name="block" func="value" paramFollow="true" />
+    <KeyWord name="Blue" func="color" paramFollow="true" />
+    <KeyWord name="BlueViolet" func="color" paramFollow="true" />
+    <KeyWord name="bold" func="value" paramFollow="true" />
+    <KeyWord name="bolder" func="value" paramFollow="true" />
+    <KeyWord name="border" func="property" paramFollow="true" />
+    <KeyWord name="border-bottom" func="property" paramFollow="true" />
+    <KeyWord name="border-bottom-color" func="property" paramFollow="true" />
+    <KeyWord name="border-bottom-left-radius" func="property" paramFollow="true" />
+    <KeyWord name="border-bottom-right-radius" func="property" paramFollow="true" />
+    <KeyWord name="border-bottom-style" func="property" paramFollow="true" />
+    <KeyWord name="border-bottom-width" func="property" paramFollow="true" />
+    <KeyWord name="border-collapse" func="property" paramFollow="true" />
+    <KeyWord name="border-color" func="property" paramFollow="true" />
+    <KeyWord name="border-image" func="property" paramFollow="true" />
+    <KeyWord name="border-image-outset" func="property" paramFollow="true" />
+    <KeyWord name="border-image-repeat" func="property" paramFollow="true" />
+    <KeyWord name="border-image-slice" func="property" paramFollow="true" />
+    <KeyWord name="border-image-source" func="property" paramFollow="true" />
+    <KeyWord name="border-image-width" func="property" paramFollow="true" />
+    <KeyWord name="border-left" func="property" paramFollow="true" />
+    <KeyWord name="border-left-color" func="property" paramFollow="true" />
+    <KeyWord name="border-left-style" func="property" paramFollow="true" />
+    <KeyWord name="border-left-width" func="property" paramFollow="true" />
+    <KeyWord name="border-radius" func="property" paramFollow="true" />
+    <KeyWord name="border-right" func="property" paramFollow="true" />
+    <KeyWord name="border-right-color" func="property" paramFollow="true" />
+    <KeyWord name="border-right-style" func="property" paramFollow="true" />
+    <KeyWord name="border-right-width" func="property" paramFollow="true" />
+    <KeyWord name="border-spacing" func="property" paramFollow="true" />
+    <KeyWord name="border-style" func="property" paramFollow="true" />
+    <KeyWord name="border-top" func="property" paramFollow="true" />
+    <KeyWord name="border-top-color" func="property" paramFollow="true" />
+    <KeyWord name="border-top-left-radius" func="property" paramFollow="true" />
+    <KeyWord name="border-top-right-radius" func="property" paramFollow="true" />
+    <KeyWord name="border-top-style" func="property" paramFollow="true" />
+    <KeyWord name="border-top-width" func="property" paramFollow="true" />
+    <KeyWord name="border-width" func="property" paramFollow="true" />
+    <KeyWord name="both" func="value" paramFollow="true" />
+    <KeyWord name="bottom" func="property" paramFollow="true" />
+    <KeyWord name="box-decoration-break" func="value" paramFollow="true" />
+    <KeyWord name="box-shadow" func="property" paramFollow="true" />
+    <KeyWord name="box-sizing" func="property" paramFollow="true" />
+    <KeyWord name="break-after" func="value" paramFollow="true" />
+    <KeyWord name="break-before" func="value" paramFollow="true" />
+    <KeyWord name="break-inside" func="value" paramFollow="true" />
+    <KeyWord name="Brown" func="color" paramFollow="true" />
+    <KeyWord name="BurlyWood" func="color" paramFollow="true" />
+    <KeyWord name="ButtonFace" func="value" paramFollow="true" />
+    <KeyWord name="ButtonHighlight" func="value" paramFollow="true" />
+    <KeyWord name="ButtonShadow" func="value" paramFollow="true" />
+    <KeyWord name="ButtonText" func="value" paramFollow="true" />
+    <KeyWord name="CadetBlue" func="color" paramFollow="true" />
+    <KeyWord name="capitalize" func="value" paramFollow="true" />
+    <KeyWord name="caption" func="value" paramFollow="true" />
+    <KeyWord name="caption-side" func="property" paramFollow="true" />
+    <KeyWord name="CaptionText" func="value" paramFollow="true" />
+    <KeyWord name="center" func="value" paramFollow="true" />
+    <KeyWord name="center-left" func="value" paramFollow="true" />
+    <KeyWord name="center-right" func="value" paramFollow="true" />
+    <KeyWord name="Chartreuse" func="color" paramFollow="true" />
+    <KeyWord name="Chocolate" func="color" paramFollow="true" />
+    <KeyWord name="circle" func="value" paramFollow="true" />
+    <KeyWord name="cjk-ideographic" func="value" paramFollow="true" />
+    <KeyWord name="clear" func="property" paramFollow="true" />
+    <KeyWord name="clip" func="property" paramFollow="true" />
+    <KeyWord name="close-quote" func="value" paramFollow="true" />
+    <KeyWord name="code" func="value" paramFollow="true" />
+    <KeyWord name="collapse" func="value" paramFollow="true" />
+    <KeyWord name="color" func="property" paramFollow="true" />
+    <KeyWord name="column-count" func="property" paramFollow="true" />
+    <KeyWord name="column-fill" func="property" paramFollow="true" />
+    <KeyWord name="column-gap" func="property" paramFollow="true" />
+    <KeyWord name="column-rule" func="property" paramFollow="true" />
+    <KeyWord name="column-rule-color" func="property" paramFollow="true" />
+    <KeyWord name="column-rule-style" func="property" paramFollow="true" />
+    <KeyWord name="column-rule-width" func="property" paramFollow="true" />
+    <KeyWord name="columns" func="property" paramFollow="true" />
+    <KeyWord name="column-span" func="property" paramFollow="true" />
+    <KeyWord name="column-width" func="property" paramFollow="true" />
+    <KeyWord name="compact" func="value" paramFollow="true" />
+    <KeyWord name="condensed" func="value" paramFollow="true" />
+    <KeyWord name="content" func="property" paramFollow="true" />
+    <KeyWord name="continuous" func="value" paramFollow="true" />
+    <KeyWord name="Coral" func="color" paramFollow="true" />
+    <KeyWord name="CornflowerBlue" func="color" paramFollow="true" />
+    <KeyWord name="Cornsilk" func="color" paramFollow="true" />
+    <KeyWord name="counter-increment" func="property" paramFollow="true" />
+    <KeyWord name="counter-reset" func="property" paramFollow="true" />
+    <KeyWord name="Crimson" func="color" paramFollow="true" />
+    <KeyWord name="crop" func="value" paramFollow="true" />
+    <KeyWord name="cros" func="value" paramFollow="true" />
+    <KeyWord name="crosshair" func="value" paramFollow="true" />
+    <KeyWord name="cue" func="value" paramFollow="true" />
+    <KeyWord name="cue-after" func="value" paramFollow="true" />
+    <KeyWord name="cue-before" func="value" paramFollow="true" />
+    <KeyWord name="cursor" func="property" paramFollow="true" />
+    <KeyWord name="Cyan" func="color" paramFollow="true" />
+    <KeyWord name="DarkBlue" func="color" paramFollow="true" />
+    <KeyWord name="DarkCyan" func="color" paramFollow="true" />
+    <KeyWord name="DarkGoldenRod" func="color" paramFollow="true" />
+    <KeyWord name="DarkGray" func="color" paramFollow="true" />
+    <KeyWord name="DarkGreen" func="color" paramFollow="true" />
+    <KeyWord name="DarkGrey" func="color" paramFollow="true" />
+    <KeyWord name="DarkKhaki" func="color" paramFollow="true" />
+    <KeyWord name="DarkMagenta" func="color" paramFollow="true" />
+    <KeyWord name="DarkOliveGreen" func="color" paramFollow="true" />
+    <KeyWord name="DarkOrange" func="color" paramFollow="true" />
+    <KeyWord name="DarkOrchid" func="color" paramFollow="true" />
+    <KeyWord name="DarkRed" func="color" paramFollow="true" />
+    <KeyWord name="DarkSalmon" func="color" paramFollow="true" />
+    <KeyWord name="DarkSeaGreen" func="color" paramFollow="true" />
+    <KeyWord name="DarkSlateBlue" func="color" paramFollow="true" />
+    <KeyWord name="DarkSlateGray" func="color" paramFollow="true" />
+    <KeyWord name="DarkSlateGrey" func="color" paramFollow="true" />
+    <KeyWord name="DarkTurquoise" func="color" paramFollow="true" />
+    <KeyWord name="DarkViolet" func="color" paramFollow="true" />
+    <KeyWord name="decimal" func="value" paramFollow="true" />
+    <KeyWord name="decimal-leading-zero" func="value" paramFollow="true" />
+    <KeyWord name="DeepPink" func="color" paramFollow="true" />
+    <KeyWord name="DeepSkyBlue" func="color" paramFollow="true" />
+    <KeyWord name="default" func="value" paramFollow="true" />
+    <KeyWord name="deg" func="value" paramFollow="true" />
+    <KeyWord name="digits" func="value" paramFollow="true" />
+    <KeyWord name="DimGray" func="color" paramFollow="true" />
+    <KeyWord name="DimGrey" func="color" paramFollow="true" />
+    <KeyWord name="direction" func="property" paramFollow="true" />
+    <KeyWord name="disc" func="value" paramFollow="true" />
+    <KeyWord name="display" func="property" paramFollow="true" />
+    <KeyWord name="DodgerBlue" func="color" paramFollow="true" />
+    <KeyWord name="elevation" func="value" paramFollow="true" />
+    <KeyWord name="em" func="value" paramFollow="true" />
+    <KeyWord name="embed" func="value" paramFollow="true" />
+    <KeyWord name="empty-cells" func="property" paramFollow="true" />
+    <KeyWord name="e-resize" func="value" paramFollow="true" />
+    <KeyWord name="ex" func="value" paramFollow="true" />
+    <KeyWord name="expanded" func="value" paramFollow="true" />
+    <KeyWord name="extra-condensed" func="value" paramFollow="true" />
+    <KeyWord name="extra-expanded" func="value" paramFollow="true" />
+    <KeyWord name="far-left" func="value" paramFollow="true" />
+    <KeyWord name="far-right" func="value" paramFollow="true" />
+    <KeyWord name="fast" func="value" paramFollow="true" />
+    <KeyWord name="faster" func="value" paramFollow="true" />
+    <KeyWord name="filter" func="property" paramFollow="true" />
+    <KeyWord name="FireBrick" func="color" paramFollow="true" />
+    <KeyWord name="fixed" func="value" paramFollow="true" />
+    <KeyWord name="flex" func="property" paramFollow="true" />
+    <KeyWord name="flex-basis" func="property" paramFollow="true" />
+    <KeyWord name="flex-direction" func="property" paramFollow="true" />
+    <KeyWord name="flex-flow" func="property" paramFollow="true" />
+    <KeyWord name="flex-grow" func="property" paramFollow="true" />
+    <KeyWord name="flex-shrink" func="property" paramFollow="true" />
+    <KeyWord name="flex-wrap" func="property" paramFollow="true" />
+    <KeyWord name="float" func="property" paramFollow="true" />
+    <KeyWord name="FloralWhite" func="color" paramFollow="true" />
+    <KeyWord name="font" func="property" paramFollow="true" />
+    <KeyWord name="font-family" func="property" paramFollow="true" />
+    <KeyWord name="font-feature-settings" func="property" paramFollow="true" />
+    <KeyWord name="font-kerning" func="property" paramFollow="true" />
+    <KeyWord name="font-language-override" func="property" paramFollow="true" />
+    <KeyWord name="font-size" func="property" paramFollow="true" />
+    <KeyWord name="font-size-adjust" func="property" paramFollow="true" />
+    <KeyWord name="font-stretch" func="property" paramFollow="true" />
+    <KeyWord name="font-style" func="property" paramFollow="true" />
+    <KeyWord name="font-synthesis" func="property" paramFollow="true" />
+    <KeyWord name="font-variant" func="property" paramFollow="true" />
+    <KeyWord name="font-variant-alternates" func="property" paramFollow="true" />
+    <KeyWord name="font-variant-caps" func="property" paramFollow="true" />
+    <KeyWord name="font-variant-east-asian" func="property" paramFollow="true" />
+    <KeyWord name="font-variant-ligatures" func="property" paramFollow="true" />
+    <KeyWord name="font-variant-numeric" func="property" paramFollow="true" />
+    <KeyWord name="font-variant-position" func="property" paramFollow="true" />
+    <KeyWord name="font-weight" func="property" paramFollow="true" />
+    <KeyWord name="ForestGreen" func="color" paramFollow="true" />
+    <KeyWord name="Fuchsia" func="color" paramFollow="true" />
+    <KeyWord name="Gainsboro" func="color" paramFollow="true" />
+    <KeyWord name="georgian" func="value" paramFollow="true" />
+    <KeyWord name="GhostWhite" func="color" paramFollow="true" />
+    <KeyWord name="Gold" func="color" paramFollow="true" />
+    <KeyWord name="GoldenRod" func="color" paramFollow="true" />
+    <KeyWord name="grad" func="value" paramFollow="true" />
+    <KeyWord name="Gray" func="color" paramFollow="true" />
+    <KeyWord name="GrayText" func="value" paramFollow="true" />
+    <KeyWord name="Green" func="color" paramFollow="true" />
+    <KeyWord name="GreenYellow" func="color" paramFollow="true" />
+    <KeyWord name="Grey" func="color" paramFollow="true" />
+    <KeyWord name="hanging-punctuation" func="property" paramFollow="true" />
+    <KeyWord name="hebrew" func="value" paramFollow="true" />
+    <KeyWord name="height" func="property" paramFollow="true" />
+    <KeyWord name="help" func="value" paramFollow="true" />
+    <KeyWord name="hidden" func="value" paramFollow="true" />
+    <KeyWord name="hide" func="value" paramFollow="true" />
+    <KeyWord name="high" func="value" paramFollow="true" />
+    <KeyWord name="higher" func="value" paramFollow="true" />
+    <KeyWord name="Highlight" func="value" paramFollow="true" />
+    <KeyWord name="HighlightText" func="value" paramFollow="true" />
+    <KeyWord name="hiragana" func="value" paramFollow="true" />
+    <KeyWord name="hiragana-iroha" func="value" paramFollow="true" />
+    <KeyWord name="HoneyDew" func="color" paramFollow="true" />
+    <KeyWord name="HotPink" func="color" paramFollow="true" />
+    <KeyWord name="hyphens" func="value" paramFollow="true" />
+    <KeyWord name="hz" func="value" paramFollow="true" />
+    <KeyWord name="icon" func="value" paramFollow="true" />
+    <KeyWord name="image-orientation" func="value" paramFollow="true" />
+    <KeyWord name="image-rendering" func="value" paramFollow="true" />
+    <KeyWord name="image-resolution" func="value" paramFollow="true" />
+    <KeyWord name="ime-mode" func="value" paramFollow="true" />
+    <KeyWord name="InactiveBorder" func="value" paramFollow="true" />
+    <KeyWord name="InactiveCaption" func="value" paramFollow="true" />
+    <KeyWord name="InactiveCaptionText" func="value" paramFollow="true" />
+    <KeyWord name="IndianRed " func="color" paramFollow="true" />
+    <KeyWord name="Indigo " func="color" paramFollow="true" />
+    <KeyWord name="InfoBackground" func="value" paramFollow="true" />
+    <KeyWord name="InfoText" func="value" paramFollow="true" />
+    <KeyWord name="inherit" func="value" paramFollow="true" />
+    <KeyWord name="inline" func="value" paramFollow="true" />
+    <KeyWord name="inline-table" func="value" paramFollow="true" />
+    <KeyWord name="inside" func="value" paramFollow="true" />
+    <KeyWord name="italic" func="value" paramFollow="true" />
+    <KeyWord name="Ivory" func="color" paramFollow="true" />
+    <KeyWord name="justify" func="value" paramFollow="true" />
+    <KeyWord name="justify-content" func="property" paramFollow="true" />
+    <KeyWord name="katakana" func="value" paramFollow="true" />
+    <KeyWord name="katakana-iroha" func="value" paramFollow="true" />
+    <KeyWord name="Khaki" func="color" paramFollow="true" />
+    <KeyWord name="khz" func="value" paramFollow="true" />
+    <KeyWord name="landscape" func="value" paramFollow="true" />
+    <KeyWord name="Lavender" func="color" paramFollow="true" />
+    <KeyWord name="LavenderBlush" func="color" paramFollow="true" />
+    <KeyWord name="LawnGreen" func="color" paramFollow="true" />
+    <KeyWord name="left" func="property" paramFollow="true" />
+    <KeyWord name="left-side" func="value" paramFollow="true" />
+    <KeyWord name="leftwards" func="value" paramFollow="true" />
+    <KeyWord name="LemonChiffon" func="color" paramFollow="true" />
+    <KeyWord name="letter-spacing" func="property" paramFollow="true" />
+    <KeyWord name="level" func="value" paramFollow="true" />
+    <KeyWord name="LightBlue" func="color" paramFollow="true" />
+    <KeyWord name="LightCoral" func="color" paramFollow="true" />
+    <KeyWord name="LightCyan" func="color" paramFollow="true" />
+    <KeyWord name="lighter" func="value" paramFollow="true" />
+    <KeyWord name="LightGoldenRodYellow" func="color" paramFollow="true" />
+    <KeyWord name="LightGray" func="color" paramFollow="true" />
+    <KeyWord name="LightGreen" func="color" paramFollow="true" />
+    <KeyWord name="LightGrey" func="color" paramFollow="true" />
+    <KeyWord name="LightPink" func="color" paramFollow="true" />
+    <KeyWord name="LightSalmon" func="color" paramFollow="true" />
+    <KeyWord name="LightSeaGreen" func="color" paramFollow="true" />
+    <KeyWord name="LightSkyBlue" func="color" paramFollow="true" />
+    <KeyWord name="LightSlateGray" func="color" paramFollow="true" />
+    <KeyWord name="LightSlateGrey" func="color" paramFollow="true" />
+    <KeyWord name="LightSteelBlue" func="color" paramFollow="true" />
+    <KeyWord name="LightYellow" func="color" paramFollow="true" />
+    <KeyWord name="Lime" func="color" paramFollow="true" />
+    <KeyWord name="LimeGreen" func="color" paramFollow="true" />
+    <KeyWord name="line-break" func="value" paramFollow="true" />
+    <KeyWord name="line-height" func="property" paramFollow="true" />
+    <KeyWord name="Linen" func="color" paramFollow="true" />
+    <KeyWord name="line-through" func="value" paramFollow="true" />
+    <KeyWord name="list-item" func="value" paramFollow="true" />
+    <KeyWord name="list-style" func="property" paramFollow="true" />
+    <KeyWord name="list-style-image" func="property" paramFollow="true" />
+    <KeyWord name="list-style-position" func="property" paramFollow="true" />
+    <KeyWord name="list-style-type" func="property" paramFollow="true" />
+    <KeyWord name="loud" func="value" paramFollow="true" />
+    <KeyWord name="low" func="value" paramFollow="true" />
+    <KeyWord name="lower" func="value" paramFollow="true" />
+    <KeyWord name="lower-alpha" func="value" paramFollow="true" />
+    <KeyWord name="lowercase" func="value" paramFollow="true" />
+    <KeyWord name="lower-greek" func="value" paramFollow="true" />
+    <KeyWord name="lower-latin" func="value" paramFollow="true" />
+    <KeyWord name="lower-roman" func="value" paramFollow="true" />
+    <KeyWord name="ltr" func="value" paramFollow="true" />
+    <KeyWord name="Magenta" func="color" paramFollow="true" />
+    <KeyWord name="margin" func="property" paramFollow="true" />
+    <KeyWord name="margin-bottom" func="property" paramFollow="true" />
+    <KeyWord name="margin-left" func="property" paramFollow="true" />
+    <KeyWord name="margin-right" func="property" paramFollow="true" />
+    <KeyWord name="margin-top" func="property" paramFollow="true" />
+    <KeyWord name="mark" func="value" paramFollow="true" />
+    <KeyWord name="mark-after" func="value" paramFollow="true" />
+    <KeyWord name="mark-before" func="value" paramFollow="true" />
+    <KeyWord name="marker" func="value" paramFollow="true" />
+    <KeyWord name="marker-offset" func="value" paramFollow="true" />
+    <KeyWord name="marks" func="value" paramFollow="true" />
+    <KeyWord name="Maroon" func="color" paramFollow="true" />
+    <KeyWord name="marquee-direction" func="value" paramFollow="true" />
+    <KeyWord name="marquee-play-count" func="value" paramFollow="true" />
+    <KeyWord name="marquee-speed" func="value" paramFollow="true" />
+    <KeyWord name="marquee-style" func="value" paramFollow="true" />
+    <KeyWord name="mask" func="value" paramFollow="true" />
+    <KeyWord name="mask-type" func="value" paramFollow="true" />
+    <KeyWord name="max-height" func="property" paramFollow="true" />
+    <KeyWord name="max-width" func="property" paramFollow="true" />
+    <KeyWord name="medium" func="value" paramFollow="true" />
+    <KeyWord name="MediumAquaMarine" func="color" paramFollow="true" />
+    <KeyWord name="MediumBlue" func="color" paramFollow="true" />
+    <KeyWord name="MediumOrchid" func="color" paramFollow="true" />
+    <KeyWord name="MediumPurple" func="color" paramFollow="true" />
+    <KeyWord name="MediumSeaGreen" func="color" paramFollow="true" />
+    <KeyWord name="MediumSlateBlue" func="color" paramFollow="true" />
+    <KeyWord name="MediumSpringGreen" func="color" paramFollow="true" />
+    <KeyWord name="MediumTurquoise" func="color" paramFollow="true" />
+    <KeyWord name="MediumVioletRed" func="color" paramFollow="true" />
+    <KeyWord name="menu" func="value" paramFollow="true" />
+    <KeyWord name="MenuText" func="value" paramFollow="true" />
+    <KeyWord name="message-box" func="value" paramFollow="true" />
+    <KeyWord name="middle" func="value" paramFollow="true" />
+    <KeyWord name="MidnightBlue" func="color" paramFollow="true" />
+    <KeyWord name="min-height" func="property" paramFollow="true" />
+    <KeyWord name="MintCream" func="color" paramFollow="true" />
+    <KeyWord name="min-width" func="property" paramFollow="true" />
+    <KeyWord name="MistyRose" func="color" paramFollow="true" />
+    <KeyWord name="mix" func="value" paramFollow="true" />
+    <KeyWord name="Moccasin" func="color" paramFollow="true" />
+    <KeyWord name="move" func="value" paramFollow="true" />
+    <KeyWord name="ms" func="value" paramFollow="true" />
+    <KeyWord name="narrower" func="value" paramFollow="true" />
+    <KeyWord name="NavajoWhite" func="color" paramFollow="true" />
+    <KeyWord name="nav-down" func="property" paramFollow="true" />
+    <KeyWord name="nav-index" func="property" paramFollow="true" />
+    <KeyWord name="nav-left" func="property" paramFollow="true" />
+    <KeyWord name="nav-right" func="property" paramFollow="true" />
+    <KeyWord name="nav-up" func="property" paramFollow="true" />
+    <KeyWord name="Navy" func="color" paramFollow="true" />
+    <KeyWord name="ne-resize" func="value" paramFollow="true" />
+    <KeyWord name="no-close-quote" func="value" paramFollow="true" />
+    <KeyWord name="none" func="value" paramFollow="true" />
+    <KeyWord name="no-open-quote" func="value" paramFollow="true" />
+    <KeyWord name="no-repeat" func="value" paramFollow="true" />
+    <KeyWord name="normal" func="value" paramFollow="true" />
+    <KeyWord name="nowrap" func="value" paramFollow="true" />
+    <KeyWord name="n-resize" func="value" paramFollow="true" />
+    <KeyWord name="nw-resize" func="value" paramFollow="true" />
+    <KeyWord name="object-fit" func="value" paramFollow="true" />
+    <KeyWord name="object-position" func="value" paramFollow="true" />
+    <KeyWord name="oblique" func="value" paramFollow="true" />
+    <KeyWord name="OldLace" func="color" paramFollow="true" />
+    <KeyWord name="Olive" func="color" paramFollow="true" />
+    <KeyWord name="OliveDrab" func="color" paramFollow="true" />
+    <KeyWord name="once" func="value" paramFollow="true" />
+    <KeyWord name="opacity" func="property" paramFollow="true" />
+    <KeyWord name="open-quote" func="value" paramFollow="true" />
+    <KeyWord name="Orange" func="color" paramFollow="true" />
+    <KeyWord name="OrangeRed" func="color" paramFollow="true" />
+    <KeyWord name="Orchid" func="color" paramFollow="true" />
+    <KeyWord name="order" func="property" paramFollow="true" />
+    <KeyWord name="orphans" func="value" paramFollow="true" />
+    <KeyWord name="outline" func="property" paramFollow="true" />
+    <KeyWord name="outline-color" func="property" paramFollow="true" />
+    <KeyWord name="outline-offset" func="property" paramFollow="true" />
+    <KeyWord name="outline-style" func="property" paramFollow="true" />
+    <KeyWord name="outline-width" func="property" paramFollow="true" />
+    <KeyWord name="outside" func="value" paramFollow="true" />
+    <KeyWord name="overflow" func="property" paramFollow="true" />
+    <KeyWord name="overflow-wrap" func="value" paramFollow="true" />
+    <KeyWord name="overflow-x" func="property" paramFollow="true" />
+    <KeyWord name="overflow-y" func="property" paramFollow="true" />
+    <KeyWord name="overline" func="value" paramFollow="true" />
+    <KeyWord name="padding" func="property" paramFollow="true" />
+    <KeyWord name="padding-bottom" func="property" paramFollow="true" />
+    <KeyWord name="padding-left" func="property" paramFollow="true" />
+    <KeyWord name="padding-right" func="property" paramFollow="true" />
+    <KeyWord name="padding-top" func="property" paramFollow="true" />
+    <KeyWord name="page" func="value" paramFollow="true" />
+    <KeyWord name="page-break-after" func="property" paramFollow="true" />
+    <KeyWord name="page-break-before" func="property" paramFollow="true" />
+    <KeyWord name="page-break-inside" func="property" paramFollow="true" />
+    <KeyWord name="PaleGoldenRod" func="color" paramFollow="true" />
+    <KeyWord name="PaleGreen" func="color" paramFollow="true" />
+    <KeyWord name="PaleTurquoise" func="color" paramFollow="true" />
+    <KeyWord name="PaleVioletRed" func="color" paramFollow="true" />
+    <KeyWord name="PapayaWhip" func="color" paramFollow="true" />
+    <KeyWord name="pause" func="value" paramFollow="true" />
+    <KeyWord name="pause-after" func="value" paramFollow="true" />
+    <KeyWord name="pause-before" func="value" paramFollow="true" />
+    <KeyWord name="PeachPuff" func="color" paramFollow="true" />
+    <KeyWord name="perspective" func="property" paramFollow="true" />
+    <KeyWord name="perspective-origin" func="property" paramFollow="true" />
+    <KeyWord name="Peru" func="color" paramFollow="true" />
+    <KeyWord name="phonemes" func="value" paramFollow="true" />
+    <KeyWord name="Pink" func="color" paramFollow="true" />
+    <KeyWord name="pitch" func="value" paramFollow="true" />
+    <KeyWord name="pitch-range" func="value" paramFollow="true" />
+    <KeyWord name="play-during" func="value" paramFollow="true" />
+    <KeyWord name="Plum" func="color" paramFollow="true" />
+    <KeyWord name="pointer" func="value" paramFollow="true" />
+    <KeyWord name="portrait" func="value" paramFollow="true" />
+    <KeyWord name="position" func="property" paramFollow="true" />
+    <KeyWord name="PowderBlue" func="color" paramFollow="true" />
+    <KeyWord name="pre" func="value" paramFollow="true" />
+    <KeyWord name="Property" func="value" paramFollow="true" />
+    <KeyWord name="pt" func="value" paramFollow="true" />
+    <KeyWord name="Purple" func="color" paramFollow="true" />
+    <KeyWord name="px" func="value" paramFollow="true" />
+    <KeyWord name="quotes" func="property" paramFollow="true" />
+    <KeyWord name="rad" func="value" paramFollow="true" />
+    <KeyWord name="RebeccaPurple" func="color" paramFollow="true" />
+    <KeyWord name="Red" func="color" paramFollow="true" />
+    <KeyWord name="relative" func="value" paramFollow="true" />
+    <KeyWord name="repeat" func="value" paramFollow="true" />
+    <KeyWord name="repeat-x" func="value" paramFollow="true" />
+    <KeyWord name="repeat-y" func="value" paramFollow="true" />
+    <KeyWord name="resize" func="property" paramFollow="true" />
+    <KeyWord name="rest" func="value" paramFollow="true" />
+    <KeyWord name="rest-after" func="value" paramFollow="true" />
+    <KeyWord name="rest-before" func="value" paramFollow="true" />
+    <KeyWord name="richness" func="value" paramFollow="true" />
+    <KeyWord name="right" func="property" paramFollow="true" />
+    <KeyWord name="right-side" func="value" paramFollow="true" />
+    <KeyWord name="rightwards" func="value" paramFollow="true" />
+    <KeyWord name="RosyBrown" func="color" paramFollow="true" />
+    <KeyWord name="RoyalBlue" func="color" paramFollow="true" />
+    <KeyWord name="rtl" func="value" paramFollow="true" />
+    <KeyWord name="run-in" func="value" paramFollow="true" />
+    <KeyWord name="SaddleBrown" func="color" paramFollow="true" />
+    <KeyWord name="Salmon" func="color" paramFollow="true" />
+    <KeyWord name="SandyBrown" func="color" paramFollow="true" />
+    <KeyWord name="scroll" func="value" paramFollow="true" />
+    <KeyWord name="Scrollbar" func="value" paramFollow="true" />
+    <KeyWord name="SeaGreen" func="color" paramFollow="true" />
+    <KeyWord name="SeaShell" func="color" paramFollow="true" />
+    <KeyWord name="semi-condensed" func="value" paramFollow="true" />
+    <KeyWord name="semi-expanded" func="value" paramFollow="true" />
+    <KeyWord name="separate" func="value" paramFollow="true" />
+    <KeyWord name="se-resize" func="value" paramFollow="true" />
+    <KeyWord name="show" func="value" paramFollow="true" />
+    <KeyWord name="Sienna" func="color" paramFollow="true" />
+    <KeyWord name="silent" func="value" paramFollow="true" />
+    <KeyWord name="Silver" func="color" paramFollow="true" />
+    <KeyWord name="size" func="value" paramFollow="true" />
+    <KeyWord name="SkyBlue" func="color" paramFollow="true" />
+    <KeyWord name="SlateBlue" func="color" paramFollow="true" />
+    <KeyWord name="SlateGray" func="color" paramFollow="true" />
+    <KeyWord name="SlateGrey" func="color" paramFollow="true" />
+    <KeyWord name="slow" func="value" paramFollow="true" />
+    <KeyWord name="slower" func="value" paramFollow="true" />
+    <KeyWord name="small-caps" func="value" paramFollow="true" />
+    <KeyWord name="small-caption" func="value" paramFollow="true" />
+    <KeyWord name="Snow" func="color" paramFollow="true" />
+    <KeyWord name="soft" func="value" paramFollow="true" />
+    <KeyWord name="speak" func="value" paramFollow="true" />
+    <KeyWord name="speak-header" func="value" paramFollow="true" />
+    <KeyWord name="speak-numeral" func="value" paramFollow="true" />
+    <KeyWord name="speak-ponctuation" func="value" paramFollow="true" />
+    <KeyWord name="speech-rate" func="value" paramFollow="true" />
+    <KeyWord name="spell-out" func="value" paramFollow="true" />
+    <KeyWord name="SpringGreen" func="color" paramFollow="true" />
+    <KeyWord name="square" func="value" paramFollow="true" />
+    <KeyWord name="s-resize" func="value" paramFollow="true" />
+    <KeyWord name="static" func="value" paramFollow="true" />
+    <KeyWord name="status-bar" func="value" paramFollow="true" />
+    <KeyWord name="SteelBlue" func="color" paramFollow="true" />
+    <KeyWord name="stress" func="value" paramFollow="true" />
+    <KeyWord name="sub" func="value" paramFollow="true" />
+    <KeyWord name="super" func="value" paramFollow="true" />
+    <KeyWord name="sw-resize" func="value" paramFollow="true" />
+    <KeyWord name="table" func="value" paramFollow="true" />
+    <KeyWord name="table-caption" func="value" paramFollow="true" />
+    <KeyWord name="table-cell" func="value" paramFollow="true" />
+    <KeyWord name="table-column" func="value" paramFollow="true" />
+    <KeyWord name="table-column-group" func="value" paramFollow="true" />
+    <KeyWord name="table-footer-group" func="value" paramFollow="true" />
+    <KeyWord name="table-header-group" func="value" paramFollow="true" />
+    <KeyWord name="table-layout" func="property" paramFollow="true" />
+    <KeyWord name="table-row" func="value" paramFollow="true" />
+    <KeyWord name="table-row-group" func="value" paramFollow="true" />
+    <KeyWord name="tab-size" func="property" paramFollow="true" />
+    <KeyWord name="Tan" func="color" paramFollow="true" />
+    <KeyWord name="Teal" func="color" paramFollow="true" />
+    <KeyWord name="text" func="value" paramFollow="true" />
+    <KeyWord name="text-align" func="property" paramFollow="true" />
+    <KeyWord name="text-align-last" func="property" paramFollow="true" />
+    <KeyWord name="text-bottom" func="value" paramFollow="true" />
+    <KeyWord name="text-combine-upright" func="value" paramFollow="true" />
+    <KeyWord name="text-decoration" func="property" paramFollow="true" />
+    <KeyWord name="text-decoration-color" func="property" paramFollow="true" />
+    <KeyWord name="text-decoration-line" func="property" paramFollow="true" />
+    <KeyWord name="text-decoration-style" func="property" paramFollow="true" />
+    <KeyWord name="text-indent" func="property" paramFollow="true" />
+    <KeyWord name="text-justify" func="property" paramFollow="true" />
+    <KeyWord name="text-orientation" func="value" paramFollow="true" />
+    <KeyWord name="text-overflow" func="property" paramFollow="true" />
+    <KeyWord name="text-shadow" func="property" paramFollow="true" />
+    <KeyWord name="text-top" func="value" paramFollow="true" />
+    <KeyWord name="text-transform" func="property" paramFollow="true" />
+    <KeyWord name="text-underline-position" func="value" paramFollow="true" />
+    <KeyWord name="Thistle" func="color" paramFollow="true" />
+    <KeyWord name="ThreeDDarkShadow" func="value" paramFollow="true" />
+    <KeyWord name="ThreeDFace" func="value" paramFollow="true" />
+    <KeyWord name="ThreeDHighlight" func="value" paramFollow="true" />
+    <KeyWord name="ThreeDLightShadow" func="value" paramFollow="true" />
+    <KeyWord name="ThreeDShadow" func="value" paramFollow="true" />
+    <KeyWord name="Tomato" func="color" paramFollow="true" />
+    <KeyWord name="top" func="property" paramFollow="true" />
+    <KeyWord name="transform" func="property" paramFollow="true" />
+    <KeyWord name="transform-origin" func="property" paramFollow="true" />
+    <KeyWord name="transform-style" func="property" paramFollow="true" />
+    <KeyWord name="transition" func="property" paramFollow="true" />
+    <KeyWord name="transition-delay" func="property" paramFollow="true" />
+    <KeyWord name="transition-duration" func="property" paramFollow="true" />
+    <KeyWord name="transition-property" func="property" paramFollow="true" />
+    <KeyWord name="transition-timing-function" func="property" paramFollow="true" />
+    <KeyWord name="transparent" func="value" paramFollow="true" />
+    <KeyWord name="Turquoise" func="color" paramFollow="true" />
+    <KeyWord name="ultra-condensed" func="value" paramFollow="true" />
+    <KeyWord name="ultra-expanded" func="value" paramFollow="true" />
+    <KeyWord name="underline" func="value" paramFollow="true" />
+    <KeyWord name="unicode-bidi" func="property" paramFollow="true" />
+    <KeyWord name="upper-alpha" func="value" paramFollow="true" />
+    <KeyWord name="uppercase" func="value" paramFollow="true" />
+    <KeyWord name="upper-latin" func="value" paramFollow="true" />
+    <KeyWord name="upper-roman" func="value" paramFollow="true" />
+    <KeyWord name="user-select" func="property" paramFollow="true" />
+    <KeyWord name="vertical-align" func="property" paramFollow="true" />
+    <KeyWord name="Violet" func="color" paramFollow="true" />
+    <KeyWord name="visibility" func="property" paramFollow="true" />
+    <KeyWord name="visible" func="value" paramFollow="true" />
+    <KeyWord name="voice-balance" func="value" paramFollow="true" />
+    <KeyWord name="voice-duration" func="value" paramFollow="true" />
+    <KeyWord name="voice-family" func="value" paramFollow="true" />
+    <KeyWord name="voice-pitch" func="value" paramFollow="true" />
+    <KeyWord name="voice-pitch-range" func="value" paramFollow="true" />
+    <KeyWord name="voice-rate" func="value" paramFollow="true" />
+    <KeyWord name="voice-stress" func="value" paramFollow="true" />
+    <KeyWord name="voice-volume" func="value" paramFollow="true" />
+    <KeyWord name="volume" func="value" paramFollow="true" />
+    <KeyWord name="wait" func="value" paramFollow="true" />
+    <KeyWord name="Wheat" func="color" paramFollow="true" />
+    <KeyWord name="White" func="color" paramFollow="true" />
+    <KeyWord name="WhiteSmoke" func="color" paramFollow="true" />
+    <KeyWord name="white-space" func="property" paramFollow="true" />
+    <KeyWord name="wider" func="value" paramFollow="true" />
+    <KeyWord name="widows" func="value" paramFollow="true" />
+    <KeyWord name="width" func="property" paramFollow="true" />
+    <KeyWord name="Window" func="value" paramFollow="true" />
+    <KeyWord name="WindowFrame" func="value" paramFollow="true" />
+    <KeyWord name="WindowText" func="value" paramFollow="true" />
+    <KeyWord name="word-break" func="property" paramFollow="true" />
+    <KeyWord name="word-spacing" func="property" paramFollow="true" />
+    <KeyWord name="word-wrap" func="property" paramFollow="true" />
+    <KeyWord name="w-resize" func="value" paramFollow="true" />
+    <KeyWord name="writing-mode" func="value" paramFollow="true" />
+    <KeyWord name="x-fast" func="value" paramFollow="true" />
+    <KeyWord name="x-high" func="value" paramFollow="true" />
+    <KeyWord name="x-loud" func="value" paramFollow="true" />
+    <KeyWord name="x-low" func="value" paramFollow="true" />
+    <KeyWord name="x-slow" func="value" paramFollow="true" />
+    <KeyWord name="x-soft" func="value" paramFollow="true" />
+    <KeyWord name="Yellow" func="color" paramFollow="true" />
+    <KeyWord name="YellowGreen" func="color" paramFollow="true" />
+    <KeyWord name="z-index" func="property" paramFollow="true" />
 </AutoComplete>

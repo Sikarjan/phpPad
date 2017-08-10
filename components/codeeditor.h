@@ -91,7 +91,7 @@ public:
 
     void setPhpCompleterList(QStandardItemModel *compList);
     void setHtmlCompleterList(QStandardItemModel *compList);
-    void setCssCompleterList(QStringList compList);
+    void setCssCompleterList(QStandardItemModel *compList);
     void setJsCompleterList(QStringList compList);
     void setCompleter(QCompleter *completer);
     void lineNumberAreaPaintEvent(QPaintEvent *event);
