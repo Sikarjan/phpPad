@@ -100,7 +100,6 @@ int MainWindow::addEditor(QString filePath, bool isNew){
     #endif
     editor = new CodeEditor;
     editor->url = filePath;
-    editor->lockBlockState = true;
 
     toolBox = new ToolBox;
     toolBox->mEditor = editor;
@@ -202,6 +201,7 @@ int MainWindow::addEditor(QString filePath, bool isNew){
     editor->setTextCursor(curs);
     editor->scanDocument();
     editor->textBlockStateChanged(blockState == 0 ? 10:blockState);
+    editor->lockBlockState = false;
 
     ui->menu_Insert->setEnabled(true);
     ui->actionCloseFile->setEnabled(true);

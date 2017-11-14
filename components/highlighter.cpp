@@ -184,7 +184,7 @@ void Highlighter::highlightBlock(const QString &text){
         return;
     }
     // Split line by coding language identifiers, here <? and ?>, then by (key)words and then by any other char that is not escaped.
-    QRegularExpression splitter = QRegularExpression("(<\\?)|(\\?>)|(<script type=\"text\\/javascript\">)|(<\\/script>)|(\\/\\*)|(\\*\\/)|(<!--)|(-->)|([a-zA-Z0-9-_]+)|((?<!\\\\)([^\\s\\\\]))");
+    QRegularExpression splitter = QRegularExpression("(<\\?)|(\\?>)|(<script type=\"text\\/javascript\">)|(<\\/script>)|(<style>)|(<\\/style>)|(\\/\\*)|(\\*\\/)|(<!--)|(-->)|([a-zA-Z0-9-_]+)|((?<!\\\\)([^\\s\\\\]))");
     parser = splitter.globalMatch(text);
 
 //qDebug() <<"Starting with" << currentBlockState() << "last state was" << previousBlockState() << "looking at" << text;
@@ -253,6 +253,9 @@ Block states:
             setFormat(word.capturedStart(), 13, htmlTagFormat);
             setFormat(14, 17, htmlQuoteFormat);
             setFormat(word.capturedEnd()-1, 1, htmlTagFormat);
+        }else if(word.captured() == "<style>"){
+            setCurrentBlockState(20);
+            setFormat(word.capturedStart(), word.capturedEnd(), htmlTagFormat);
         }
 
         // Start highlighting according to coding language
@@ -276,7 +279,7 @@ Block states:
            }else if(word.captured() == "?>"){
                setCurrentBlockState(phpReturnState ==-1?mDocType:phpReturnState);
                setFormat(word.capturedStart(), word.capturedLength(), phpTagFormat);
-           }else if(word.captured().contains(QRegExp("^\\d+$"))){
+           }else if(word.captured().contains(QRegExp("((?<=\\-)\\d+$|^\\d+$)"))){
                startExp = word.capturedStart();
                if(parser.hasNext() && parser.peekNext().captured() == ".")
                    word = parser.next();
@@ -307,12 +310,14 @@ Block states:
             }else if(word.captured() == "<" || htmlReturnState == 1){
                 htmlReturnState = 0;
                 int startExp = word.capturedStart();
+
                 if(parser.hasNext() && parser.peekNext().captured().toLower().contains(QRegExp("[^a-z]"))){
                     word = parser.next();
                 }
 
                 if(parser.hasNext()){
                     QString htmlTag = parser.peekNext().captured().toLower();
+
                     if(htmlKeyWordsRules.contains(htmlTag))
                         htmlTagFormat = htmlKeyWordsRules[htmlTag];
 
@@ -343,6 +348,7 @@ Block states:
                 closeTag("-->",10,word.capturedStart());
             }else if(word.captured() == "</script>"){
                 setFormat(word.capturedStart(), word.capturedLength(), htmlTagFormat);
+                setCurrentBlockState(10);
             }
         }else if(currentBlockState() < 30){
             // CSS highlighting
@@ -374,6 +380,9 @@ Block states:
                 setCurrentBlockState(21);
             }else if(word.captured() == "}"){
                 setCurrentBlockState(20);
+            }else if(word.captured() == "</style>"){
+                setFormat(word.capturedStart(), word.capturedEnd(), htmlTagFormat);
+                setCurrentBlockState(10);
             }
         }else if(currentBlockState() < 40){
             // JS highlighting
@@ -410,7 +419,7 @@ Block states:
         currentTextBlockState = currentBlockState();
 //        qDebug() << "changed block state to" << currentBlockState() << "with line" << text;
     }
-//    qDebug() << "exeting line" << text << "with status" << currentBlockState();
+//        qDebug() << "exeting line" << text << "with status" << currentBlockState();
 }
 
 void Highlighter::closeTag(QString tag, int returnState, int startPos){

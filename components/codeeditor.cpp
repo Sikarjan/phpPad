@@ -58,7 +58,7 @@ CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent), c(0)
 {
     lineNumberArea = new LineNumberArea(this);
     includedFilesModel = new QStandardItemModel;
-    lockBlockState = false;
+    lockBlockState = true;
     endOfWord = "~!@#$%^&*()+{}|:<>?,./;'[]\\-= ";
     eow = "~!@#$%^&*()+{}|:<>?,./;'[]\\-=\"";
     cDeligate = new CompleterDelegate;
@@ -417,29 +417,43 @@ void CodeEditor::insertCompletion(const QModelIndex &index){
 }
 
 QString CodeEditor::textUnderCursor() const{
+    // Function to return the word that should be completed. Since WordUnderCursor breaks at non letter chars adjustmens are
+    // required to extend the selection.
     QTextCursor tc = textCursor();
 
     if(tc.hasSelection())
         return "";
 
-    QString charRight = this->toPlainText().at(tc.position());
     tc.select(QTextCursor::WordUnderCursor);
     QString mText = tc.selectedText();
 
-    if(eow.contains(charRight)){
+    if(mText.length() == 0){
+        return "";
+    }
+
+    if(eow.contains(mText)){
+        // look at word before eow char
         tc.setPosition(tc.selectionStart()-1);
         tc.select(QTextCursor::WordUnderCursor);
         mText = tc.selectedText();
     }
 
+    // Check for special char befor word
     tc.setPosition(tc.selectionEnd());
     int start = tc.position()-mText.length()-1;
-    tc.setPosition(start == -1?0:start,QTextCursor::KeepAnchor);
+
+    if(start == -1){
+        return mText;
+    }
+
+    tc.setPosition(start,QTextCursor::KeepAnchor);
     QString nText = tc.selectedText();
 
-    if(nText.at(0) == '$'){
+    if(nText.length() == 0){
+        return "";
+    }else if(nText.at(0) == '$'){
         return nText.trimmed();
-    }else if(nText.at(0) == '"'){
+    }else if(nText.at(0) == '"'){ // If in html inside a class or id property add . or #
         start = start - 2;
         tc.setPosition(start < 0 ? 0:start,QTextCursor::KeepAnchor);
         nText = tc.selectedText();
@@ -913,9 +927,10 @@ void CodeEditor::scanForCss(QString code)
             QList<QStandardItem *> result = htmlCustomCompModel->findItems(match.captured());
             if(result.length() == 0){
                 QList<QStandardItem *> tmpList;
-                tmpList << new QStandardItem(match.captured("name"));
-                tmpList << new QStandardItem(match.captured("type"));
-                phpCustomCompModel->appendRow(tmpList);
+                tmpList << new QStandardItem(match.captured("type")+match.captured("name"));
+                tmpList << new QStandardItem(match.captured("type") == "#" ? "id":"class");
+                htmlCustomCompModel->appendRow(tmpList);
+                qDebug() << tmpList.at(0);
             }
         }
     }
