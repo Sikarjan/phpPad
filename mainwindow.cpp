@@ -162,6 +162,12 @@ int MainWindow::addEditor(QString filePath, bool isNew){
     }else{
         QFile *file = new QFile(filePath);
         if(!file->open(QFile::ReadOnly | QFile::Text)){
+            #ifndef QT_NO_CURSOR
+                QApplication::restoreOverrideCursor();
+            #endif
+            QMessageBox::warning(this, tr("File open error"), tr("Unable to open file. ")+filePath);
+            editor->isFileChanged = false;
+            closeTab(index);
             return -1;
         }
         fileName = filePath.section("/",-1,-1);
@@ -547,10 +553,11 @@ void MainWindow::fileUpdater(QString url)
     emit fileUpdated(url);
 }
 
-void MainWindow::handleAppOpenMessage(QString message)
+void MainWindow::handleAppOpenMessage(quint32 instanceId, QByteArray msg)
 {
-    qDebug() << message;
+    QString message(msg);
     message.replace(QString("\\"), QString("/"));
+    message.replace(QString("'"), QString(""));
     addEditor(message);
 }
 

@@ -930,7 +930,6 @@ void CodeEditor::scanForCss(QString code)
                 tmpList << new QStandardItem(match.captured("type")+match.captured("name"));
                 tmpList << new QStandardItem(match.captured("type") == "#" ? "id":"class");
                 htmlCustomCompModel->appendRow(tmpList);
-                qDebug() << tmpList.at(0);
             }
         }
     }

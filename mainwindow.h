@@ -45,7 +45,7 @@ signals:
 public slots:
     void newProjectCreated(QString projectName, QString projectPath);
     void fileUpdater(QString url);
-    void handleAppOpenMessage(QString message);
+    void handleAppOpenMessage(quint32 instanceId, QByteArray msg);
 
 private slots:
     void fileChanged(QString url);

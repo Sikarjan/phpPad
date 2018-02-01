@@ -1,25 +1,33 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <QTranslator>
-#include <qtsingleapplication.h>
+#include <singleapplication.h>
 
 int main(int argc, char *argv[])
 {
     Q_INIT_RESOURCE(qrc);
 
-    QtSingleApplication app(argc, argv);
+    QCoreApplication::setOrganizationName("innoBiz");
+    QCoreApplication::setApplicationName("phpPad");
+    QCoreApplication::setApplicationVersion(APP_VERSION);
 
-    if (app.isRunning()){
-        QString message;
-        for (int a = 1; a < argc; ++a) {
-            message += argv[a];
+    SingleApplication app(argc, argv, true);
 
-        if (a < argc-1)
-            message += " ";
+    MainWindow mainWin;
+
+    if( app.isSecondary() ) {
+        for(int i = 1; i<app.arguments().count(); i++){
+            app.sendMessage( app.arguments().at(i).toUtf8() );
         }
-
-        return !app.sendMessage(message);
+        return 0;
     }
+
+    QObject::connect(&app,&SingleApplication::receivedMessage,&mainWin, &MainWindow::handleAppOpenMessage);
+//    QObject::connect(&app, SIGNAL(receivedMessage(const quint32, const QByteArray)), &mainWin,SLOT(handleAppOpenMessage(const quint32, const QByteArray&)));
+    QObject::connect( &app, &SingleApplication::instanceStarted, [ &mainWin ]() {
+            mainWin.raise();
+            mainWin.activateWindow();
+    });
 
     app.setStyleSheet("QSplitter::handle { background-color: #999999 }");
 
@@ -27,9 +35,6 @@ int main(int argc, char *argv[])
     translator.load("translations/phpPad_" + QLocale::system().name() + ".ts");
     app.installTranslator(&translator);
 
-    QCoreApplication::setOrganizationName("innoBiz");
-    QCoreApplication::setApplicationName("phpPad");
-    QCoreApplication::setApplicationVersion(APP_VERSION);
     QCommandLineParser parser;
     parser.setApplicationDescription(QCoreApplication::applicationName());
     parser.addHelpOption();
@@ -37,17 +42,10 @@ int main(int argc, char *argv[])
     parser.addPositionalArgument("file", "The file to open.");
     parser.process(app);
 
-    MainWindow mainWin;
-    app.setActivationWindow(&mainWin);
-
-    if (!parser.positionalArguments().isEmpty()){
-        mainWin.handleAppOpenMessage(parser.positionalArguments().first());
-    }
+    foreach (const QString &fileName, parser.positionalArguments())
+        mainWin.handleAppOpenMessage(app.instanceId(), fileName.toUtf8());
 
     mainWin.show();
-
-    QObject::connect(&app, SIGNAL(messageReceived(const QString&)), &mainWin,SLOT(handleAppOpenMessage(const QString&)));
-    QObject::connect(&app, SIGNAL(openFile(QString)), &mainWin, SLOT(handleAppOpenMessage(const QString&)));
 
     return app.exec();
 }

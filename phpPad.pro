@@ -4,15 +4,16 @@
 #
 #-------------------------------------------------
 
-QT       += core gui xml network
+QT       += core gui xml network widgets
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 8): QT += widgets
 
-include(plugins/qtsingleapplication/src/qtsingleapplication.pri)
+include(plugins/singleapplication/singleapplication.pri)
+DEFINES += QAPPLICATION_CLASS=QApplication
 
 TARGET = phpPad
 TEMPLATE = app
-VERSION = 0.1.5
+VERSION = 0.1.6
 GIT_VERSION = $$system(git --git-dir $$PWD/.git --work-tree $$PWD rev-list --count HEAD)
 
 # The following define makes your compiler emit warnings if you use

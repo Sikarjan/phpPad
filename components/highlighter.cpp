@@ -443,9 +443,12 @@ void Highlighter::closeTag(QString tag, int returnState, int startPos){
             setFormat(start, word.capturedEnd(), phpTagFormat);
 
             break;
+        }else if(word.captured() == "?>"){
+            setCurrentBlockState(10); // was ist wenn ich nicht zurück zu html sondern zu css oder js will???
+            length = word.capturedStart() - startPos;
+            break;
         }else if(word.captured() == tag){
             setCurrentBlockState(returnState);
-
             length = word.capturedEnd() - startPos;
             break;
         }
