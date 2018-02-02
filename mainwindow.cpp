@@ -4,6 +4,11 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow){
     ui->setupUi(this);
 
+    QTranslator translator;
+    translator.load("phpPad_"+QLocale::system().name().left(2) ,":/translations/translations");
+    qApp->installTranslator(&translator);
+    ui->retranslateUi(this);
+
     isCtrlPressed = false;
     tabPressedCount = 0;
     fileTypes << ".php" << ".html" << ".css" << ".js" << ".txt" << ".*";
@@ -216,6 +221,7 @@ int MainWindow::addEditor(QString filePath, bool isNew){
     ui->actionShowToolbox->setEnabled(true);
     ui->actionShowToolbox->setChecked(false);
     ui->actionContext_help->setEnabled(true);
+    ui->menuSwitchCompleter->setEnabled(true);
     tabOrder.insert(0, index);
 
     #ifndef QT_NO_CURSOR
@@ -485,6 +491,7 @@ void MainWindow::on_tabWidget_currentChanged(int index)
         ui->actionReplace->setEnabled(false);
         ui->actionShowToolbox->setEnabled(false);
         ui->actionContext_help->setEnabled(false);
+        ui->menuSwitchCompleter->setEnabled(false);
         return;
     }
 
@@ -500,6 +507,7 @@ void MainWindow::on_tabWidget_currentChanged(int index)
     ui->actionFind->setEnabled(true);
     ui->actionReplace->setEnabled(true);
     ui->actionContext_help->setEnabled(true);
+    ui->menuSwitchCompleter->setEnabled(true);
 
     QWidget *widget = ui->tabWidget->currentWidget();
     ToolBox *toolBox = widget->findChild<ToolBox *>();
@@ -555,6 +563,7 @@ void MainWindow::fileUpdater(QString url)
 
 void MainWindow::handleAppOpenMessage(quint32 instanceId, QByteArray msg)
 {
+    Q_UNUSED(instanceId);
     QString message(msg);
     message.replace(QString("\\"), QString("/"));
     message.replace(QString("'"), QString(""));
@@ -1172,4 +1181,44 @@ void MainWindow::on_actionAbout_triggered()
     QString msg = tr("Version: ")+APP_VERSION+"\n";
             msg += tr("Build: ")+GIT_VERSION;
     QMessageBox::information(this, tr("About phpPad"), msg, QMessageBox::Ok);
+}
+
+void MainWindow::on_actionToPhp_triggered()
+{
+    CodeEditor *mEditor = checkForEditor();
+    if(mEditor == NULL)
+        return;
+
+    if(mEditor->docType == 0)
+        mEditor->setCompleter(mEditor->phpCompleter);
+}
+
+void MainWindow::on_actionToHtml_triggered()
+{
+    CodeEditor *mEditor = checkForEditor();
+    if(mEditor == NULL)
+        return;
+
+    if(mEditor->docType < 2)
+        mEditor->setCompleter(mEditor->htmlCompleter);
+}
+
+void MainWindow::on_actiontoJavaScript_triggered()
+{
+    CodeEditor *mEditor = checkForEditor();
+    if(mEditor == NULL)
+        return;
+
+    if(mEditor->docType < 4 && mEditor->docType != 2)
+        mEditor->setCompleter(mEditor->jsCompleter);
+}
+
+void MainWindow::on_actionToCss_triggered()
+{
+    CodeEditor *mEditor = checkForEditor();
+    if(mEditor == NULL)
+        return;
+
+    if(mEditor->docType < 3)
+        mEditor->setCompleter(mEditor->cssCompleter);
 }

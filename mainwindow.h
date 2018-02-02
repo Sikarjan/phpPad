@@ -11,6 +11,7 @@
 #include <QMessageBox>
 #include <QStandardItemModel>
 #include <QVariant>
+#include <QTranslator>
 #include <QDebug>
 #include "components/codeeditor.h"
 #include "components/highlighter.h"
@@ -92,6 +93,14 @@ private slots:
     void pCut_triggered();
     void pPast_triggered();
     void on_tabWidget_tabBarClicked(int index);
+
+    void on_actionToPhp_triggered();
+
+    void on_actionToHtml_triggered();
+
+    void on_actiontoJavaScript_triggered();
+
+    void on_actionToCss_triggered();
 
 private:
     Ui::MainWindow *ui;

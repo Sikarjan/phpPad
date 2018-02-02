@@ -245,7 +245,7 @@ Block states:
                 word = parser.next();
             }
 
-            setFormat(start, word.capturedEnd(), phpTagFormat);
+            setFormat(start, word.capturedEnd()-start, phpTagFormat);
             if(parser.hasNext())
                 word = parser.next();
         }else if(word.captured() == "<script type=\"text/javascript\">"){
@@ -255,7 +255,7 @@ Block states:
             setFormat(word.capturedEnd()-1, 1, htmlTagFormat);
         }else if(word.captured() == "<style>"){
             setCurrentBlockState(20);
-            setFormat(word.capturedStart(), word.capturedEnd(), htmlTagFormat);
+            setFormat(word.capturedStart(), word.capturedLength(), htmlTagFormat);
         }
 
         // Start highlighting according to coding language

@@ -4,17 +4,23 @@
 <context>
     <name>CodeEditor</name>
     <message>
-        <location filename="../components/codeeditor.cpp" line="80"/>
+        <location filename="../components/codeeditor.cpp" line="82"/>
         <source>File is opened...</source>
         <translation>Datei wird geöffnet...</translation>
     </message>
     <message>
-        <location filename="../components/codeeditor.cpp" line="608"/>
+        <location filename="../components/codeeditor.cpp" line="161"/>
+        <location filename="../components/codeeditor.cpp" line="716"/>
+        <source>local</source>
+        <translation>lokal</translation>
+    </message>
+    <message>
+        <location filename="../components/codeeditor.cpp" line="667"/>
         <source>Line</source>
         <translation>Zeile</translation>
     </message>
     <message>
-        <location filename="../components/codeeditor.cpp" line="608"/>
+        <location filename="../components/codeeditor.cpp" line="667"/>
         <source>Row</source>
         <translation>Zeichen</translation>
     </message>
@@ -57,310 +63,360 @@
         <translation>&amp;Bearbeiten</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="311"/>
+        <location filename="../mainwindow.ui" line="303"/>
+        <source>Switch Completer</source>
+        <translation>Sprache wechseln</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="325"/>
         <source>&amp;Project</source>
         <translation>&amp;Projekt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="324"/>
+        <location filename="../mainwindow.ui" line="338"/>
         <source>&amp;Insert</source>
         <translation>&amp;Einfügen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="332"/>
+        <location filename="../mainwindow.ui" line="346"/>
         <source>Options</source>
         <translation>Optionen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="340"/>
+        <location filename="../mainwindow.ui" line="354"/>
         <source>Help</source>
         <translation>Hilfe</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="387"/>
+        <location filename="../mainwindow.ui" line="402"/>
         <source>&amp;Open</source>
         <translation>&amp;Öffnen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="390"/>
+        <location filename="../mainwindow.ui" line="405"/>
         <source>Ctrl+O</source>
         <translation>Strg+O</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="398"/>
+        <location filename="../mainwindow.ui" line="413"/>
         <source>&amp;Quit</source>
         <translation>&amp;Schließen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="401"/>
+        <location filename="../mainwindow.ui" line="416"/>
         <source>Quit Application</source>
         <translation>Programm schließen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="411"/>
+        <location filename="../mainwindow.ui" line="426"/>
         <source>&amp;New</source>
         <translation>&amp;Neu</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="414"/>
+        <location filename="../mainwindow.ui" line="429"/>
         <source>New Editor Tab</source>
         <translation>Neuer Editor Tab</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="417"/>
+        <location filename="../mainwindow.ui" line="432"/>
         <source>Ctrl+N</source>
         <translation>Strg+N</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="431"/>
+        <location filename="../mainwindow.ui" line="446"/>
         <source>&amp;Save</source>
         <translation>&amp;Speichern</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="434"/>
+        <location filename="../mainwindow.ui" line="449"/>
         <source>Save...</source>
         <translation>Speichern...</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="437"/>
+        <location filename="../mainwindow.ui" line="452"/>
         <source>Ctrl+S</source>
         <translation>Strg+S</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="451"/>
+        <location filename="../mainwindow.ui" line="466"/>
         <source>Save As...</source>
         <translation>Speichern unter...</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="454"/>
+        <location filename="../mainwindow.ui" line="469"/>
         <source>Ctrl+Shift+S</source>
         <translation>Strg+Umsch+S</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="462"/>
+        <location filename="../mainwindow.ui" line="477"/>
         <source>Close File</source>
         <translation>Datei schließen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="465"/>
+        <location filename="../mainwindow.ui" line="480"/>
         <source>Ctrl+W</source>
         <translation>Strg+W</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="480"/>
+        <location filename="../mainwindow.ui" line="495"/>
         <source>Cut</source>
         <translation>Ausschneiden</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="483"/>
+        <location filename="../mainwindow.ui" line="498"/>
         <source>Ctrl+X</source>
         <translation>Strg+X</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="498"/>
+        <location filename="../mainwindow.ui" line="513"/>
         <source>Copy</source>
         <translation>Kopieren</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="501"/>
+        <location filename="../mainwindow.ui" line="516"/>
         <source>Ctrl+C</source>
         <translation>Strg+C</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="516"/>
+        <location filename="../mainwindow.ui" line="531"/>
         <source>Paste</source>
         <translation>Einfügen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="519"/>
+        <location filename="../mainwindow.ui" line="534"/>
         <source>Ctrl+V</source>
         <translation>Strg+V</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="534"/>
+        <location filename="../mainwindow.ui" line="549"/>
         <source>Undo</source>
         <translation>Rückgängig</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="537"/>
+        <location filename="../mainwindow.ui" line="552"/>
         <source>Ctrl+Z</source>
         <translation>Strg+Z</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="552"/>
+        <location filename="../mainwindow.ui" line="567"/>
         <source>Redo</source>
         <translation>Wiederholen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="555"/>
+        <location filename="../mainwindow.ui" line="570"/>
         <source>Ctrl+Y</source>
         <translation>Strg+Y</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="570"/>
+        <location filename="../mainwindow.ui" line="585"/>
         <source>Reload</source>
         <translation>Zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="573"/>
+        <location filename="../mainwindow.ui" line="588"/>
         <source>Reset the file to the first opened status</source>
         <translation>Stellt den Zustand der Datei wie beim Öffnen wieder her</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="576"/>
+        <location filename="../mainwindow.ui" line="591"/>
         <source>Ctrl+R</source>
         <translation>Strg+R</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="585"/>
+        <location filename="../mainwindow.ui" line="600"/>
         <source>&amp;Open exising</source>
         <translation>&amp;Öffne bestehendes</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="594"/>
+        <location filename="../mainwindow.ui" line="609"/>
         <source>Create &amp;new</source>
         <translation>&amp;Neu erstellen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="602"/>
+        <location filename="../mainwindow.ui" line="617"/>
         <source>Remove</source>
         <translation>Entfernen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="610"/>
+        <location filename="../mainwindow.ui" line="625"/>
         <source>Rename</source>
         <translation>Umbennen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="619"/>
+        <location filename="../mainwindow.ui" line="634"/>
         <source>&amp;Table</source>
         <translation>&amp;Tabelle</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="622"/>
+        <location filename="../mainwindow.ui" line="637"/>
         <source>Insert a standard html table</source>
         <translation>Fügt eine Standard html Tabelle ein</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="625"/>
+        <location filename="../mainwindow.ui" line="640"/>
         <source>Ctrl+T</source>
         <translation>Strg+T</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="634"/>
+        <location filename="../mainwindow.ui" line="649"/>
         <source>&amp;Image</source>
         <translation>&amp;Bild</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="637"/>
+        <location filename="../mainwindow.ui" line="652"/>
         <source>Inserts an image in html</source>
         <translation>Fügt ein Bild in einer html Umgebung ein</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="640"/>
+        <location filename="../mainwindow.ui" line="655"/>
         <source>Ctrl+I</source>
         <translation>Strg+I</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="649"/>
+        <location filename="../mainwindow.ui" line="664"/>
         <source>AJAX</source>
         <translation>AJAX</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="654"/>
+        <location filename="../mainwindow.ui" line="669"/>
         <source>Preferences</source>
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="657"/>
+        <location filename="../mainwindow.ui" line="672"/>
         <source>Ctrl+,</source>
         <translation>Strg++,</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="668"/>
+        <location filename="../mainwindow.ui" line="683"/>
         <source>Show Toolbar</source>
         <translation>Zeige Toolbar</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="671"/>
+        <location filename="../mainwindow.ui" line="686"/>
         <source>Show/hide toolbar</source>
         <translation>Zeige/verstecke Toolbar</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="679"/>
+        <location filename="../mainwindow.ui" line="694"/>
         <source>Restore Tab</source>
         <translation>Tab wieder herstellen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="687"/>
-        <location filename="../mainwindow.cpp" line="996"/>
+        <location filename="../mainwindow.ui" line="702"/>
+        <location filename="../mainwindow.cpp" line="1108"/>
         <source>Go to line</source>
         <translation>Gehe zu Zeile</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="690"/>
+        <location filename="../mainwindow.ui" line="705"/>
         <source>Go to line in current document</source>
         <translation>Gehe zu einer bestimmten Zeile im aktiven Dokument</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="693"/>
+        <location filename="../mainwindow.ui" line="708"/>
         <source>Ctrl+G</source>
         <translation>Strg+G</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="701"/>
+        <location filename="../mainwindow.ui" line="716"/>
         <source>Find</source>
         <translation>Finden</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="704"/>
+        <location filename="../mainwindow.ui" line="719"/>
         <source>Find text</source>
         <translation>Text finden</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="707"/>
+        <location filename="../mainwindow.ui" line="722"/>
         <source>Ctrl+F</source>
         <translation>Strg+F</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="718"/>
+        <location filename="../mainwindow.ui" line="733"/>
         <source>Show Toolbox</source>
         <translation>Werkzeugleiste anzeigen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="721"/>
+        <location filename="../mainwindow.ui" line="736"/>
         <source>Shows/hides toolbox</source>
         <translation>Anzeigen/Verstecken der Werkzeugleiste</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="726"/>
+        <location filename="../mainwindow.ui" line="741"/>
         <source>Context help</source>
         <translation>Kontexthilfe</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="729"/>
+        <location filename="../mainwindow.ui" line="744"/>
         <source>Context help for php functions</source>
         <translation>Kontexthilfe für php Funktionen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="732"/>
+        <location filename="../mainwindow.ui" line="747"/>
         <source>F1</source>
         <translation>F1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="740"/>
+        <location filename="../mainwindow.ui" line="755"/>
         <source>Replace</source>
         <translation>Ersetzten</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="743"/>
+        <location filename="../mainwindow.ui" line="758"/>
         <source>Replace text</source>
         <translation>Text ersetzten</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="746"/>
+        <location filename="../mainwindow.ui" line="761"/>
         <source>Ctrl+D</source>
         <translation>Strg+D</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="766"/>
+        <source>About</source>
+        <translation>Über</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="771"/>
+        <source>php</source>
+        <translation>php</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="774"/>
+        <source>Autocomplete PHP code</source>
+        <translation>Autoverfvollständigung für PHP</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="779"/>
+        <source>html</source>
+        <translation>html</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="782"/>
+        <source>Autocomplete HMTL code</source>
+        <translation>Autoverfvollständigung für HTML</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="787"/>
+        <source>JavaScript</source>
+        <translation>JavaScript</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="790"/>
+        <source>Autocomplete JavaScript code</source>
+        <translation>Autoverfvollständigung für JavaScript</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="795"/>
+        <source>CSS</source>
+        <translation>CSS</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="798"/>
+        <source>Autocomplete CSS code</source>
+        <translation>Autoverfvollständigung für CSS</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="146"/>
@@ -373,191 +429,253 @@
         <translation>Dateiart</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="177"/>
+        <location filename="../mainwindow.cpp" line="183"/>
         <source>File loaded</source>
         <translation>Datei geladen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="252"/>
+        <location filename="../mainwindow.cpp" line="274"/>
         <source>File saved</source>
         <translation>Datei gespeichert</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="261"/>
-        <location filename="../mainwindow.cpp" line="583"/>
+        <location filename="../mainwindow.cpp" line="283"/>
+        <location filename="../mainwindow.cpp" line="612"/>
         <source>Save File</source>
         <translation>Datei speichern</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="583"/>
+        <location filename="../mainwindow.cpp" line="612"/>
         <source>PHP file (*.php, *php3)</source>
         <translation>PHP Datei (*.php, *.php3)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="275"/>
+        <location filename="../mainwindow.cpp" line="297"/>
         <source>Open File</source>
         <translation>Datei öffnen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="261"/>
+        <location filename="../mainwindow.cpp" line="168"/>
+        <source>File open error</source>
+        <translation>Fehler beim Öffnen</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="168"/>
+        <source>Unable to open file. </source>
+        <translation>Es war nicht möglich die Datei zu öffnen.</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="283"/>
         <source>PHP file (*.php *.php3);;CSS file (*.css);; JavaScript file (*.js);;HTML file (*.html *.htm)</source>
         <translation>PHP Datei (*.php *.php3);;CSS Datei (*.css);; JavaScript Datei (*.js);;HTML Datei (*.html *.htm)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="280"/>
+        <location filename="../mainwindow.cpp" line="302"/>
         <source>File Error</source>
         <translation>Datei Fehler</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="280"/>
+        <location filename="../mainwindow.cpp" line="302"/>
         <source>phpPad was not able to open the file.</source>
         <translation>phpPad war es nicht möglch die Datei zu öffnen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="366"/>
+        <location filename="../mainwindow.cpp" line="388"/>
         <source>Do you really want to reset the file to the first opened state? This action cannot be undone. If you want to keep your changes save the document first.</source>
         <translation>Wollen Sie wirklich die Datei auf den Stand beim Öffnen zurücksetzten? Dies kann nicht rückgängig gemacht werden. Falls Sie die Änderungen behalten wollen speichern Sie diese zuerst.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="509"/>
+        <location filename="../mainwindow.cpp" line="535"/>
         <source>Open Directory</source>
         <translation>Ordner öffnen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="513"/>
+        <location filename="../mainwindow.cpp" line="539"/>
         <source>Set Project Name</source>
         <translation>Projektname eingeben</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="513"/>
+        <location filename="../mainwindow.cpp" line="539"/>
         <source>Project Name</source>
         <translation>Projektname</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="564"/>
+        <location filename="../mainwindow.cpp" line="593"/>
         <source>Insert</source>
         <translation>Einfügen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="578"/>
-        <location filename="../mainwindow.cpp" line="769"/>
+        <location filename="../mainwindow.cpp" line="607"/>
+        <location filename="../mainwindow.cpp" line="881"/>
         <source>Create Folder</source>
         <translation>Ordner erstellen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="578"/>
+        <location filename="../mainwindow.cpp" line="607"/>
         <source>Folder Name</source>
         <translation>Ordnername</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="754"/>
+        <location filename="../mainwindow.cpp" line="709"/>
+        <source>key</source>
+        <translation>Schlüssel</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="713"/>
+        <location filename="../mainwindow.cpp" line="715"/>
+        <location filename="../mainwindow.cpp" line="718"/>
+        <source>global</source>
+        <translation>global</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="771"/>
+        <source>Tag</source>
+        <translation>Tag</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="771"/>
+        <source>Attribute</source>
+        <translation>Attribut</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="810"/>
+        <source>Property</source>
+        <translation>Eigenschaft</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="812"/>
+        <source>Value</source>
+        <translation>Wert</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="814"/>
+        <source>Color</source>
+        <translation>Farbe</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="866"/>
         <source>open</source>
         <translation>öffnen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="755"/>
+        <location filename="../mainwindow.cpp" line="867"/>
         <source>rename</source>
         <translation>umbenennen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="757"/>
+        <location filename="../mainwindow.cpp" line="869"/>
         <source>delete</source>
         <translation>löschen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="760"/>
+        <location filename="../mainwindow.cpp" line="872"/>
         <source>&amp;copy</source>
         <translation>&amp;kopieren</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="763"/>
+        <location filename="../mainwindow.cpp" line="875"/>
         <source>cut</source>
         <translation>ausschneiden</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="766"/>
+        <location filename="../mainwindow.cpp" line="878"/>
         <source>past</source>
         <translation>einfügen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="770"/>
+        <location filename="../mainwindow.cpp" line="882"/>
         <source>Add new file</source>
         <translation>Datei hinzufügen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="791"/>
+        <location filename="../mainwindow.cpp" line="903"/>
         <source>Rename project</source>
         <translation>Projekt umbennen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="791"/>
+        <location filename="../mainwindow.cpp" line="903"/>
         <source>New project name:</source>
         <translation>Neuer Projektname:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="805"/>
+        <location filename="../mainwindow.cpp" line="917"/>
         <source>Remove Project</source>
         <translation>Projekt löschen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="805"/>
+        <location filename="../mainwindow.cpp" line="917"/>
         <source>Do you want to remove the active project </source>
         <translation>Wollen Sie wirklich das Projekt </translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="805"/>
+        <location filename="../mainwindow.cpp" line="917"/>
         <source> from your list of projects? No file will be deleted from your disk.</source>
         <translation> aus Ihrer Projektliste löschen? Hierbei wird keine Datei von der Festplatte gelöscht.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="828"/>
+        <location filename="../mainwindow.cpp" line="940"/>
         <source>Completing: </source>
         <translation>Verfollständig: </translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="879"/>
+        <location filename="../mainwindow.cpp" line="991"/>
         <source>Delete file?</source>
         <translation>Datei löschen?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="879"/>
+        <location filename="../mainwindow.cpp" line="991"/>
         <source>Are you sure you want to delete this file? This cannot be undone.</source>
         <translation>Sind Sie sicher, dass Sie die Datei löschen wollen? Dies kann nicht rückgängig gemacht werden.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="894"/>
+        <location filename="../mainwindow.cpp" line="1006"/>
         <source>Close editor?</source>
         <translation>Editor schließen?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="894"/>
+        <location filename="../mainwindow.cpp" line="1006"/>
         <source>The file is still opened in an editor. Do you want to keep the file in the editor?</source>
         <translation>Die Datei ist noch in einem Editor geöffnet. Wollen Sie die Datei im Editor behalten?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="904"/>
+        <location filename="../mainwindow.cpp" line="1016"/>
         <source>File error</source>
         <translation>Dateifehler</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="904"/>
+        <location filename="../mainwindow.cpp" line="1016"/>
         <source>The file could not be removed.</source>
         <translation>Die Datei konnte nicht gelöscht werden.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="961"/>
+        <location filename="../mainwindow.cpp" line="1073"/>
         <source>Error Pasting</source>
         <translation>Fehler beim Einfügen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="961"/>
+        <location filename="../mainwindow.cpp" line="1073"/>
         <source>The file could not be pasted. Either the file already exists or you do not have permissions to write.</source>
         <translation>Die Datei konnte nicht eingefügt werden. Entweder die Datei existiert hier bereits oder Sie haben nicht ausreichende Schreibrechte.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="996"/>
+        <location filename="../mainwindow.cpp" line="1108"/>
         <source>Line Number</source>
         <translation>Zeilennummer</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1176"/>
+        <source>Version: </source>
+        <translation>Version: </translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1177"/>
+        <source>Build: </source>
+        <translation>Build: </translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="1178"/>
+        <source>About phpPad</source>
+        <translation>Über phpPad</translation>
     </message>
 </context>
 <context>
@@ -703,13 +821,13 @@
     </message>
     <message>
         <location filename="../components/toolBox.ui" line="156"/>
-        <location filename="../components/toolBox.ui" line="263"/>
+        <location filename="../components/toolBox.ui" line="284"/>
         <source>Search for:</source>
         <translation>Suche nach:</translation>
     </message>
     <message>
         <location filename="../components/toolBox.ui" line="192"/>
-        <location filename="../components/toolBox.ui" line="291"/>
+        <location filename="../components/toolBox.ui" line="308"/>
         <source>find next</source>
         <translation>nächsten</translation>
     </message>
@@ -719,49 +837,88 @@
         <translation>alle finden</translation>
     </message>
     <message>
-        <location filename="../components/toolBox.ui" line="243"/>
+        <location filename="../components/toolBox.ui" line="225"/>
+        <location filename="../components/toolBox.ui" line="361"/>
+        <source>Case sensitive</source>
+        <translation>Groß-/Kleinschreibung beachten</translation>
+    </message>
+    <message>
+        <location filename="../components/toolBox.ui" line="232"/>
+        <source>Reverse</source>
+        <translation>Rückwerts</translation>
+    </message>
+    <message>
+        <location filename="../components/toolBox.ui" line="239"/>
+        <source>Whole words</source>
+        <translation>Ganzes Wort</translation>
+    </message>
+    <message>
+        <location filename="../components/toolBox.ui" line="264"/>
         <source>Replace</source>
         <translation>Ersetzen</translation>
     </message>
     <message>
-        <location filename="../components/toolBox.ui" line="277"/>
-        <source>Replacement</source>
-        <translation>Ersetzten durch:</translation>
+        <location filename="../components/toolBox.ui" line="294"/>
+        <source>Replace:</source>
+        <translation>Ersetzten:</translation>
     </message>
     <message>
-        <location filename="../components/toolBox.ui" line="311"/>
+        <location filename="../components/toolBox.ui" line="471"/>
+        <source>&lt;</source>
+        <translation>&lt;</translation>
+    </message>
+    <message>
+        <location filename="../components/toolBox.ui" line="499"/>
+        <source>&gt;</source>
+        <translation>&gt;</translation>
+    </message>
+    <message>
+        <location filename="../components/toolBox.ui" line="514"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;.SF NS Text&apos;; font-size:13pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Replacement</source>
+        <translation type="vanished">Ersetzten durch:</translation>
+    </message>
+    <message>
+        <location filename="../components/toolBox.ui" line="328"/>
         <source>replace</source>
         <translation>ersetzten</translation>
     </message>
     <message>
-        <location filename="../components/toolBox.ui" line="335"/>
+        <location filename="../components/toolBox.ui" line="352"/>
         <source>replace all</source>
         <translation>alle ersetzten</translation>
     </message>
     <message>
-        <location filename="../components/toolBox.ui" line="373"/>
+        <location filename="../components/toolBox.ui" line="397"/>
         <source>Help</source>
         <translation>Hilfe</translation>
     </message>
     <message>
-        <location filename="../components/toolBox.ui" line="396"/>
+        <location filename="../components/toolBox.ui" line="420"/>
         <source>Looking for:</source>
         <translation>Suche nach:</translation>
     </message>
     <message>
-        <location filename="../components/toolBox.cpp" line="100"/>
-        <location filename="../components/toolBox.cpp" line="142"/>
+        <location filename="../components/toolBox.cpp" line="96"/>
+        <location filename="../components/toolBox.cpp" line="136"/>
         <source>Search Error</source>
         <translation>Fehler bei Suche</translation>
     </message>
     <message>
-        <location filename="../components/toolBox.cpp" line="100"/>
-        <location filename="../components/toolBox.cpp" line="142"/>
+        <location filename="../components/toolBox.cpp" line="96"/>
+        <location filename="../components/toolBox.cpp" line="136"/>
         <source>The search string could not be found in the document.</source>
         <translation>Der angegebene Text konnte nicht im Dokument gefunden werden.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../components/toolBox.cpp" line="178"/>
+        <location filename="../components/toolBox.cpp" line="184"/>
         <source> found %n time(s)</source>
         <translation>
             <numerusform> %n mal gefunden</numerusform>

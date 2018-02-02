@@ -88,6 +88,10 @@ public:
     QStringList includedFilesList;
     bool lockBlockState;
     QString textUnderCursor() const;
+    QCompleter *phpCompleter;
+    QCompleter *htmlCompleter;
+    QCompleter *cssCompleter;
+    QCompleter *jsCompleter;
 
     void setPhpCompleterList(QStandardItemModel *compList);
     void setHtmlCompleterList(QStandardItemModel *compList);
@@ -137,10 +141,6 @@ private:
     QWidget *lineNumberArea;
     QString lastKey;
     QCompleter *c;
-    QCompleter *phpCompleter;
-    QCompleter *htmlCompleter;
-    QCompleter *cssCompleter;
-    QCompleter *jsCompleter;
     QStandardItemModel *phpCompleterModel;
     QStringList jsCompleterList;
     QStandardItemModel *htmlCompleterModel;

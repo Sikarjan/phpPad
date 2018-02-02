@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include <QApplication>
-#include <QTranslator>
 #include <singleapplication.h>
 
 int main(int argc, char *argv[])
@@ -23,17 +22,12 @@ int main(int argc, char *argv[])
     }
 
     QObject::connect(&app,&SingleApplication::receivedMessage,&mainWin, &MainWindow::handleAppOpenMessage);
-//    QObject::connect(&app, SIGNAL(receivedMessage(const quint32, const QByteArray)), &mainWin,SLOT(handleAppOpenMessage(const quint32, const QByteArray&)));
-    QObject::connect( &app, &SingleApplication::instanceStarted, [ &mainWin ]() {
+    QObject::connect(&app, &SingleApplication::instanceStarted, [ &mainWin ]() {
             mainWin.raise();
             mainWin.activateWindow();
     });
 
     app.setStyleSheet("QSplitter::handle { background-color: #999999 }");
-
-    QTranslator translator;
-    translator.load("translations/phpPad_" + QLocale::system().name() + ".ts");
-    app.installTranslator(&translator);
 
     QCommandLineParser parser;
     parser.setApplicationDescription(QCoreApplication::applicationName());

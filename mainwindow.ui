@@ -295,6 +295,18 @@
     <property name="title">
      <string>&amp;Edit</string>
     </property>
+    <widget class="QMenu" name="menuSwitchCompleter">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="title">
+      <string>Switch Completer</string>
+     </property>
+     <addaction name="actionToPhp"/>
+     <addaction name="actionToHtml"/>
+     <addaction name="actiontoJavaScript"/>
+     <addaction name="actionToCss"/>
+    </widget>
     <addaction name="actionUndo"/>
     <addaction name="actionRedo"/>
     <addaction name="separator"/>
@@ -305,6 +317,8 @@
     <addaction name="actionGo2Line"/>
     <addaction name="actionFind"/>
     <addaction name="actionReplace"/>
+    <addaction name="separator"/>
+    <addaction name="menuSwitchCompleter"/>
    </widget>
    <widget class="QMenu" name="menu_Project">
     <property name="title">
@@ -750,6 +764,38 @@
   <action name="actionAbout">
    <property name="text">
     <string>About</string>
+   </property>
+  </action>
+  <action name="actionToPhp">
+   <property name="text">
+    <string>php</string>
+   </property>
+   <property name="toolTip">
+    <string>Autocomplete PHP code</string>
+   </property>
+  </action>
+  <action name="actionToHtml">
+   <property name="text">
+    <string>html</string>
+   </property>
+   <property name="toolTip">
+    <string>Autocomplete HMTL code</string>
+   </property>
+  </action>
+  <action name="actiontoJavaScript">
+   <property name="text">
+    <string>JavaScript</string>
+   </property>
+   <property name="toolTip">
+    <string>Autocomplete JavaScript code</string>
+   </property>
+  </action>
+  <action name="actionToCss">
+   <property name="text">
+    <string>CSS</string>
+   </property>
+   <property name="toolTip">
+    <string>Autocomplete CSS code</string>
    </property>
   </action>
  </widget>

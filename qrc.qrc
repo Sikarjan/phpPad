@@ -36,5 +36,7 @@
         <file>xml/html.xml</file>
         <file>xml/javascript.xml</file>
     </qresource>
-    <qresource prefix="/"/>
+    <qresource prefix="/translations">
+        <file>translations/phpPad_de.qm</file>
+    </qresource>
 </RCC>

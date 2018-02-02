@@ -153,7 +153,7 @@ void CodeEditor::keyPressEvent(QKeyEvent *e){
 
     // Adding php variables on the fly
     if(endOfWord.contains(e->text()) && completionPrefix.length() > 2){
-        if(currentTextBlockState < 10 && completionPrefix.contains("$")){
+        if(currentTextBlockState < 10 && completionPrefix.contains("$") && !completionPrefix.contains(eow)){
             QList<QStandardItem *> result = phpCustomCompModel->findItems(completionPrefix);
             if(result.length() == 0){
                 QList<QStandardItem *> tmpList;
