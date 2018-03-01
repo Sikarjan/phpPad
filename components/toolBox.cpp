@@ -4,6 +4,11 @@
 ToolBox::ToolBox(QWidget *parent) : QWidget(parent), ui(new Ui::ToolBox){
     ui->setupUi(this);
 
+    QTranslator translator;
+    translator.load("phpPad_"+QLocale::system().name().left(2) ,":/translations/translations");
+    qApp->installTranslator(&translator);
+    ui->retranslateUi(this);
+
     networkManager = new QNetworkAccessManager(this);
     history = new QList<QUrl>;
     historyIndex = -1;

@@ -47,6 +47,7 @@ public slots:
     void newProjectCreated(QString projectName, QString projectPath);
     void fileUpdater(QString url);
     void handleAppOpenMessage(quint32 instanceId, QByteArray msg);
+    void uiLanguageChanged(QString lang);
 
 private slots:
     void fileChanged(QString url);
@@ -93,13 +94,9 @@ private slots:
     void pCut_triggered();
     void pPast_triggered();
     void on_tabWidget_tabBarClicked(int index);
-
     void on_actionToPhp_triggered();
-
     void on_actionToHtml_triggered();
-
     void on_actiontoJavaScript_triggered();
-
     void on_actionToCss_triggered();
 
 private:

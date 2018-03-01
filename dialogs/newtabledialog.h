@@ -2,6 +2,7 @@
 #define NEWTABLEDIALOG_H
 
 #include <QDialog>
+#include <QTranslator>
 
 namespace Ui {
 class NewTableDialog;

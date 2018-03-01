@@ -7,6 +7,11 @@ NewProject::NewProject(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    QTranslator translator;
+    translator.load("phpPad_"+QLocale::system().name().left(2) ,":/translations/translations");
+    qApp->installTranslator(&translator);
+    ui->retranslateUi(this);
+
     QSettings settings("InnoBiz", "phpPad");
     settings.beginGroup("newProject");
     mPath = settings.value("mainFolder", "").toString();

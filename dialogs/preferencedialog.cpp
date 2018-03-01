@@ -7,19 +7,34 @@ PreferenceDialog::PreferenceDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QSettings settings("InnoBiz", "phpPad");
+    QCoreApplication::setOrganizationName("InnoBiz");
+    QCoreApplication::setApplicationName("phpPad");
+
+    QTranslator translator;
+
+    lang = settings.value("window/uiLanguage", "").toString();
+    if(!lang.isEmpty()){
+        translator.load("phpPad_"+lang ,":/translations/translations");
+        qApp->installTranslator(&translator);
+        ui->retranslateUi(this);
+    }
 
     settings.beginGroup("fonts");
-        int fontSize = settings.value("standardFontSize", 0).toInt();
-        ui->fontComboBox->setCurrentFont(QFont(settings.value("standardFont", "Lucida Console").toString()));
+        fSize = settings.value("standardFontSize", 0).toInt();
+        cFont = QFont(settings.value("standardFont", "Lucida Console").toString());
+        ui->fontComboBox->setCurrentFont(cFont);
     settings.endGroup();
 
-    if(fontSize != 0)
-        ui->fontSizeBox->setValue(fontSize);
-    else if(QSysInfo::productType() == "macos")
-        ui->fontSizeBox->setValue(11);
-    else
-        ui->fontSizeBox->setValue(10);
+    if(fSize == 0 && QSysInfo::productType() == "macos")
+        fSize = 11;
+    else if(fSize == 0)
+        fSize = 10;
+
+    ui->fontSizeBox->setValue(fSize);
+
+    if(lang == "de"){
+        ui->uiLangSelector->setCurrentIndex(1);
+    }
 }
 
 PreferenceDialog::~PreferenceDialog()
@@ -29,16 +44,30 @@ PreferenceDialog::~PreferenceDialog()
 
 void PreferenceDialog::on_buttonBox_accepted()
 {
-    QSettings settings("InnoBiz", "phpPad");
-
-    settings.beginGroup("fonts");
-        settings.setValue("standardFont", ui->fontComboBox->currentText());
-        settings.setValue("standardFontSize", ui->fontSizeBox->value());
-    settings.endGroup();
-
     QFont newFont(ui->fontComboBox->currentFont());
-    newFont.setPixelSize(ui->fontSizeBox->value());
-    emit defaultFontChanged(newFont);
+    if(fSize != ui->fontSizeBox->value() || cFont != newFont){
+        settings.beginGroup("fonts");
+            settings.setValue("standardFont", ui->fontComboBox->currentText());
+            settings.setValue("standardFontSize", ui->fontSizeBox->value());
+        settings.endGroup();
+
+        newFont.setPixelSize(ui->fontSizeBox->value());
+        emit defaultFontChanged(newFont);
+    }
+
+    QString uiLang = "";
+    switch (ui->uiLangSelector->currentIndex()) {
+        case 1:
+            uiLang = "de";
+            break;
+        default:
+            break;
+    }
+
+    if(lang != uiLang){
+        settings.setValue("window/uiLanguage", uiLang);
+        emit uiLanguageChanged(uiLang);
+    }
 }
 
 void PreferenceDialog::on_fontComboBox_currentFontChanged(const QFont &f)

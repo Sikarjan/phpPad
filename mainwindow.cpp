@@ -4,11 +4,6 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow){
     ui->setupUi(this);
 
-    QTranslator translator;
-    translator.load("phpPad_"+QLocale::system().name().left(2) ,":/translations/translations");
-    qApp->installTranslator(&translator);
-    ui->retranslateUi(this);
-
     isCtrlPressed = false;
     tabPressedCount = 0;
     fileTypes << ".php" << ".html" << ".css" << ".js" << ".txt" << ".*";
@@ -455,6 +450,14 @@ void MainWindow::loadSettings(){
         ui->mainSplitter->restoreState(settings.value("mainSplitter").toByteArray());
         ui->toolSplitter->restoreState(settings.value("toolSplitter").toByteArray());
         ui->treeView->setColumnWidth(0, settings.value("treeViewColumn0Width",200).toInt());
+
+        QString lang = settings.value("uiLanguage", "").toString();
+        if(!lang.isEmpty()){
+            QTranslator translator;
+            translator.load("phpPad_"+lang ,":/translations/translations");
+            qApp->installTranslator(&translator);
+            ui->retranslateUi(this);
+        }
     settings.endGroup();
 }
 
@@ -568,6 +571,20 @@ void MainWindow::handleAppOpenMessage(quint32 instanceId, QByteArray msg)
     message.replace(QString("\\"), QString("/"));
     message.replace(QString("'"), QString(""));
     addEditor(message);
+}
+
+void MainWindow::uiLanguageChanged(QString lang)
+{
+    QTranslator translator;
+    translator.load("phpPad_de" ,":/translations/translations");
+
+    if(lang == "de"){
+        qApp->installTranslator(&translator);
+    }else{
+        qApp->removeTranslator(&translator);
+    }
+
+    ui->retranslateUi(this);
 }
 
 void MainWindow::showDirContextMenu(const QPoint &pos){

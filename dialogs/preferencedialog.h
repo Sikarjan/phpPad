@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QSettings>
 #include <QDebug>
+#include <QTranslator>
 
 namespace Ui {
 class PreferenceDialog;
@@ -19,6 +20,7 @@ public:
 
 signals:
     void defaultFontChanged(QFont font);
+    void uiLanguageChanged(QString lang);
 
 private slots:
     void on_buttonBox_accepted();
@@ -29,6 +31,10 @@ private:
     Ui::PreferenceDialog *ui;
 
     void fontChanged();
+    QSettings settings;
+    QString lang;
+    int fSize;
+    QFont cFont;
 };
 
 #endif // PREFERENCEDIALOG_H

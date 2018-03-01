@@ -277,7 +277,7 @@ Block states:
                setFormat(word.capturedStart(), text.length()-word.capturedStart(), phpCommentFormat);
                return;
            }else if(word.captured() == "?>"){
-               setCurrentBlockState(phpReturnState ==-1?mDocType:phpReturnState);
+               setCurrentBlockState(phpReturnState ==-1? mDocType:phpReturnState);
                setFormat(word.capturedStart(), word.capturedLength(), phpTagFormat);
            }else if(word.captured().contains(QRegExp("((?<=\\-)\\d+$|^\\d+$)"))){
                startExp = word.capturedStart();

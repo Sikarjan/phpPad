@@ -8,6 +8,7 @@
 #include <QNetworkReply>
 #include <QCompleter>
 #include <QStringListModel>
+#include <QTranslator>
 #include "codeeditor.h"
 
 namespace Ui {

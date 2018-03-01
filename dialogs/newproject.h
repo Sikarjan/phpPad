@@ -5,6 +5,7 @@
 #include <QFileDialog>
 #include <QSettings>
 #include <QDir>
+#include <QTranslator>
 
 namespace Ui {
 class NewProject;

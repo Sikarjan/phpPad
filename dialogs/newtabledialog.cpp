@@ -6,6 +6,11 @@ NewTableDialog::NewTableDialog(QWidget *parent) :
     ui(new Ui::NewTableDialog)
 {
     ui->setupUi(this);
+
+    QTranslator translator;
+    translator.load("phpPad_"+QLocale::system().name().left(2) ,":/translations/translations");
+    qApp->installTranslator(&translator);
+    ui->retranslateUi(this);
 }
 
 NewTableDialog::~NewTableDialog()
