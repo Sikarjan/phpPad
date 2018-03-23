@@ -423,14 +423,6 @@ void MainWindow::saveSettings(){
 void MainWindow::loadSettings(){
     QSettings settings("InnoBiz", "phpPad");
 
-    settings.beginGroup("projects");
-        QStringList keys = settings.allKeys();
-        foreach (QString key, keys) {
-             projects[key] = settings.value(key).toString();
-             ui->projectSelector->insertItem(0, key);
-        }
-    settings.endGroup();
-
     settings.beginGroup("window");
         bool fScreen = settings.value("fullScreen", true).toBool();
         if(fScreen){
@@ -439,14 +431,9 @@ void MainWindow::loadSettings(){
             QRect window = settings.value("position").toRect();
             this->setGeometry(window);
         }
+
         QString lastProject = settings.value("lastProject", "").toString();
-        if(!projects.value(lastProject).isEmpty()){
-            ui->treeView->setRootIndex(dirModel->setRootPath(projects.value(lastProject)));
-            ui->treeView->sortByColumn(0, Qt::AscendingOrder);
-            ui->projectSelector->setCurrentIndex(ui->projectSelector->findText(lastProject));
-            ui->actionRenameCurrentProject->setEnabled(true);
-            ui->actionRemoveCurrentProject->setEnabled(true);
-        }
+
         ui->mainSplitter->restoreState(settings.value("mainSplitter").toByteArray());
         ui->toolSplitter->restoreState(settings.value("toolSplitter").toByteArray());
         ui->treeView->setColumnWidth(0, settings.value("treeViewColumn0Width",200).toInt());
@@ -459,6 +446,22 @@ void MainWindow::loadSettings(){
             ui->retranslateUi(this);
         }
     settings.endGroup();
+
+    settings.beginGroup("projects");
+        QStringList keys = settings.allKeys();
+        foreach (QString key, keys) {
+             projects[key] = settings.value(key).toString();
+             ui->projectSelector->insertItem(0, key);
+        }
+    settings.endGroup();
+
+    if(!projects.value(lastProject).isEmpty()){
+        ui->treeView->setRootIndex(dirModel->setRootPath(projects.value(lastProject)));
+        ui->treeView->sortByColumn(0, Qt::AscendingOrder);
+        ui->projectSelector->setCurrentIndex(ui->projectSelector->findText(lastProject));
+        ui->actionRenameCurrentProject->setEnabled(true);
+        ui->actionRemoveCurrentProject->setEnabled(true);
+    }
 }
 
 CodeEditor *MainWindow::checkForEditor(){
@@ -631,7 +634,7 @@ void MainWindow::showDirContextMenu(const QPoint &pos){
             dirModel->mkdir(index, mName);
         }
     }else if(selectedItem == pAddFile){
-        QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"), dirModel->filePath(index), tr("PHP file (*.php, *php3)")); // ,QDir::homePath(),tr("PHP file (*.php, *php3)"),tr("PHP files (*.php)"), QFileDialog::HideNameFilterDetails
+        QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"), dirModel->filePath(index), tr("PHP file (*.php *php3);; CSS file (*.css);; HTML file (*.html *.htm);; Javascipt file (*.js);; Test file (*.txt);; Other (*.)"));
 
         if(!fileName.isEmpty()){
             QFile sFile(fileName);
