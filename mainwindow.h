@@ -17,6 +17,7 @@
 #include "components/highlighter.h"
 #include "dialogs/newproject.h"
 #include "dialogs/newtabledialog.h"
+#include "dialogs/insertimagedialog.h"
 #include "dialogs/preferencedialog.h"
 #include "components/toolBox.h"
 
@@ -98,6 +99,7 @@ private slots:
     void on_actionToHtml_triggered();
     void on_actiontoJavaScript_triggered();
     void on_actionToCss_triggered();
+    void on_actionImage_triggered();
 
 private:
     Ui::MainWindow *ui;

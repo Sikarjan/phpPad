@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>InsertImageDialog</class>
+ <widget class="QDialog" name="InsertImageDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Insert Image</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Image:</string>
+       </property>
+       <property name="buddy">
+        <cstring>altText</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="imgPath">
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+       <property name="placeholderText">
+        <string>Image Path</string>
+       </property>
+       <property name="clearButtonEnabled">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Select</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Alternative text:</string>
+       </property>
+       <property name="buddy">
+        <cstring>altText</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="altText"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="canvas">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>1</horstretch>
+       <verstretch>1</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>360</width>
+       <height>200</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <property name="text">
+      <string>Image preview</string>
+     </property>
+     <property name="scaledContents">
+      <bool>false</bool>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Caption:</string>
+       </property>
+       <property name="buddy">
+        <cstring>altText</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="captionText"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Width:</string>
+       </property>
+       <property name="buddy">
+        <cstring>altText</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="imgWidth">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="maximum">
+        <number>99999</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Hight:</string>
+       </property>
+       <property name="buddy">
+        <cstring>altText</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="imgHeight">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="maximum">
+        <number>99999</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="imgRelation">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777210</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Keep relation</string>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>pushButton</tabstop>
+  <tabstop>altText</tabstop>
+  <tabstop>imgPath</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>InsertImageDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>InsertImageDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

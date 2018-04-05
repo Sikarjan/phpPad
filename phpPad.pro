@@ -40,7 +40,8 @@ SOURCES += main.cpp\
     dialogs/newproject.cpp \
     dialogs/newtabledialog.cpp \
     dialogs/preferencedialog.cpp \
-    components/completerdelegate.cpp
+    components/completerdelegate.cpp \
+    dialogs/insertimagedialog.cpp
 
 HEADERS  += mainwindow.h \
     components/codeeditor.h \
@@ -50,13 +51,15 @@ HEADERS  += mainwindow.h \
     dialogs/newproject.h \
     dialogs/newtabledialog.h \
     dialogs/preferencedialog.h \
-    components/completerdelegate.h
+    components/completerdelegate.h \
+    dialogs/insertimagedialog.h
 
 FORMS    += mainwindow.ui \
     dialogs/newproject.ui \
     dialogs/newtabledialog.ui \
     dialogs/preferencedialog.ui \
-    components/toolBox.ui
+    components/toolBox.ui \
+    dialogs/insertimagedialog.ui
 
 DISTFILES += \
     appIcon/phpPad.rc \

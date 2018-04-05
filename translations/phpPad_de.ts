@@ -9,20 +9,83 @@
         <translation>Datei wird geöffnet...</translation>
     </message>
     <message>
-        <location filename="../components/codeeditor.cpp" line="161"/>
-        <location filename="../components/codeeditor.cpp" line="716"/>
+        <location filename="../components/codeeditor.cpp" line="170"/>
+        <location filename="../components/codeeditor.cpp" line="725"/>
         <source>local</source>
         <translation>lokal</translation>
     </message>
     <message>
-        <location filename="../components/codeeditor.cpp" line="667"/>
+        <location filename="../components/codeeditor.cpp" line="676"/>
         <source>Line</source>
         <translation>Zeile</translation>
     </message>
     <message>
-        <location filename="../components/codeeditor.cpp" line="667"/>
+        <location filename="../components/codeeditor.cpp" line="676"/>
         <source>Row</source>
         <translation>Zeichen</translation>
+    </message>
+</context>
+<context>
+    <name>InsertImageDialog</name>
+    <message>
+        <location filename="../dialogs/insertimagedialog.ui" line="14"/>
+        <source>Insert Image</source>
+        <translation>Bild einfügen</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/insertimagedialog.ui" line="22"/>
+        <source>Image:</source>
+        <translation>Bild:</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/insertimagedialog.ui" line="35"/>
+        <source>Image Path</source>
+        <translation>Bildpfad</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/insertimagedialog.ui" line="45"/>
+        <source>Select</source>
+        <translation>Öffnen</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/insertimagedialog.ui" line="56"/>
+        <source>Alternative text:</source>
+        <translation>Alternativer Text:</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/insertimagedialog.ui" line="89"/>
+        <source>Image preview</source>
+        <translation>Bildvorschau</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/insertimagedialog.ui" line="104"/>
+        <source>Caption:</source>
+        <translation>Bildunterschirft:</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/insertimagedialog.ui" line="121"/>
+        <source>Width:</source>
+        <translation>Breite:</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/insertimagedialog.ui" line="141"/>
+        <source>Hight:</source>
+        <translation>Höhe:</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/insertimagedialog.ui" line="167"/>
+        <source>Keep relation</source>
+        <translation>Verhältnis beibehalten</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/insertimagedialog.cpp" line="26"/>
+        <source>Select image</source>
+        <translation>Bild auswählen</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/insertimagedialog.cpp" line="26"/>
+        <source>Image Files (*.png *.jpg *.gif)</source>
+        <translation>Bilddateien (*.png *.jpg *.gif)</translation>
     </message>
 </context>
 <context>
@@ -45,7 +108,7 @@
     <message>
         <location filename="../mainwindow.ui" line="245"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body style=&quot;max-width:350px&quot;&gt;&lt;p&gt;&lt;span style=&quot; font-size:large; font-weight:600;&quot;&gt;phpPad&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#aa0000;&quot;&gt;WARNING:&lt;/span&gt; This is still alpha. Please expect bugs and crashes. There is currently no auto save or recovery function.&lt;/p&gt;&lt;p&gt;Start by creating a new project or open an existing project (root folder of you local php files). You can also just edit files. Use File and Open to open an exisitng document.&lt;/p&gt;&lt;p&gt;Use Crtl+Space to trigger the auto completer at any time.&lt;/p&gt;&lt;p&gt;Further documentation and help can be found on &lt;a href=&quot;https://github.com/Sikarjan/phpPad&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;GitHub&lt;/span&gt;&lt;/a&gt;. Please also use GitHub for bug reports and feedback.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="262"/>
@@ -95,7 +158,7 @@
     <message>
         <location filename="../mainwindow.ui" line="405"/>
         <source>Ctrl+O</source>
-        <translation>Strg+O</translation>
+        <translation>Crtl+O</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="413"/>
@@ -120,7 +183,7 @@
     <message>
         <location filename="../mainwindow.ui" line="432"/>
         <source>Ctrl+N</source>
-        <translation>Strg+N</translation>
+        <translation>Ctrl+N</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="446"/>
@@ -135,7 +198,7 @@
     <message>
         <location filename="../mainwindow.ui" line="452"/>
         <source>Ctrl+S</source>
-        <translation>Strg+S</translation>
+        <translation>Ctrl+S</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="466"/>
@@ -145,7 +208,7 @@
     <message>
         <location filename="../mainwindow.ui" line="469"/>
         <source>Ctrl+Shift+S</source>
-        <translation>Strg+Umsch+S</translation>
+        <translation>Ctrl+Shift+S</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="477"/>
@@ -155,7 +218,7 @@
     <message>
         <location filename="../mainwindow.ui" line="480"/>
         <source>Ctrl+W</source>
-        <translation>Strg+W</translation>
+        <translation>Ctrl+W</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="495"/>
@@ -165,7 +228,7 @@
     <message>
         <location filename="../mainwindow.ui" line="498"/>
         <source>Ctrl+X</source>
-        <translation>Strg+X</translation>
+        <translation>Ctrl+X</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="513"/>
@@ -175,7 +238,7 @@
     <message>
         <location filename="../mainwindow.ui" line="516"/>
         <source>Ctrl+C</source>
-        <translation>Strg+C</translation>
+        <translation>Ctrö+C</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="531"/>
@@ -185,7 +248,7 @@
     <message>
         <location filename="../mainwindow.ui" line="534"/>
         <source>Ctrl+V</source>
-        <translation>Strg+V</translation>
+        <translation>Ctrl+V</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="549"/>
@@ -195,7 +258,7 @@
     <message>
         <location filename="../mainwindow.ui" line="552"/>
         <source>Ctrl+Z</source>
-        <translation>Strg+Z</translation>
+        <translation>Ctrl+Z</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="567"/>
@@ -205,7 +268,7 @@
     <message>
         <location filename="../mainwindow.ui" line="570"/>
         <source>Ctrl+Y</source>
-        <translation>Strg+Y</translation>
+        <translation>Ctrl+Y</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="585"/>
@@ -220,7 +283,7 @@
     <message>
         <location filename="../mainwindow.ui" line="591"/>
         <source>Ctrl+R</source>
-        <translation>Strg+R</translation>
+        <translation>Ctrl+R</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="600"/>
@@ -255,7 +318,7 @@
     <message>
         <location filename="../mainwindow.ui" line="640"/>
         <source>Ctrl+T</source>
-        <translation>Strg+T</translation>
+        <translation>Ctrl+T</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="649"/>
@@ -270,7 +333,7 @@
     <message>
         <location filename="../mainwindow.ui" line="655"/>
         <source>Ctrl+I</source>
-        <translation>Strg+I</translation>
+        <translation>Ctrl+I</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="664"/>
@@ -285,7 +348,7 @@
     <message>
         <location filename="../mainwindow.ui" line="672"/>
         <source>Ctrl+,</source>
-        <translation>Strg++,</translation>
+        <translation>Ctrl++,</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="683"/>
@@ -304,7 +367,7 @@
     </message>
     <message>
         <location filename="../mainwindow.ui" line="702"/>
-        <location filename="../mainwindow.cpp" line="1108"/>
+        <location filename="../mainwindow.cpp" line="1143"/>
         <source>Go to line</source>
         <translation>Gehe zu Zeile</translation>
     </message>
@@ -316,7 +379,7 @@
     <message>
         <location filename="../mainwindow.ui" line="708"/>
         <source>Ctrl+G</source>
-        <translation>Strg+G</translation>
+        <translation>Ctrl+G</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="716"/>
@@ -331,7 +394,7 @@
     <message>
         <location filename="../mainwindow.ui" line="722"/>
         <source>Ctrl+F</source>
-        <translation>Strg+F</translation>
+        <translation>Ctrl+F</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="733"/>
@@ -371,7 +434,7 @@
     <message>
         <location filename="../mainwindow.ui" line="761"/>
         <source>Ctrl+D</source>
-        <translation>Strg+D</translation>
+        <translation>Ctrl+D</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="766"/>
@@ -440,14 +503,13 @@
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="283"/>
-        <location filename="../mainwindow.cpp" line="612"/>
+        <location filename="../mainwindow.cpp" line="637"/>
         <source>Save File</source>
         <translation>Datei speichern</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="612"/>
         <source>PHP file (*.php, *php3)</source>
-        <translation>PHP Datei (*.php, *.php3)</translation>
+        <translation type="vanished">PHP Datei (*.php, *.php3)</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="297"/>
@@ -485,195 +547,200 @@
         <translation>Wollen Sie wirklich die Datei auf den Stand beim Öffnen zurücksetzten? Dies kann nicht rückgängig gemacht werden. Falls Sie die Änderungen behalten wollen speichern Sie diese zuerst.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="535"/>
+        <location filename="../mainwindow.cpp" line="546"/>
         <source>Open Directory</source>
         <translation>Ordner öffnen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="539"/>
+        <location filename="../mainwindow.cpp" line="550"/>
         <source>Set Project Name</source>
         <translation>Projektname eingeben</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="539"/>
+        <location filename="../mainwindow.cpp" line="550"/>
         <source>Project Name</source>
         <translation>Projektname</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="593"/>
+        <location filename="../mainwindow.cpp" line="618"/>
         <source>Insert</source>
         <translation>Einfügen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="607"/>
-        <location filename="../mainwindow.cpp" line="881"/>
+        <location filename="../mainwindow.cpp" line="632"/>
+        <location filename="../mainwindow.cpp" line="916"/>
         <source>Create Folder</source>
         <translation>Ordner erstellen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="607"/>
+        <location filename="../mainwindow.cpp" line="632"/>
         <source>Folder Name</source>
         <translation>Ordnername</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="709"/>
+        <location filename="../mainwindow.cpp" line="637"/>
+        <source>PHP file (*.php *php3);; CSS file (*.css);; HTML file (*.html *.htm);; Javascipt file (*.js);; Test file (*.txt);; Other (*.)</source>
+        <translation>PHP Datei (*.php *php3);; CSS Datei (*.css);; HTML Datei (*.html *.htm);; Javascipt Datei (*.js);; Text Datei (*.txt);; Alles (*.)</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="744"/>
         <source>key</source>
         <translation>Schlüssel</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="713"/>
-        <location filename="../mainwindow.cpp" line="715"/>
-        <location filename="../mainwindow.cpp" line="718"/>
+        <location filename="../mainwindow.cpp" line="748"/>
+        <location filename="../mainwindow.cpp" line="750"/>
+        <location filename="../mainwindow.cpp" line="753"/>
         <source>global</source>
         <translation>global</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="771"/>
+        <location filename="../mainwindow.cpp" line="806"/>
         <source>Tag</source>
         <translation>Tag</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="771"/>
+        <location filename="../mainwindow.cpp" line="806"/>
         <source>Attribute</source>
         <translation>Attribut</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="810"/>
+        <location filename="../mainwindow.cpp" line="845"/>
         <source>Property</source>
         <translation>Eigenschaft</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="812"/>
+        <location filename="../mainwindow.cpp" line="847"/>
         <source>Value</source>
         <translation>Wert</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="814"/>
+        <location filename="../mainwindow.cpp" line="849"/>
         <source>Color</source>
         <translation>Farbe</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="866"/>
+        <location filename="../mainwindow.cpp" line="901"/>
         <source>open</source>
         <translation>öffnen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="867"/>
+        <location filename="../mainwindow.cpp" line="902"/>
         <source>rename</source>
         <translation>umbenennen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="869"/>
+        <location filename="../mainwindow.cpp" line="904"/>
         <source>delete</source>
         <translation>löschen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="872"/>
+        <location filename="../mainwindow.cpp" line="907"/>
         <source>&amp;copy</source>
         <translation>&amp;kopieren</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="875"/>
+        <location filename="../mainwindow.cpp" line="910"/>
         <source>cut</source>
         <translation>ausschneiden</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="878"/>
+        <location filename="../mainwindow.cpp" line="913"/>
         <source>past</source>
         <translation>einfügen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="882"/>
+        <location filename="../mainwindow.cpp" line="917"/>
         <source>Add new file</source>
         <translation>Datei hinzufügen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="903"/>
+        <location filename="../mainwindow.cpp" line="938"/>
         <source>Rename project</source>
         <translation>Projekt umbennen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="903"/>
+        <location filename="../mainwindow.cpp" line="938"/>
         <source>New project name:</source>
         <translation>Neuer Projektname:</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="917"/>
+        <location filename="../mainwindow.cpp" line="952"/>
         <source>Remove Project</source>
         <translation>Projekt löschen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="917"/>
+        <location filename="../mainwindow.cpp" line="952"/>
         <source>Do you want to remove the active project </source>
         <translation>Wollen Sie wirklich das Projekt </translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="917"/>
+        <location filename="../mainwindow.cpp" line="952"/>
         <source> from your list of projects? No file will be deleted from your disk.</source>
         <translation> aus Ihrer Projektliste löschen? Hierbei wird keine Datei von der Festplatte gelöscht.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="940"/>
+        <location filename="../mainwindow.cpp" line="975"/>
         <source>Completing: </source>
         <translation>Verfollständig: </translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="991"/>
+        <location filename="../mainwindow.cpp" line="1026"/>
         <source>Delete file?</source>
         <translation>Datei löschen?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="991"/>
+        <location filename="../mainwindow.cpp" line="1026"/>
         <source>Are you sure you want to delete this file? This cannot be undone.</source>
         <translation>Sind Sie sicher, dass Sie die Datei löschen wollen? Dies kann nicht rückgängig gemacht werden.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1006"/>
+        <location filename="../mainwindow.cpp" line="1041"/>
         <source>Close editor?</source>
         <translation>Editor schließen?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1006"/>
+        <location filename="../mainwindow.cpp" line="1041"/>
         <source>The file is still opened in an editor. Do you want to keep the file in the editor?</source>
         <translation>Die Datei ist noch in einem Editor geöffnet. Wollen Sie die Datei im Editor behalten?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1016"/>
+        <location filename="../mainwindow.cpp" line="1051"/>
         <source>File error</source>
         <translation>Dateifehler</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1016"/>
+        <location filename="../mainwindow.cpp" line="1051"/>
         <source>The file could not be removed.</source>
         <translation>Die Datei konnte nicht gelöscht werden.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1073"/>
+        <location filename="../mainwindow.cpp" line="1108"/>
         <source>Error Pasting</source>
         <translation>Fehler beim Einfügen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1073"/>
+        <location filename="../mainwindow.cpp" line="1108"/>
         <source>The file could not be pasted. Either the file already exists or you do not have permissions to write.</source>
         <translation>Die Datei konnte nicht eingefügt werden. Entweder die Datei existiert hier bereits oder Sie haben nicht ausreichende Schreibrechte.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1108"/>
+        <location filename="../mainwindow.cpp" line="1143"/>
         <source>Line Number</source>
         <translation>Zeilennummer</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1176"/>
+        <location filename="../mainwindow.cpp" line="1211"/>
         <source>Version: </source>
         <translation>Version: </translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1177"/>
+        <location filename="../mainwindow.cpp" line="1212"/>
         <source>Build: </source>
         <translation>Build: </translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1178"/>
+        <location filename="../mainwindow.cpp" line="1213"/>
         <source>About phpPad</source>
         <translation>Über phpPad</translation>
     </message>
@@ -711,12 +778,12 @@
         <translation>Stammverzeichnis</translation>
     </message>
     <message>
-        <location filename="../dialogs/newproject.cpp" line="27"/>
+        <location filename="../dialogs/newproject.cpp" line="32"/>
         <source>Open Directory</source>
         <translation>Ordner auswählen</translation>
     </message>
     <message>
-        <location filename="../dialogs/newproject.cpp" line="41"/>
+        <location filename="../dialogs/newproject.cpp" line="46"/>
         <source>This folder already exists.</source>
         <translation>Dieser Ordner existiert bereits.</translation>
     </message>
@@ -795,6 +862,21 @@
         <location filename="../dialogs/preferencedialog.ui" line="95"/>
         <source>Highlighting</source>
         <translation>Hervorhebung</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/preferencedialog.ui" line="100"/>
+        <source>Language</source>
+        <translation>Sprache</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/preferencedialog.ui" line="108"/>
+        <source>Select UI Language*</source>
+        <translation>Sprache auswälen*</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/preferencedialog.ui" line="144"/>
+        <source>* Requires restart of the app</source>
+        <translation>* Benötigt einen Neustart des Programms</translation>
     </message>
 </context>
 <context>
@@ -879,7 +961,7 @@
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;.SF NS Text&apos;; font-size:13pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Replacement</source>
@@ -906,23 +988,23 @@ p, li { white-space: pre-wrap; }
         <translation>Suche nach:</translation>
     </message>
     <message>
-        <location filename="../components/toolBox.cpp" line="96"/>
-        <location filename="../components/toolBox.cpp" line="136"/>
+        <location filename="../components/toolBox.cpp" line="101"/>
+        <location filename="../components/toolBox.cpp" line="141"/>
         <source>Search Error</source>
         <translation>Fehler bei Suche</translation>
     </message>
     <message>
-        <location filename="../components/toolBox.cpp" line="96"/>
-        <location filename="../components/toolBox.cpp" line="136"/>
+        <location filename="../components/toolBox.cpp" line="101"/>
+        <location filename="../components/toolBox.cpp" line="141"/>
         <source>The search string could not be found in the document.</source>
         <translation>Der angegebene Text konnte nicht im Dokument gefunden werden.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../components/toolBox.cpp" line="184"/>
+        <location filename="../components/toolBox.cpp" line="189"/>
         <source> found %n time(s)</source>
         <translation>
             <numerusform> %n mal gefunden</numerusform>
-            <numerusform></numerusform>
+            <numerusform> %n mal gefunden</numerusform>
         </translation>
     </message>
 </context>

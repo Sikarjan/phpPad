@@ -563,7 +563,7 @@ void MainWindow::newProjectCreated(QString projectName, QString projectPath){
 
 void MainWindow::fileUpdater(QString url)
 {
-    qDebug() << "emitting: "+url;
+//    qDebug() << "emitting: "+url;
     emit fileUpdated(url);
 }
 
@@ -661,6 +661,16 @@ void MainWindow::on_action_Table_triggered()
     newTableDialog.setModal(true);
     connect(&newTableDialog,SIGNAL(insertNewTable(int,int,int,QString)), mEditor, SLOT(insertTable(int,int,int,QString)));
     newTableDialog.exec();
+}
+
+void MainWindow::on_actionImage_triggered()
+{
+    CodeEditor *mEditor = checkForEditor();
+    InsertImageDialog imgDialog;
+    imgDialog.setModal(true);
+    imgDialog.mPath = projects[ui->projectSelector->currentText()];
+    connect(&imgDialog, SIGNAL(insertNewImage(QString,QString,QString,int,int)), mEditor, SLOT(insertImage(QString,QString,QString,int,int)));
+    imgDialog.exec();
 }
 
 void MainWindow::updateIncFilesView(){

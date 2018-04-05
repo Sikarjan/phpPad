@@ -134,11 +134,20 @@ void CodeEditor::keyPressEvent(QKeyEvent *e){
     }else if(e->text() == "("){
         matchChracter("(", ")");
         return;
+    }else if(e->text() == ")" && lastKey == "("){
+        this->moveCursor(QTextCursor::Right, QTextCursor::MoveAnchor);
+        return;
     }else if(e->text() == "["){
         matchChracter("[", "]");
         return;
+    }else if(e->text() == "]" && lastKey == "["){
+        this->moveCursor(QTextCursor::Right, QTextCursor::MoveAnchor);
+        return;
     }else if(e->text() == "{"){
         matchChracter("{", "}");
+        return;
+    }else if(e->text() == "}" && lastKey == "{"){
+        this->moveCursor(QTextCursor::Right, QTextCursor::MoveAnchor);
         return;
     }else if(e->key() == Qt::Key_Return){
         if (currentTextBlockState == 10 && (e->modifiers() & Qt::ShiftModifier))
@@ -437,7 +446,7 @@ QString CodeEditor::textUnderCursor() const{
         tc.select(QTextCursor::WordUnderCursor);
         mText = tc.selectedText();
     }
-
+qDebug() << "nach" << mText;
     // Check for special char befor word
     tc.setPosition(tc.selectionEnd());
     int start = tc.position()-mText.length()-1;
@@ -974,7 +983,7 @@ void CodeEditor::insertTable(int columns, int rows, int header, QString caption)
     if(match.hasMatch())
         tabs += match.captured(0);
 
-    this->insertPlainText("<table>");
+    this->insertPlainText(tabs+"<table>");
     if(!caption.isEmpty())
         this->insertPlainText(tabs+"\t<caption>"+caption+"</caption>");
     for(int i = 0; i<rows; ++i){
@@ -989,6 +998,31 @@ void CodeEditor::insertTable(int columns, int rows, int header, QString caption)
     }
 
     this->insertPlainText(tabs+"</table>");
+}
+
+void CodeEditor::insertImage(QString path, QString alt, QString caption, int width, int height){
+    QString tabs = "\n";
+    QTextCursor curs = textCursor();
+    curs.select(QTextCursor::BlockUnderCursor);
+
+    QRegularExpression rx("(?<=^.)(\\s)", QRegularExpression::DotMatchesEverythingOption);
+    QRegularExpressionMatch match = rx.match(curs.selectedText());
+
+    if(match.hasMatch())
+        tabs += match.captured(0);
+
+    QFileInfo file(url);
+    QDir dir(file.absolutePath());
+    QString relPath = dir.relativeFilePath(path);
+
+    if(caption.isEmpty()){
+        this->insertPlainText(tabs+"<img src=\""+relPath+"\" alt=\""+alt+"\" width=\""+QString::number(width)+"\" height=\""+QString::number(height)+"\" >");
+    }else{
+        this->insertPlainText(tabs+"<figure>");
+        this->insertPlainText(tabs+"\t<img src=\""+relPath+"\" alt=\""+alt+"\" width=\""+QString::number(width)+"\" height=\""+QString::number(height)+"\" >");
+        this->insertPlainText(tabs+"\t<figcaption>"+caption+"</figcaption>");
+        this->insertPlainText(tabs+"</figure>");
+    }
 }
 
 void CodeEditor::textHasChanged()

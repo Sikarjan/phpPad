@@ -135,6 +135,7 @@ private slots:
     void setRedoAvailable(bool state);
     void currentCurserPosition();
     void insertTable(int columns, int rows, int header, QString caption);
+    void insertImage(QString path, QString alt, QString caption, int width, int height);
     void textHasChanged();
 
 private:

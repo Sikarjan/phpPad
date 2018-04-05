@@ -402,7 +402,7 @@
     <string>&amp;Open</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+O</string>
+    <string>Ctrl+O</string>
    </property>
   </action>
   <action name="action_Close">
@@ -429,7 +429,7 @@
     <string>New Editor Tab</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+N</string>
+    <string>Ctrl+N</string>
    </property>
   </action>
   <action name="actionSave">
@@ -449,7 +449,7 @@
     <string>Save...</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+S</string>
+    <string>Ctrl+S</string>
    </property>
   </action>
   <action name="actionSave_As">
@@ -466,7 +466,7 @@
     <string>Save As...</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Shift+S</string>
+    <string>Ctrl+Shift+S</string>
    </property>
   </action>
   <action name="actionCloseFile">
@@ -477,7 +477,7 @@
     <string>Close File</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+W</string>
+    <string>Ctrl+W</string>
    </property>
   </action>
   <action name="actionCut">
@@ -495,7 +495,7 @@
     <string>Cut</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+X</string>
+    <string>Ctrl+X</string>
    </property>
   </action>
   <action name="actionCopy">
@@ -513,7 +513,7 @@
     <string>Copy</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+C</string>
+    <string>Ctrl+C</string>
    </property>
   </action>
   <action name="actionPaste">
@@ -531,7 +531,7 @@
     <string>Paste</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+V</string>
+    <string>Ctrl+V</string>
    </property>
   </action>
   <action name="actionUndo">
@@ -549,7 +549,7 @@
     <string>Undo</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Z</string>
+    <string>Ctrl+Z</string>
    </property>
   </action>
   <action name="actionRedo">
@@ -567,7 +567,7 @@
     <string>Redo</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Y</string>
+    <string>Ctrl+Y</string>
    </property>
   </action>
   <action name="actionReload">
@@ -588,7 +588,7 @@
     <string>Reset the file to the first opened status</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+R</string>
+    <string>Ctrl+R</string>
    </property>
   </action>
   <action name="actionOpenExisingProject">
@@ -637,7 +637,7 @@
     <string>Insert a standard html table</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+T</string>
+    <string>Ctrl+T</string>
    </property>
   </action>
   <action name="actionImage">
@@ -652,7 +652,7 @@
     <string>Inserts an image in html</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+I</string>
+    <string>Ctrl+I</string>
    </property>
   </action>
   <action name="actionAJAX">
@@ -669,7 +669,7 @@
     <string>Preferences</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+,</string>
+    <string>Ctrl+,</string>
    </property>
   </action>
   <action name="actionShow_Toolbar">
@@ -705,7 +705,7 @@
     <string>Go to line in current document</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+G</string>
+    <string>Ctrl+G</string>
    </property>
   </action>
   <action name="actionFind">
@@ -719,7 +719,7 @@
     <string>Find text</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+F</string>
+    <string>Ctrl+F</string>
    </property>
   </action>
   <action name="actionShowToolbox">
@@ -744,7 +744,7 @@
     <string>Context help for php functions</string>
    </property>
    <property name="shortcut">
-    <string notr="true">F1</string>
+    <string>F1</string>
    </property>
   </action>
   <action name="actionReplace">
@@ -758,7 +758,7 @@
     <string>Replace text</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+D</string>
+    <string>Ctrl+D</string>
    </property>
   </action>
   <action name="actionAbout">

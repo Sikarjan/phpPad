@@ -72,6 +72,8 @@ Highlighter::Highlighter(QTextDocument *document, QStringListModel *keyWords, QS
     htmlReturnState = 10;
     mDocType = 10;
 
+    standardTagFormat.setForeground(Qt::black);
+
 // PHP formatting
     phpTagFormat.setForeground(Qt::red);
     phpVariableFormat.setForeground(Qt::blue);
@@ -246,6 +248,7 @@ Block states:
             }
 
             setFormat(start, word.capturedEnd()-start, phpTagFormat);
+//            qDebug() << "setting format " << start << ":" << word.capturedEnd();
             if(parser.hasNext())
                 word = parser.next();
         }else if(word.captured() == "<script type=\"text/javascript\">"){
