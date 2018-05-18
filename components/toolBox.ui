@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>200</width>
+    <width>250</width>
     <height>582</height>
    </rect>
   </property>
@@ -100,7 +100,7 @@
          </size>
         </property>
         <property name="toolTip">
-         <string comment="Close search bar"/>
+         <string notr="true" comment="Close search bar"/>
         </property>
         <property name="whatsThis">
          <string notr="true"/>
@@ -126,7 +126,7 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>197</width>
+        <width>247</width>
         <height>464</height>
        </rect>
       </property>
@@ -256,7 +256,7 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>197</width>
+        <width>247</width>
         <height>464</height>
        </rect>
       </property>
@@ -389,7 +389,7 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>197</width>
+        <width>247</width>
         <height>464</height>
        </rect>
       </property>
@@ -467,6 +467,9 @@
              <height>23</height>
             </size>
            </property>
+           <property name="toolTip">
+            <string notr="true"/>
+           </property>
            <property name="text">
             <string>&lt;</string>
            </property>
@@ -494,6 +497,9 @@
              <width>23</width>
              <height>23</height>
             </size>
+           </property>
+           <property name="toolTip">
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>&gt;</string>

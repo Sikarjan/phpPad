@@ -59,7 +59,7 @@ CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent), c(0)
     lineNumberArea = new LineNumberArea(this);
     includedFilesModel = new QStandardItemModel;
     lockBlockState = true;
-    endOfWord = "~!@#$%^&*()+{}|:<>?,./;'[]\\-= ";
+    endOfWord = "~!@#$%^&*()+{}|:<>?,./;'[]\\= ";
     eow = "~!@#$%^&*()+{}|:<>?,./;'[]\\-=\"";
     cDeligate = new CompleterDelegate;
 
@@ -189,6 +189,7 @@ void CodeEditor::keyPressEvent(QKeyEvent *e){
         return;
 
     bool hasModifier = (e->modifiers() != Qt::NoModifier) && !ctrlOrShift;
+
     completionPrefix = textUnderCursor();
 
     if (!isShortcut && (hasModifier || e->text().isEmpty()|| completionPrefix.length() < 3 || endOfWord.contains(e->text().right(1)))) {
@@ -303,7 +304,11 @@ void CodeEditor::decreaseSelectionIndent(){
         if(line.at(1) == '\t'){
             curs.movePosition(QTextCursor::StartOfBlock, QTextCursor::MoveAnchor);
             curs.deleteChar();
+        }else if(line.at(1) == ' '){
+            curs.movePosition(QTextCursor::StartOfBlock, QTextCursor::MoveAnchor);
+            curs.deleteChar();
         }
+
         return;
     }
 
@@ -332,6 +337,9 @@ void CodeEditor::decreaseSelectionIndent(){
         curs.select(QTextCursor::BlockUnderCursor);
         line = curs.selectedText();
         if(line.at(1) == '\t'){
+            curs.movePosition(QTextCursor::StartOfBlock, QTextCursor::MoveAnchor);
+            curs.deleteChar();
+        }else if(line.at(1) == ' '){
             curs.movePosition(QTextCursor::StartOfBlock, QTextCursor::MoveAnchor);
             curs.deleteChar();
         }
@@ -440,13 +448,14 @@ QString CodeEditor::textUnderCursor() const{
         return "";
     }
 
-    if(eow.contains(mText)){
+/*    if(eow.contains(mText)){
+
         // look at word before eow char
         tc.setPosition(tc.selectionStart()-1);
         tc.select(QTextCursor::WordUnderCursor);
         mText = tc.selectedText();
-    }
-qDebug() << "nach" << mText;
+    }*/
+
     // Check for special char befor word
     tc.setPosition(tc.selectionEnd());
     int start = tc.position()-mText.length()-1;
@@ -470,6 +479,18 @@ qDebug() << "nach" << mText;
             return "#"+mText.trimmed();
         else if(nText.at(0) == 's')
             return "."+mText.trimmed();
+    }else if(nText.at(0) == '-'){
+        if(start == 0)
+            return mText;
+
+        tc.setPosition(start-1);
+        tc.select(QTextCursor::WordUnderCursor);
+        QString oText = tc.selectedText();
+
+        if(oText.isEmpty())
+            return mText;
+        else
+            return oText+nText;
     }
 
     return mText.trimmed();
@@ -939,6 +960,7 @@ void CodeEditor::scanForCss(QString code)
                 tmpList << new QStandardItem(match.captured("type")+match.captured("name"));
                 tmpList << new QStandardItem(match.captured("type") == "#" ? "id":"class");
                 htmlCustomCompModel->appendRow(tmpList);
+                qDebug() << tmpList;
             }
         }
     }

@@ -59,7 +59,6 @@ struct ParenthesisInfo {
 class TextBlockData : public QTextBlockUserData {
 public:
     TextBlockData();
-
     QVector<ParenthesisInfo *> parentheses();
     void insert(ParenthesisInfo *info);
 
