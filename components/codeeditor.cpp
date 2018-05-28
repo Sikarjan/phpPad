@@ -241,7 +241,6 @@ void CodeEditor::matchTabstop(QString lastChar){
         this->moveCursor(QTextCursor::Right, QTextCursor::MoveAnchor);
         this->lastKey = " ";
     }
-    return;
 }
 
 void CodeEditor::increaseSelectionIndent(){
@@ -297,18 +296,18 @@ void CodeEditor::decreaseSelectionIndent(){
     QString line;
 
     if(!curs.hasSelection()){
-        curs.movePosition(QTextCursor::StartOfBlock, QTextCursor::MoveAnchor);
         curs.select(QTextCursor::BlockUnderCursor);
         line = curs.selectedText();
 
-        if(line.at(1) == '\t'){
+        if(line.isEmpty()){
+
+        }else if(line.at(1) == '\t'){
             curs.movePosition(QTextCursor::StartOfBlock, QTextCursor::MoveAnchor);
             curs.deleteChar();
         }else if(line.at(1) == ' '){
             curs.movePosition(QTextCursor::StartOfBlock, QTextCursor::MoveAnchor);
             curs.deleteChar();
         }
-
         return;
     }
 
@@ -320,23 +319,24 @@ void CodeEditor::decreaseSelectionIndent(){
         std::swap(spos, epos);
     }
 
-    curs.setPosition(spos, QTextCursor::MoveAnchor);
-    int sblock = curs.block().blockNumber();
-
     curs.setPosition(epos, QTextCursor::MoveAnchor);
     int eblock = curs.block().blockNumber();
 
-    // Do the indent.
+
     curs.setPosition(spos, QTextCursor::MoveAnchor);
-    curs.beginEditBlock();
+    int sblock = curs.block().blockNumber();
 
     const int blockDifference = eblock - sblock;
 
+    // Do the indent.
+    curs.beginEditBlock();
     for(int i = 0; i <= blockDifference; ++i){
-        curs.movePosition(QTextCursor::StartOfBlock, QTextCursor::MoveAnchor);
         curs.select(QTextCursor::BlockUnderCursor);
         line = curs.selectedText();
-        if(line.at(1) == '\t'){
+
+        if(line.isEmpty()){
+
+        }else if(line.at(1) == '\t'){
             curs.movePosition(QTextCursor::StartOfBlock, QTextCursor::MoveAnchor);
             curs.deleteChar();
         }else if(line.at(1) == ' '){
