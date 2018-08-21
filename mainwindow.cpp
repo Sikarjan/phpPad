@@ -239,7 +239,7 @@ void MainWindow::fileChanged(QString url){
 // Handling Actions
 void MainWindow::on_actionSave_triggered(){
     CodeEditor *mEditor = checkForEditor();
-    if(mEditor == NULL)
+    if(mEditor == nullptr)
         return;
 
     if(mEditor->url == ""){
@@ -277,7 +277,7 @@ void MainWindow::on_actionSave_triggered(){
 
 void MainWindow::on_actionSave_As_triggered(){
     CodeEditor *mEditor = checkForEditor();
-    if(mEditor == NULL){
+    if(mEditor == nullptr){
         return;
     }
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"), projects[ui->projectSelector->currentText()], tr("PHP file (*.php *.php3);;CSS file (*.css);; JavaScript file (*.js);;HTML file (*.html *.htm)"));
@@ -297,10 +297,7 @@ void MainWindow::on_action_Open_triggered(){
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), projects[ui->projectSelector->currentText()], "PHP (*.php);; CSS (*.css);; HTML (*.html *.htm)All files (.*)");
 
     if(!fileName.isEmpty()){
-        int index = addEditor(fileName);
-        if(index == -1){
-            QMessageBox::critical(this, tr("File Error"), tr("phpPad was not able to open the file."), QMessageBox::Ok);
-        }
+        addEditor(fileName);
     }
 }
 

@@ -54,13 +54,13 @@
 #include "highlighter.h"
 
 
-CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent), c(0)
+CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent), c(nullptr)
 {
     lineNumberArea = new LineNumberArea(this);
     includedFilesModel = new QStandardItemModel;
     lockBlockState = true;
     endOfWord = "~!@#$%^&*()+{}|:<>?,./;'[]\\= ";
-    eow = "~!@#$%^&*()+{}|:<>?,./;'[]\\-=\"";
+    eow = "~!@#%^&*()+{}|:<>?,./;'[]\\-=\" ";
     cDeligate = new CompleterDelegate;
 
     setTabChangesFocus(false);
@@ -389,7 +389,7 @@ void CodeEditor::setJsCompleterList(QStringList compList){
 void CodeEditor::setCompleter(QCompleter *completer){
 
     if (c)
-        QObject::disconnect(c, 0, this, 0);
+        QObject::disconnect(c, nullptr, this, nullptr);
 
     c = completer;
 
@@ -434,66 +434,28 @@ void CodeEditor::insertCompletion(const QModelIndex &index){
 }
 
 QString CodeEditor::textUnderCursor() const{
-    // Function to return the word that should be completed. Since WordUnderCursor breaks at non letter chars adjustmens are
-    // required to extend the selection.
     QTextCursor tc = textCursor();
 
-    if(tc.hasSelection())
+    if(tc.hasSelection() || tc.atBlockStart())
         return "";
 
-    tc.select(QTextCursor::WordUnderCursor);
-    QString mText = tc.selectedText();
+    tc.movePosition(QTextCursor::StartOfBlock,QTextCursor::KeepAnchor);
+    QString qText = tc.selectedText().trimmed();
+    QString mText = "";
 
-    if(mText.length() == 0){
+    if(qText.length() < 3){
         return "";
     }
 
-/*    if(eow.contains(mText)){
-
-        // look at word before eow char
-        tc.setPosition(tc.selectionStart()-1);
-        tc.select(QTextCursor::WordUnderCursor);
-        mText = tc.selectedText();
-    }*/
-
-    // Check for special char befor word
-    tc.setPosition(tc.selectionEnd());
-    int start = tc.position()-mText.length()-1;
-
-    if(start == -1){
-        return mText;
+    for(int i=qText.length()-1;i>=0; i--){
+        if(eow.contains(qText.at(i))){
+            break;
+        }else{
+            mText = qText.at(i) + mText;
+        }
     }
-
-    tc.setPosition(start,QTextCursor::KeepAnchor);
-    QString nText = tc.selectedText();
-
-    if(nText.length() == 0){
-        return "";
-    }else if(nText.at(0) == '$'){
-        return nText.trimmed();
-    }else if(nText.at(0) == '"'){ // If in html inside a class or id property add . or #
-        start = start - 2;
-        tc.setPosition(start < 0 ? 0:start,QTextCursor::KeepAnchor);
-        nText = tc.selectedText();
-        if(nText.at(0) == 'd')
-            return "#"+mText.trimmed();
-        else if(nText.at(0) == 's')
-            return "."+mText.trimmed();
-    }else if(nText.at(0) == '-'){
-        if(start == 0)
-            return mText;
-
-        tc.setPosition(start-1);
-        tc.select(QTextCursor::WordUnderCursor);
-        QString oText = tc.selectedText();
-
-        if(oText.isEmpty())
-            return mText;
-        else
-            return oText+nText;
-    }
-
-    return mText.trimmed();
+    qDebug() << mText;
+    return mText;
 }
 void CodeEditor::focusInEvent(QFocusEvent *e){
     if(c)
