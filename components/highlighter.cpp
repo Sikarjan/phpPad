@@ -186,7 +186,7 @@ void Highlighter::highlightBlock(const QString &text){
         return;
     }
     // Split line by coding language identifiers, here <? and ?>, then by (key)words and then by any other char that is not escaped.
-    QRegularExpression splitter = QRegularExpression("(<\\?)|(\\?>)|(<script type=\"text\\/javascript\">)|(<\\/script>)|(<style>)|(<\\/style>)|(\\/\\*)|(\\*\\/)|(<!--)|(-->)|([a-zA-Z0-9-_]+)|((?<!\\\\)([^\\s\\\\]))");
+    QRegularExpression splitter = QRegularExpression("(<\\?)|(\\?>)|(<sript[a-z=\"]*>)|(<\\/script>)|(<style>)|(<\\/style>)|(\\/\\*)|(\\*\\/)|(<!--)|(-->)|([a-zA-Z0-9-_]+)|((?<!\\\\)([^\\s\\\\]))");
     parser = splitter.globalMatch(text);
 
 //qDebug() <<"Starting with" << currentBlockState() << "last state was" << previousBlockState() << "looking at" << text;

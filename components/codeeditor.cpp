@@ -60,7 +60,7 @@ CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent), c(nullptr)
     includedFilesModel = new QStandardItemModel;
     lockBlockState = true;
     endOfWord = "~!@#$%^&*()+{}|:<>?,./;'[]\\= ";
-    eow = "~!@#%^&*()+{}|:<>?,./;'[]\\-=\" ";
+    eow = "~!@#%^&*()+{}|:<>?,./;'[]\\=\" ";
     cDeligate = new CompleterDelegate;
 
     setTabChangesFocus(false);
@@ -126,10 +126,18 @@ void CodeEditor::keyPressEvent(QKeyEvent *e){
             increaseSelectionIndent();
         return;
     }else if(e->text() == "\""){
-        matchChracter("\"", "\"");
+        if(lastKey == "\""){
+            this->moveCursor(QTextCursor::Right, QTextCursor::MoveAnchor);
+        }else{
+            matchChracter("\"", "\"");
+        }
         return;
     }else if(e->text() == "'"){
-        matchChracter("'", "'");
+        if(lastKey == "'"){
+            this->moveCursor(QTextCursor::Right, QTextCursor::MoveAnchor);
+        }else{
+            matchChracter("'", "'");
+        }
         return;
     }else if(e->text() == "("){
         matchChracter("(", ")");
@@ -149,7 +157,7 @@ void CodeEditor::keyPressEvent(QKeyEvent *e){
     }else if(e->text() == "}" && lastKey == "{"){
         this->moveCursor(QTextCursor::Right, QTextCursor::MoveAnchor);
         return;
-    }else if(e->key() == Qt::Key_Return){
+    }else if(e->key() == Qt::Key_Return || e->key() == Qt::Key_Enter){
         if (currentTextBlockState == 10 && (e->modifiers() & Qt::ShiftModifier))
             this->insertPlainText("<br />");
 
@@ -158,25 +166,6 @@ void CodeEditor::keyPressEvent(QKeyEvent *e){
         return;
     }else if((e->modifiers() & Qt::ControlModifier) && e->key() == Qt::Key_W){
         emit closeEditor();
-    }
-
-    // Adding php variables on the fly
-    if(endOfWord.contains(e->text()) && completionPrefix.length() > 2){
-        if(currentTextBlockState < 10 && completionPrefix.contains("$") && !completionPrefix.contains(eow)){
-            QList<QStandardItem *> result = phpCustomCompModel->findItems(completionPrefix);
-            if(result.length() == 0){
-                QList<QStandardItem *> tmpList;
-                tmpList << new QStandardItem(completionPrefix);
-                tmpList << new QStandardItem(tr("local"));
-                phpCustomCompModel->appendRow(tmpList);
-                phpCustomCompModel->sort(0);
-
-                phpCompleter = new QCompleter(phpCustomCompModel, this);
-                phpCompleter->setObjectName("php");
-                phpCompleter->popup()->setItemDelegate(cDeligate);
-                setCompleter(phpCompleter);
-            }
-        }
     }
 
     // Completer
@@ -193,6 +182,12 @@ void CodeEditor::keyPressEvent(QKeyEvent *e){
     completionPrefix = textUnderCursor();
 
     if (!isShortcut && (hasModifier || e->text().isEmpty()|| completionPrefix.length() < 3 || endOfWord.contains(e->text().right(1)))) {
+        c->popup()->hide();
+        return;
+    }
+
+    // hide if nothing would be completed
+    if(completionPrefix == c->completionModel()->data(c->completionModel()->index(0, 0)).toString()){
         c->popup()->hide();
         return;
     }
@@ -433,11 +428,16 @@ void CodeEditor::insertCompletion(const QModelIndex &index){
     completionPrefix.clear();
 }
 
-QString CodeEditor::textUnderCursor() const{
+QString CodeEditor::textUnderCursor(const QString task) const{
     QTextCursor tc = textCursor();
 
     if(tc.hasSelection() || tc.atBlockStart())
         return "";
+
+    if(task == "word"){
+        tc.select(tc.WordUnderCursor);
+        return tc.selectedText();
+    }
 
     tc.movePosition(QTextCursor::StartOfBlock,QTextCursor::KeepAnchor);
     QString qText = tc.selectedText().trimmed();
@@ -454,7 +454,7 @@ QString CodeEditor::textUnderCursor() const{
             mText = qText.at(i) + mText;
         }
     }
-    qDebug() << mText;
+
     return mText;
 }
 void CodeEditor::focusInEvent(QFocusEvent *e){

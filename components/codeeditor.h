@@ -75,7 +75,7 @@ class CodeEditor : public QPlainTextEdit
     Q_OBJECT
 
 public:
-    CodeEditor(QWidget *parent = 0);
+    CodeEditor(QWidget *parent = nullptr);
     QString textFile;
     QString url;
     int docType;
@@ -87,7 +87,7 @@ public:
     QFont defaultFont;
     QStringList includedFilesList;
     bool lockBlockState;
-    QString textUnderCursor() const;
+    QString textUnderCursor(const QString task = QString("all")) const;
     QCompleter *phpCompleter;
     QCompleter *htmlCompleter;
     QCompleter *cssCompleter;

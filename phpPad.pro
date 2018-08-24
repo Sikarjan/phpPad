@@ -13,7 +13,7 @@ DEFINES += QAPPLICATION_CLASS=QApplication
 
 TARGET = phpPad
 TEMPLATE = app
-VERSION = 0.1.6
+VERSION = 0.2.2
 GIT_VERSION = $$system(git --git-dir $$PWD/.git --work-tree $$PWD rev-list --count HEAD)
 
 # The following define makes your compiler emit warnings if you use

@@ -48,7 +48,7 @@ MainWindow::~MainWindow(){
 bool MainWindow::closeTab(int index){
     QWidget* widget = ui->tabWidget->widget(index);
     if(widget->objectName() != "startTab"){
-        CodeEditor *tabEditor = NULL;
+        CodeEditor *tabEditor = nullptr;
         tabEditor = widget->findChild<CodeEditor *>();
         if(tabEditor->isFileChanged){
             QMessageBox msgBox;
@@ -335,7 +335,7 @@ bool MainWindow::on_action_Close_triggered(){ // Closing the program
 // Editing Actions
 void MainWindow::on_actionPaste_triggered(){
     CodeEditor *mEditor = checkForEditor();
-    if(mEditor == NULL){
+    if(mEditor == nullptr){
         return;
     }
     mEditor->paste();
@@ -343,7 +343,7 @@ void MainWindow::on_actionPaste_triggered(){
 
 void MainWindow::on_actionCut_triggered(){
     CodeEditor *mEditor = checkForEditor();
-    if(mEditor == NULL){
+    if(mEditor== nullptr){
         return;
     }
     mEditor->cut();
@@ -351,7 +351,7 @@ void MainWindow::on_actionCut_triggered(){
 
 void MainWindow::on_actionCopy_triggered(){
     CodeEditor *mEditor = checkForEditor();
-    if(mEditor == NULL){
+    if(mEditor== nullptr){
         return;
     }
     mEditor->copy();
@@ -359,7 +359,7 @@ void MainWindow::on_actionCopy_triggered(){
 
 void MainWindow::on_actionUndo_triggered(){
     CodeEditor *mEditor = checkForEditor();
-    if(mEditor == NULL){
+    if(mEditor== nullptr){
         return;
     }
     mEditor->undo();
@@ -367,7 +367,7 @@ void MainWindow::on_actionUndo_triggered(){
 
 void MainWindow::on_actionRedo_triggered(){
     CodeEditor *mEditor = checkForEditor();
-    if(mEditor == NULL){
+    if(mEditor== nullptr){
         return;
     }
     mEditor->redo();
@@ -375,7 +375,7 @@ void MainWindow::on_actionRedo_triggered(){
 
 void MainWindow::on_actionReload_triggered(){
     CodeEditor *mEditor = checkForEditor();
-    if(mEditor == NULL){
+    if(mEditor== nullptr){
         return;
     }
 
@@ -402,13 +402,14 @@ void MainWindow::saveSettings(){
     QSettings settings("InnoBiz", "phpPad");
     settings.beginGroup("window");
         settings.setValue("position", this->geometry());
-        settings.setValue("fullScreen", this->isFullScreen());
+        settings.setValue("maximized", this->isMaximized());
         if(ui->projectSelector->count() > 1)
             settings.setValue("lastProject", ui->projectSelector->currentText());
         settings.setValue("mainSplitter", ui->mainSplitter->saveState());
         settings.setValue("toolSplitter", ui->toolSplitter->saveState());
         settings.setValue("treeViewColumn0Width",ui->treeView->columnWidth(0));
     settings.endGroup();
+
     settings.remove("projects");
     settings.beginGroup("projects");
         foreach (const QString &key, projects.keys()) {
@@ -421,9 +422,9 @@ void MainWindow::loadSettings(){
     QSettings settings("InnoBiz", "phpPad");
 
     settings.beginGroup("window");
-        bool fScreen = settings.value("fullScreen", true).toBool();
-        if(fScreen){
-            this->setWindowState(Qt::WindowFullScreen);
+        bool mScreen = settings.value("maximized", true).toBool();
+        if(mScreen){
+            this->setWindowState(Qt::WindowMaximized);
         }else{
             QRect window = settings.value("position").toRect();
             this->setGeometry(window);
@@ -462,7 +463,7 @@ void MainWindow::loadSettings(){
 }
 
 CodeEditor *MainWindow::checkForEditor(){
-    CodeEditor *tabEditor = NULL;
+    CodeEditor *tabEditor = nullptr;
     QWidget *widget = ui->tabWidget->currentWidget();
     if(widget->objectName() != "startTab"){
         tabEditor = widget->findChild<CodeEditor *>();
@@ -487,7 +488,7 @@ void MainWindow::on_tabWidget_currentChanged(int index)
     Q_UNUSED(index);
     CodeEditor *mEditor = checkForEditor();
 
-    if(mEditor == NULL){
+    if(mEditor== nullptr){
         ui->actionSave_As->setEnabled(false);
         ui->actionGo2Line->setEnabled(false);
         ui->actionFind->setEnabled(false);
@@ -693,7 +694,7 @@ int MainWindow::isFileOpen(QString filePath){
         QWidget *widget = ui->tabWidget->widget(i);
 
         if(widget->objectName() != "startTab"){
-            CodeEditor *mEditor = NULL;
+            CodeEditor *mEditor = nullptr;
             mEditor = widget->findChild<CodeEditor *>();
             if(mEditor->url == filePath){
                 return i;
@@ -1134,7 +1135,7 @@ void MainWindow::on_actionRestore_Tab_triggered()
 void MainWindow::on_actionGo2Line_triggered()
 {
     CodeEditor *mEditor = checkForEditor();
-    if(mEditor == NULL)
+    if(mEditor== nullptr)
         return;
 
     int lineNumber = QInputDialog::getInt(this, tr("Go to line"),tr("Line Number"),0,0,mEditor->blockCount());
@@ -1181,10 +1182,10 @@ void MainWindow::on_actionContext_help_triggered()
     QWidget *widget = ui->tabWidget->currentWidget();
     ToolBox *toolBox = widget->findChild<ToolBox *>();
     CodeEditor *mEditor = widget->findChild<CodeEditor *>();
-    QString text = mEditor->textUnderCursor();
+    QString text = mEditor->textUnderCursor("word");
     int blockState = mEditor->currentTextBlockState;
 
-    if(blockState > 9 || text.length() < 2 || text.at(0) == '$'){
+    if(blockState > 9 || text.length() < 2){
         text.clear();
     }
 
@@ -1195,7 +1196,7 @@ void MainWindow::on_actionContext_help_triggered()
 void MainWindow::on_actionReplace_triggered()
 {
     CodeEditor *mEditor = checkForEditor();
-    if(mEditor == NULL)
+    if(mEditor == nullptr)
         return;
 
     QString text = mEditor->textUnderCursor();
@@ -1213,7 +1214,7 @@ void MainWindow::on_actionAbout_triggered()
 void MainWindow::on_actionToPhp_triggered()
 {
     CodeEditor *mEditor = checkForEditor();
-    if(mEditor == NULL)
+    if(mEditor == nullptr)
         return;
 
     if(mEditor->docType == 0)
@@ -1223,7 +1224,7 @@ void MainWindow::on_actionToPhp_triggered()
 void MainWindow::on_actionToHtml_triggered()
 {
     CodeEditor *mEditor = checkForEditor();
-    if(mEditor == NULL)
+    if(mEditor == nullptr)
         return;
 
     if(mEditor->docType < 2)
@@ -1233,7 +1234,7 @@ void MainWindow::on_actionToHtml_triggered()
 void MainWindow::on_actiontoJavaScript_triggered()
 {
     CodeEditor *mEditor = checkForEditor();
-    if(mEditor == NULL)
+    if(mEditor== nullptr)
         return;
 
     if(mEditor->docType < 4 && mEditor->docType != 2)
@@ -1243,7 +1244,7 @@ void MainWindow::on_actiontoJavaScript_triggered()
 void MainWindow::on_actionToCss_triggered()
 {
     CodeEditor *mEditor = checkForEditor();
-    if(mEditor == NULL)
+    if(mEditor== nullptr)
         return;
 
     if(mEditor->docType < 3)
