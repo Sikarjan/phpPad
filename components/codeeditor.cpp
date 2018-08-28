@@ -181,7 +181,13 @@ void CodeEditor::keyPressEvent(QKeyEvent *e){
 
     completionPrefix = textUnderCursor();
 
-    if (!isShortcut && (hasModifier || e->text().isEmpty()|| completionPrefix.length() < 3 || endOfWord.contains(e->text().right(1)))) {
+    // Check if in String or Comment
+    bool inString = true;
+    if(currentTextBlockState%10 == 0 || currentTextBlockState == 12 || currentTextBlockState == 21){
+        inString = false;
+    }
+
+    if (!isShortcut && (hasModifier || e->text().isEmpty()|| completionPrefix.length() < 3 || endOfWord.contains(e->text().right(1)) || inString)) {
         c->popup()->hide();
         return;
     }
@@ -394,7 +400,7 @@ void CodeEditor::setCompleter(QCompleter *completer){
     emit newCompleter(c->objectName());
     c->setWidget(this);
     c->setCompletionMode(QCompleter::PopupCompletion);
-    c->setCaseSensitivity(Qt::CaseInsensitive);
+//    c->setCaseSensitivity(Qt::CaseInsensitive);
     QObject::connect(c, SIGNAL(activated(QModelIndex)), this, SLOT(insertCompletion(QModelIndex)));
 }
 QCompleter *CodeEditor::completer() const {
@@ -440,7 +446,7 @@ QString CodeEditor::textUnderCursor(const QString task) const{
     }
 
     tc.movePosition(QTextCursor::StartOfBlock,QTextCursor::KeepAnchor);
-    QString qText = tc.selectedText().trimmed();
+    QString qText = tc.selectedText();
     QString mText = "";
 
     if(qText.length() < 3){
@@ -449,6 +455,13 @@ QString CodeEditor::textUnderCursor(const QString task) const{
 
     for(int i=qText.length()-1;i>=0; i--){
         if(eow.contains(qText.at(i))){
+            if(qText.at(i) == "\"" && i > 2){
+                if(qText.mid(i-3,3) == "ss="){
+                    mText = "."+mText;
+                }else if(qText.mid(i-3,3) == "id="){
+                    mText = "#"+mText;
+                }
+            }
             break;
         }else{
             mText = qText.at(i) + mText;
@@ -909,7 +922,7 @@ void CodeEditor::scanForJs(QString code, int scanOption)
 
 void CodeEditor::scanForCss(QString code)
 {
-    QRegularExpression classExpression = QRegularExpression("(?<=\\s)(?<type>\\.|#)(?<name>[a-zA-Z]+[\\w-]*)");
+    QRegularExpression classExpression = QRegularExpression("(?<type>\\.|#)(?<name>[a-zA-Z]+[\\w-]*)(?= *{|,)");
     QRegularExpressionMatchIterator matches = classExpression.globalMatch(code);
     while (matches.hasNext()) {
         QRegularExpressionMatch match = matches.next();
@@ -922,7 +935,6 @@ void CodeEditor::scanForCss(QString code)
                 tmpList << new QStandardItem(match.captured("type")+match.captured("name"));
                 tmpList << new QStandardItem(match.captured("type") == "#" ? "id":"class");
                 htmlCustomCompModel->appendRow(tmpList);
-                qDebug() << tmpList;
             }
         }
     }

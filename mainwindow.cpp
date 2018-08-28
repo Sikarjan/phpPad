@@ -67,7 +67,6 @@ bool MainWindow::closeTab(int index){
                     break;
                 case QMessageBox::Cancel:
                     return false;
-                    break;
                 default:
                     // should never be reached
                     break;
@@ -91,7 +90,6 @@ bool MainWindow::closeTab(int index){
         addEditor();
         return true;
     }
-    return false;
 }
 
 int MainWindow::addEditor(QString filePath, bool isNew){
@@ -422,12 +420,9 @@ void MainWindow::loadSettings(){
     QSettings settings("InnoBiz", "phpPad");
 
     settings.beginGroup("window");
-        bool mScreen = settings.value("maximized", true).toBool();
-        if(mScreen){
+        this->setGeometry(settings.value("position").toRect());
+        if(settings.value("maximized", true).toBool()){
             this->setWindowState(Qt::WindowMaximized);
-        }else{
-            QRect window = settings.value("position").toRect();
-            this->setGeometry(window);
         }
 
         QString lastProject = settings.value("lastProject", "").toString();
@@ -1005,7 +1000,7 @@ void MainWindow::fileRenamed(QString path, QString oldName, QString newName)
     int i = isFileOpen(path+"/"+oldName);
     if(i >= 0){
         QWidget *widget = ui->tabWidget->widget(i);
-        CodeEditor *tabEditor = (CodeEditor*)widget;
+        CodeEditor *tabEditor = widget->findChild<CodeEditor *>();
         tabEditor->url = path+"/"+newName;
         ui->tabWidget->setTabText(i, newName);
     }
@@ -1041,7 +1036,7 @@ void MainWindow::pDel_triggered()
                     ui->tabWidget->tabCloseRequested(i);
                 }else{
                     QWidget *widget = ui->tabWidget->widget(i);
-                    CodeEditor *tabEditor = (CodeEditor*)widget;
+                    CodeEditor *tabEditor = widget->findChild<CodeEditor *>();
                     tabEditor->url = "";
                 }
             }

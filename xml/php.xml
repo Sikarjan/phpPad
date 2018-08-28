@@ -104,7 +104,7 @@ Date 2017-07-24
 	</KeyWord>
 	<KeyWord name="namespace" func="key" />
 	<KeyWord name="new" func="key" />
-	<KeyWord name="or" func="key" />
+        <KeyWord name="or" func="key" />
 	<KeyWord name="print" func="key" />
 	<KeyWord name="private" func="key" />
 	<KeyWord name="protected" func="key" />
@@ -126,6 +126,33 @@ Date 2017-07-24
 	<KeyWord name="var" func="key" />
 	<KeyWord name="while" func="key" />
 	<KeyWord name="xor" func="key" />
+        <KeyWord name="INPUT_COOKIE" func="filterInput" />
+        <KeyWord name="INPUT_ENV" func="filterInput" />
+        <KeyWord name="INPUT_GET" func="filterInput" />
+        <KeyWord name="INPUT_POST" func="filterInput" />
+        <KeyWord name="INPUT_SERVER" func="filterInput" />
+        <KeyWord name="FILTER_VALIDATE_" func="filterType" />
+        <KeyWord name="FILTER_VALIDATE_BOOLEAN" func="filterType" />
+        <KeyWord name="FILTER_VALIDATE_DOMAIN" func="filterType" />
+        <KeyWord name="FILTER_VALIDATE_EMAIL" func="filterType" />
+        <KeyWord name="FILTER_VALIDATE_FLOAT" func="filterType" />
+        <KeyWord name="FILTER_VALIDATE_INT" func="filterType" />
+        <KeyWord name="FILTER_VALIDATE_IP" func="filterType" />
+        <KeyWord name="FILTER_VALIDATE_MAC" func="filterType" />
+        <KeyWord name="FILTER_VALIDATE_REGEXP" func="filterType" />
+        <KeyWord name="FILTER_VALIDATE_URL" func="filterType" />
+        <KeyWord name="FILTER_SANITIZE_" func="filterType" />
+        <KeyWord name="FILTER_SANITIZE_EMAIL" func="filterType" />
+        <KeyWord name="FILTER_SANITIZE_ENCODED" func="filterType" />
+        <KeyWord name="FILTER_SANITIZE_MAGIC_QUOTES" func="filterType" />
+        <KeyWord name="FILTER_SANITIZE_NUMBER_FLOAT" func="filterType" />
+        <KeyWord name="FILTER_SANITIZE_NUMBER_INT" func="filterType" />
+        <KeyWord name="FILTER_SANITIZE_SPECIAL_CHARS" func="filterType" />
+        <KeyWord name="FILTER_SANITIZE_FULL_SPECIAL_CHARS" func="filterType" />
+        <KeyWord name="FILTER_SANITIZE_STRING" func="filterType" />
+        <KeyWord name="FILTER_SANITIZE_STRIPPED" func="filterType" />
+        <KeyWord name="FILTER_SANITIZE_URL" func="filterType" />
+        <KeyWord name="FILTER_SANITIZE_RAW" func="filterType" />
 	<KeyWord name="abs" func="function">
             <Overload retVal="number">
                 <Param name="mixed number"/>
